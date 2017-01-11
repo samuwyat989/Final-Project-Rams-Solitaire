@@ -28,7 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.moveButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.minLabel = new System.Windows.Forms.Label();
+            this.secLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // moveButton
@@ -41,21 +52,118 @@
             this.moveButton.UseVisualStyleBackColor = true;
             this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(28, 126);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 71);
+            this.textBox1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(134, 126);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 71);
+            this.textBox2.TabIndex = 2;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(240, 126);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 71);
+            this.textBox3.TabIndex = 3;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(346, 126);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 71);
+            this.textBox4.TabIndex = 4;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(452, 126);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 71);
+            this.textBox5.TabIndex = 5;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(558, 126);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 71);
+            this.textBox6.TabIndex = 6;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(664, 126);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 71);
+            this.textBox7.TabIndex = 7;
+            // 
+            // gameTimer
+            // 
+            this.gameTimer.Interval = 1000;
+            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
+            // 
+            // minLabel
+            // 
+            this.minLabel.AutoSize = true;
+            this.minLabel.Location = new System.Drawing.Point(206, 411);
+            this.minLabel.Name = "minLabel";
+            this.minLabel.Size = new System.Drawing.Size(0, 13);
+            this.minLabel.TabIndex = 8;
+            // 
+            // secLabel
+            // 
+            this.secLabel.AutoSize = true;
+            this.secLabel.Location = new System.Drawing.Point(223, 411);
+            this.secLabel.Name = "secLabel";
+            this.secLabel.Size = new System.Drawing.Size(0, 13);
+            this.secLabel.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 484);
+            this.ClientSize = new System.Drawing.Size(780, 484);
+            this.Controls.Add(this.secLabel);
+            this.Controls.Add(this.minLabel);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.moveButton);
             this.Name = "Form1";
             this.Text = "Rams Solitaire";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button moveButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Timer gameTimer;
+        private System.Windows.Forms.Label minLabel;
+        private System.Windows.Forms.Label secLabel;
     }
 }
 
