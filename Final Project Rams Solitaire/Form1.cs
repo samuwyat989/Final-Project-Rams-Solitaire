@@ -23,6 +23,8 @@ namespace Final_Project_Rams_Solitaire
         int playTimeSec;
         int playTimeMin;
 
+        Random cardDeal = new Random();
+
         List<string> drawPile = new List<string>();
         List<string> playPile = new List<string>();
 
@@ -111,6 +113,8 @@ namespace Final_Project_Rams_Solitaire
                 textBox3.Text += lineOne[1];
                 lineThree.Add(lineOne[1]);
                 lineOne.Remove(lineOne[1]);
+
+                textBox3.Location = Point point{ 400,200];
             }
             else
             {
