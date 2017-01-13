@@ -104,15 +104,48 @@ namespace Final_Project_Rams_Solitaire
             startPile.Add("SK");
             startPile.Add("CK");
 
+            #region random 5 cards
+            const int CARDS = 52;
+            int[] card = new int[CARDS];
+            int i, deck_cards;
+
+            for (i=0; i < CARDS; i++)
+            
+                card[i] = i;
+                deck_cards = CARDS;
+            
+            for (i = 0; i <= 5; i++)
+            {
+                int r = cardDeal.Next(0, deck_cards+1);
+
+                int temp = card[r];
+                card[r] = card[deck_cards - 1];
+                card[deck_cards - 1] = temp;
+
+                deck_cards--;
+            }
+
+            for (i = 0; i <= 5; i++)
+            {
+                OnPaint("extracted card[%d]=%d\n", i, card[deck_cards + i]);
+                //printf("extracted card[%d]=%d\n", i, card[deck_cards + i]);
+            }
+
+            for (i = 0; i < 5; i++)
+            {
+                // r is the newly extracted card index
+                int r = cardDeal.Next(CARDS - i);
+                // swap card[r] with card[CARDS-1-i]
+                int temp = card[r];
+                card[r] = card[CARDS - 1 - i];
+                card[CARDS - 1 - i] = temp;
+            }
+            #endregion
+
             lineOne.Add("KingH");
             lineOne.Add("QueenC");
             lineTwo.Add("KingS");
             lineThree.Add("KingD");
-
-            textBox1.Text = lineOne[0] + Environment.NewLine;
-            textBox1.Text += lineOne[1];
-            textBox2.Text = lineTwo[0];
-            textBox3.Text = lineThree[0];
 
             listBox1.Items.Add(lineOne[0] + Environment.NewLine);
             listBox1.Items.Add(lineOne[1]);
@@ -152,14 +185,10 @@ namespace Final_Project_Rams_Solitaire
 
             if(lineTwo[0] == "KingH" || lineTwo[0] == "KingD")
             {
-                //textBox1.Text = lineOne[0];
-                //textBox2.Text = lineTwo[0] + Environment.NewLine;
-                //textBox2.Text += lineOne[1];
-                listBox1.Items.Add(lineOne[0]);
-                listBox2.Items.Add(lineTwo[0] + Environment.NewLine);
-                listBox2.Items.Add(lineOne[1]);
                 lineTwo.Add(lineOne[1]);
                 lineOne.Remove(lineOne[1]);
+                listBox3.Items.Add(lineTwo[1] + Environment.NewLine);
+                listBox1.Items.Remove(lineTwo[1]);               
             }
 
             Thread.Sleep(1000);
@@ -167,15 +196,11 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineThree[0] == "KingH" || lineThree[0] == "KingD")
             {
-                //textBox1.Text = lineOne[0];
-                //textBox3.Text = lineThree[0] + Environment.NewLine;
-                //textBox3.Text += lineOne[1];
-                listBox1.Items.Add(lineOne[0]);
-                listBox3.Items.Add(lineThree[0] + Environment.NewLine);
-                listBox3.Items.Add(lineOne[1]);
                 lineThree.Add(lineOne[1]);
                 lineOne.Remove(lineOne[1]);
-
+                listBox3.Items.Add(lineThree[1] + Environment.NewLine);
+                listBox1.Items.Remove(lineThree[1]);
+                
                 //textBox3.Location = Point point{ 400,200];
             }
             else
@@ -203,6 +228,16 @@ namespace Final_Project_Rams_Solitaire
             cardUp = true;
             suit = 2;
             MoveCard(suit);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
