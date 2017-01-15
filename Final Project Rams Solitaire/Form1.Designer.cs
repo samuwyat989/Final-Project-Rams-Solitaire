@@ -93,6 +93,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(100, 186);
             this.listBox2.TabIndex = 11;
+            this.listBox2.Click += new System.EventHandler(this.listBox2_Click);
             // 
             // listBox3
             // 
@@ -101,6 +102,7 @@
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(100, 186);
             this.listBox3.TabIndex = 12;
+            this.listBox3.Click += new System.EventHandler(this.listBox3_Click);
             // 
             // listBox4
             // 
@@ -109,6 +111,7 @@
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(100, 186);
             this.listBox4.TabIndex = 13;
+            this.listBox4.Click += new System.EventHandler(this.listBox4_Click);
             // 
             // listBox5
             // 
@@ -117,6 +120,7 @@
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(100, 186);
             this.listBox5.TabIndex = 14;
+            this.listBox5.Click += new System.EventHandler(this.listBox5_Click);
             // 
             // listBox6
             // 
@@ -125,6 +129,7 @@
             this.listBox6.Name = "listBox6";
             this.listBox6.Size = new System.Drawing.Size(100, 186);
             this.listBox6.TabIndex = 15;
+            this.listBox6.Click += new System.EventHandler(this.listBox6_Click);
             // 
             // listBox7
             // 
@@ -133,6 +138,7 @@
             this.listBox7.Name = "listBox7";
             this.listBox7.Size = new System.Drawing.Size(100, 186);
             this.listBox7.TabIndex = 16;
+            this.listBox7.Click += new System.EventHandler(this.listBox7_Click);
             // 
             // Form1
             // 
