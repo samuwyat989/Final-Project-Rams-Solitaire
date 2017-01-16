@@ -15,13 +15,19 @@ namespace Final_Project_Rams_Solitaire
     public partial class Form1 : Form
     {
         bool cardUp;
-        string chosenCard;
+        string chosenCard, toCard;
+
         int suit;
+        int suitNeed;
+
+        int cardValue;
+        int needValue;
+
         int colour;
 
         string suitWord;
-        string suitNeed;
-        int cardValue;
+        string valWord;
+
 
         int moveCount;
         int playTimeSec;
@@ -108,46 +114,6 @@ namespace Final_Project_Rams_Solitaire
             startPile.Add("SK");
             startPile.Add("CK");
 
-            #region random 5 cards
-            const int CARDS = 52;
-            int[] card = new int[CARDS];
-            int i, deck_cards;
-
-            for (i=0; i < CARDS; i++)
-            
-                card[i] = i;
-                deck_cards = CARDS;
-            
-            for (i = 0; i <= 5; i++)
-            {
-                int r = cardDeal.Next(0, deck_cards+1);
-
-                int temp = card[r];
-                card[r] = card[deck_cards - 1];
-                card[deck_cards - 1] = temp;
-
-                deck_cards--;
-            }
-
-            for (i = 0; i <= 5; i++)
-            {
-                //OnPaint("extracted card[%d]=%d\n", i, card[deck_cards + i]);
-                //printf("extracted card[%d]=%d\n", i, card[deck_cards + i]);
-               // lineSeven.AddRange("extracted" + card, i, card[deck_cards + i]);
-
-            }
-
-            for (i = 0; i < 5; i++)
-            {
-                // r is the newly extracted card index
-                int r = cardDeal.Next(CARDS - i);
-                // swap card[r] with card[CARDS-1-i]
-                int temp = card[r];
-                card[r] = card[CARDS - 1 - i];
-                card[CARDS - 1 - i] = temp;
-            }
-            #endregion
-
             lineOne.Add("KingH");
             lineOne.Add("QueenC");
             lineTwo.Add("KingS");
@@ -160,7 +126,7 @@ namespace Final_Project_Rams_Solitaire
             listBox3.Items.Add(lineThree[0]);
         }
 
-        public void MoveCard(int suit)
+        public void MoveCard(int suit, int cardValue, int suitNeed, int needValue)
         {
             if (cardUp)
             {
@@ -169,38 +135,82 @@ namespace Final_Project_Rams_Solitaire
                     case 1:
                         suitWord = "Hearts";
                         colour = 1;
-                        suitNeed = "Spades,Clubs";
+
                         break;
                     case 2:
                         suitWord = "Clubs";
                         colour = 2;
-                        suitNeed = "Hearts,Diamonds";
+
                         break;
                     case 3:
                         suitWord = "Diamonds";
                         colour = 1;
-                        suitNeed = "Spades,Clubs";
+
                         break;
                     case 4:
                         suitWord = "Spades";
                         colour = 2;
-                        suitNeed = "Hearts,Diamonds";
+
                         break;
-
                 }
-                MessageBox.Show(chosenCard + " is the suit " + suitWord);
+
+                switch (cardValue)
+                {
+                    case 1:
+                        valWord = "Ace";
+                        break;
+                    case 2:
+                        valWord = "Two";
+                        break;
+                    case 3:
+                        valWord = "Three";
+                        break;
+                    case 4:
+                        valWord = "Four";
+                        break;
+                    case 5:
+                        valWord = "Five";
+                        break;
+                    case 6:
+                        valWord = "Six";
+                        break;
+                    case 7:
+                        valWord = "Seven";
+                        break;
+                    case 8:
+                        valWord = "Eight";
+                        break;
+                    case 9:
+                        valWord = "Nine";
+                        break;
+                    case 10:
+                        valWord = "Ten";
+                        break;
+                    case 11:
+                        valWord = "Jack";
+                        break;
+                    case 12:
+                        valWord = "Queen";
+                        break;
+                    case 13:
+                        valWord = "King";
+                        break;
+                }
+                MessageBox.Show(chosenCard + " is the suit: " + suitWord + "\nAnd card type: " + valWord);
             }
-          else
+            else
             {
-                MessageBox.Show("Sorry, that card can not be acessed currently");
+                MessageBox.Show("This card can not be acessed currently");
             }
 
-            if(lineTwo.Last() == "KingH" || lineTwo.Last() == "KingD")
+            if(suit<=2 && )
+
+            if (lineTwo.Last() == "KingH" || lineTwo.Last() == "KingD")
             {
                 lineTwo.Add(lineOne[1]);
                 lineOne.Remove(lineOne[1]);
                 listBox3.Items.Add(lineTwo[1] + Environment.NewLine);
-                listBox1.Items.Remove(lineTwo[1]);               
+                listBox1.Items.Remove(lineTwo[1]);
             }
 
             if (lineThree.Last() == "KingH" || lineThree.Last() == "KingD")
@@ -209,12 +219,10 @@ namespace Final_Project_Rams_Solitaire
                 lineOne.Remove(lineOne[1]);
                 listBox3.Items.Add(lineThree[1] + Environment.NewLine);
                 listBox1.Items.Remove(lineThree[1]);
-                
-                //textBox3.Location = Point point{ 400,200];
             }
             else
             {
-                MessageBox.Show("This card can not move to line three");
+                MessageBox.Show("This card can not move");
             }
         }
 
@@ -241,21 +249,90 @@ namespace Final_Project_Rams_Solitaire
         {
 
         }
+
         #region Click Methods for all Playing Lines
         private void listBox1_Click(object sender, EventArgs e)
         {
             cardUp = true;
             chosenCard = listBox1.SelectedItem.ToString();
 
+            #region Find Card Values 
+            if (chosenCard.StartsWith("K"))
+            {
+                cardValue = 13;
+            }
+
+            else if (chosenCard.StartsWith("Q"))
+            {
+                cardValue = 12;
+            }
+
+            else if (chosenCard.StartsWith("J"))
+            {
+                cardValue = 11;
+            }
+
+            else if (chosenCard.StartsWith("Te"))
+            {
+                cardValue = 10;
+            }
+
+            else if (chosenCard.StartsWith("N"))
+            {
+                cardValue = 9;
+            }
+
+            else if (chosenCard.StartsWith("E"))
+            {
+                cardValue = 8;
+            }
+
+            else if (chosenCard.StartsWith("Se"))
+            {
+                cardValue = 7;
+            }
+
+            else if (chosenCard.StartsWith("Si"))
+            {
+                cardValue = 6;
+            }
+
+            else if (chosenCard.StartsWith("Fi"))
+            {
+                cardValue = 5;
+            }
+
+            else if (chosenCard.StartsWith("Fo"))
+            {
+                cardValue = 4;
+            }
+
+            else if (chosenCard.StartsWith("Th"))
+            {
+                cardValue = 3;
+            }
+
+            else if (chosenCard.StartsWith("TW"))
+            {
+                cardValue = 2;
+            }
+
+            else if (chosenCard.StartsWith("A"))
+            {
+                cardValue = 1;
+            }
+            #endregion
+
+            #region Find Suit Values
             if (chosenCard.EndsWith("H"))
             {
                 suit = 1;
             }
-            else if (chosenCard.EndsWith("C"))
+            else if (chosenCard.EndsWith("D"))
             {
                 suit = 2;
             }
-            else if (chosenCard.EndsWith("D"))
+            else if (chosenCard.EndsWith("C"))
             {
                 suit = 3;
             }
@@ -263,152 +340,663 @@ namespace Final_Project_Rams_Solitaire
             {
                 suit = 4;
             }
-            MoveCard(suit);
-        }
+            #endregion
 
-        private void listBox2_Click(object sender, EventArgs e)
-        {
-            cardUp = true;
-            chosenCard = listBox2.SelectedItem.ToString();
+            #region Find Last Line 2 Suit Values
+            if (lineTwo.Last().EndsWith("H"))
+            {
+                suitNeed = 1;
+            }
+            if (lineTwo.Last().EndsWith("C"))
+            {
+                suitNeed = 2;
+            }
+            if (lineTwo.Last().EndsWith("D"))
+            {
+                suitNeed = 3;
+            }
+            if (lineTwo.Last().EndsWith("S"))
+            {
+                suitNeed = 4;
+            }
+            #endregion
 
-            if (chosenCard.EndsWith("H"))
+            #region Find Last Line 2 Card Values
+            if (lineTwo.Last().StartsWith("K"))
             {
-                suit = 1;
+                needValue = 13;
             }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            MoveCard(suit);
-        }
 
-        private void listBox3_Click(object sender, EventArgs e)
-        {
-            cardUp = true;
-            chosenCard = listBox3.SelectedItem.ToString();
+            else if (lineTwo.Last().StartsWith("Q"))
+            {
+                needValue = 12;
+            }
 
-            if (chosenCard.EndsWith("H"))
+            else if (lineTwo.Last().StartsWith("J"))
             {
-                suit = 1;
+                needValue = 11;
             }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            MoveCard(suit);
-        }
 
-        private void listBox4_Click(object sender, EventArgs e)
-        {
-            cardUp = true;
-            chosenCard = listBox4.SelectedItem.ToString();
+            else if (lineTwo.Last().StartsWith("Te"))
+            {
+                needValue = 10;
+            }
 
-            if (chosenCard.EndsWith("H"))
+            else if (lineTwo.Last().StartsWith("N"))
             {
-                suit = 1;
+                needValue = 9;
             }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            MoveCard(suit);
-        }
 
-        private void listBox5_Click(object sender, EventArgs e)
-        {
-            cardUp = true;
-            chosenCard = listBox5.SelectedItem.ToString();
+            else if (lineTwo.Last().StartsWith("E"))
+            {
+                needValue = 8;
+            }
 
-            if (chosenCard.EndsWith("H"))
+            else if (lineTwo.Last().StartsWith("Se"))
             {
-                suit = 1;
+                needValue = 7;
             }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            MoveCard(suit);
-        }
 
-        private void listBox6_Click(object sender, EventArgs e)
-        {
-            cardUp = true;
-            chosenCard = listBox6.SelectedItem.ToString();
+            else if (lineTwo.Last().StartsWith("Si"))
+            {
+                needValue = 6;
+            }
 
-            if (chosenCard.EndsWith("H"))
+            else if (lineTwo.Last().StartsWith("Fi"))
             {
-                suit = 1;
+                needValue = 5;
             }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            MoveCard(suit);
-        }
 
-        private void listBox7_Click(object sender, EventArgs e)
-        {
-            cardUp = true;
-            chosenCard = listBox7.SelectedItem.ToString();
+            else if (lineTwo.Last().StartsWith("Fo"))
+            {
+                needValue = 4;
+            }
 
-            if (chosenCard.EndsWith("H"))
+            else if (lineTwo.Last().StartsWith("Th"))
             {
-                suit = 1;
+                needValue = 3;
             }
-            else if (chosenCard.EndsWith("C"))
+
+            else if (lineTwo.Last().StartsWith("TW"))
             {
-                suit = 2;
+                needValue = 2;
             }
-            else if (chosenCard.EndsWith("D"))
+
+            else if (lineTwo.Last().StartsWith("A"))
             {
-                suit = 3;
+                needValue = 1;
             }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            MoveCard(suit);
+            #endregion
+
+            MoveCard(suit, cardValue, suitNeed, needValue);
         }
         #endregion
+        /*
+                private void listBox2_Click(object sender, EventArgs e)
+                {
+                    cardUp = true;
+                    chosenCard = listBox2.SelectedItem.ToString();
+
+                    #region Find Card Values 
+                    if (chosenCard.StartsWith("K"))
+                    {
+                        cardValue = 13;
+                    }
+
+                    else if (chosenCard.StartsWith("Q"))
+                    {
+                        cardValue = 12;
+                    }
+
+                    else if (chosenCard.StartsWith("J"))
+                    {
+                        cardValue = 11;
+                    }
+
+                    else if (chosenCard.StartsWith("Te"))
+                    {
+                        cardValue = 10;
+                    }
+
+                    else if (chosenCard.StartsWith("N"))
+                    {
+                        cardValue = 9;
+                    }
+
+                    else if (chosenCard.StartsWith("E"))
+                    {
+                        cardValue = 8;
+                    }
+
+                    else if (chosenCard.StartsWith("Se"))
+                    {
+                        cardValue = 7;
+                    }
+
+                    else if (chosenCard.StartsWith("Si"))
+                    {
+                        cardValue = 6;
+                    }
+
+                    else if (chosenCard.StartsWith("Fi"))
+                    {
+                        cardValue = 5;
+                    }
+
+                    else if (chosenCard.StartsWith("Fo"))
+                    {
+                        cardValue = 4;
+                    }
+
+                    else if (chosenCard.StartsWith("Th"))
+                    {
+                        cardValue = 3;
+                    }
+
+                    else if (chosenCard.StartsWith("TW"))
+                    {
+                        cardValue = 2;
+                    }
+
+                    else if (chosenCard.StartsWith("A"))
+                    {
+                        cardValue = 1;
+                    }
+                    #endregion
+
+                    #region Find Suit Values
+                    if (chosenCard.EndsWith("H"))
+                    {
+                        suit = 1;
+                    }
+                    else if (chosenCard.EndsWith("C"))
+                    {
+                        suit = 2;
+                    }
+                    else if (chosenCard.EndsWith("D"))
+                    {
+                        suit = 3;
+                    }
+                    else if (chosenCard.EndsWith("S"))
+                    {
+                        suit = 4;
+                    }
+                    #endregion
+
+                    MoveCard(suit, cardValue);
+                }
+
+                private void listBox3_Click(object sender, EventArgs e)
+                {
+                    cardUp = true;
+                    chosenCard = listBox3.SelectedItem.ToString();
+
+                    #region Find Card Values 
+                    if (chosenCard.StartsWith("K"))
+                    {
+                        cardValue = 13;
+                    }
+
+                    else if (chosenCard.StartsWith("Q"))
+                    {
+                        cardValue = 12;
+                    }
+
+                    else if (chosenCard.StartsWith("J"))
+                    {
+                        cardValue = 11;
+                    }
+
+                    else if (chosenCard.StartsWith("Te"))
+                    {
+                        cardValue = 10;
+                    }
+
+                    else if (chosenCard.StartsWith("N"))
+                    {
+                        cardValue = 9;
+                    }
+
+                    else if (chosenCard.StartsWith("E"))
+                    {
+                        cardValue = 8;
+                    }
+
+                    else if (chosenCard.StartsWith("Se"))
+                    {
+                        cardValue = 7;
+                    }
+
+                    else if (chosenCard.StartsWith("Si"))
+                    {
+                        cardValue = 6;
+                    }
+
+                    else if (chosenCard.StartsWith("Fi"))
+                    {
+                        cardValue = 5;
+                    }
+
+                    else if (chosenCard.StartsWith("Fo"))
+                    {
+                        cardValue = 4;
+                    }
+
+                    else if (chosenCard.StartsWith("Th"))
+                    {
+                        cardValue = 3;
+                    }
+
+                    else if (chosenCard.StartsWith("TW"))
+                    {
+                        cardValue = 2;
+                    }
+
+                    else if (chosenCard.StartsWith("A"))
+                    {
+                        cardValue = 1;
+                    }
+                    #endregion
+
+                    #region Find Suit Values
+                    if (chosenCard.EndsWith("H"))
+                    {
+                        suit = 1;
+                    }
+                    else if (chosenCard.EndsWith("C"))
+                    {
+                        suit = 2;
+                    }
+                    else if (chosenCard.EndsWith("D"))
+                    {
+                        suit = 3;
+                    }
+                    else if (chosenCard.EndsWith("S"))
+                    {
+                        suit = 4;
+                    }
+                    #endregion
+
+                    MoveCard(suit, cardValue);
+                }
+
+                private void listBox4_Click(object sender, EventArgs e)
+                {
+                    cardUp = true;
+                    chosenCard = listBox4.SelectedItem.ToString();
+
+                    #region Find Card Values 
+                    if (chosenCard.StartsWith("K"))
+                    {
+                        cardValue = 13;
+                    }
+
+                    else if (chosenCard.StartsWith("Q"))
+                    {
+                        cardValue = 12;
+                    }
+
+                    else if (chosenCard.StartsWith("J"))
+                    {
+                        cardValue = 11;
+                    }
+
+                    else if (chosenCard.StartsWith("Te"))
+                    {
+                        cardValue = 10;
+                    }
+
+                    else if (chosenCard.StartsWith("N"))
+                    {
+                        cardValue = 9;
+                    }
+
+                    else if (chosenCard.StartsWith("E"))
+                    {
+                        cardValue = 8;
+                    }
+
+                    else if (chosenCard.StartsWith("Se"))
+                    {
+                        cardValue = 7;
+                    }
+
+                    else if (chosenCard.StartsWith("Si"))
+                    {
+                        cardValue = 6;
+                    }
+
+                    else if (chosenCard.StartsWith("Fi"))
+                    {
+                        cardValue = 5;
+                    }
+
+                    else if (chosenCard.StartsWith("Fo"))
+                    {
+                        cardValue = 4;
+                    }
+
+                    else if (chosenCard.StartsWith("Th"))
+                    {
+                        cardValue = 3;
+                    }
+
+                    else if (chosenCard.StartsWith("TW"))
+                    {
+                        cardValue = 2;
+                    }
+
+                    else if (chosenCard.StartsWith("A"))
+                    {
+                        cardValue = 1;
+                    }
+                    #endregion
+
+                    #region Find Suit Values
+                    if (chosenCard.EndsWith("H"))
+                    {
+                        suit = 1;
+                    }
+                    else if (chosenCard.EndsWith("C"))
+                    {
+                        suit = 2;
+                    }
+                    else if (chosenCard.EndsWith("D"))
+                    {
+                        suit = 3;
+                    }
+                    else if (chosenCard.EndsWith("S"))
+                    {
+                        suit = 4;
+                    }
+                    #endregion
+
+                    MoveCard(suit, cardValue);
+                }
+
+                private void listBox5_Click(object sender, EventArgs e)
+                {
+                    cardUp = true;
+                    chosenCard = listBox5.SelectedItem.ToString();
+
+                    #region Find Card Values 
+                    if (chosenCard.StartsWith("K"))
+                    {
+                        cardValue = 13;
+                    }
+
+                    else if (chosenCard.StartsWith("Q"))
+                    {
+                        cardValue = 12;
+                    }
+
+                    else if (chosenCard.StartsWith("J"))
+                    {
+                        cardValue = 11;
+                    }
+
+                    else if (chosenCard.StartsWith("Te"))
+                    {
+                        cardValue = 10;
+                    }
+
+                    else if (chosenCard.StartsWith("N"))
+                    {
+                        cardValue = 9;
+                    }
+
+                    else if (chosenCard.StartsWith("E"))
+                    {
+                        cardValue = 8;
+                    }
+
+                    else if (chosenCard.StartsWith("Se"))
+                    {
+                        cardValue = 7;
+                    }
+
+                    else if (chosenCard.StartsWith("Si"))
+                    {
+                        cardValue = 6;
+                    }
+
+                    else if (chosenCard.StartsWith("Fi"))
+                    {
+                        cardValue = 5;
+                    }
+
+                    else if (chosenCard.StartsWith("Fo"))
+                    {
+                        cardValue = 4;
+                    }
+
+                    else if (chosenCard.StartsWith("Th"))
+                    {
+                        cardValue = 3;
+                    }
+
+                    else if (chosenCard.StartsWith("TW"))
+                    {
+                        cardValue = 2;
+                    }
+
+                    else if (chosenCard.StartsWith("A"))
+                    {
+                        cardValue = 1;
+                    }
+                    #endregion
+
+                    #region Find Suit Values
+                    if (chosenCard.EndsWith("H"))
+                    {
+                        suit = 1;
+                    }
+                    else if (chosenCard.EndsWith("C"))
+                    {
+                        suit = 2;
+                    }
+                    else if (chosenCard.EndsWith("D"))
+                    {
+                        suit = 3;
+                    }
+                    else if (chosenCard.EndsWith("S"))
+                    {
+                        suit = 4;
+                    }
+                    #endregion
+
+                    MoveCard(suit, cardValue);
+                }
+
+                private void listBox6_Click(object sender, EventArgs e)
+                {
+                    cardUp = true;
+                    chosenCard = listBox6.SelectedItem.ToString();
+
+                    #region Find Card Values 
+                    if (chosenCard.StartsWith("K"))
+                    {
+                        cardValue = 13;
+                    }
+
+                    else if (chosenCard.StartsWith("Q"))
+                    {
+                        cardValue = 12;
+                    }
+
+                    else if (chosenCard.StartsWith("J"))
+                    {
+                        cardValue = 11;
+                    }
+
+                    else if (chosenCard.StartsWith("Te"))
+                    {
+                        cardValue = 10;
+                    }
+
+                    else if (chosenCard.StartsWith("N"))
+                    {
+                        cardValue = 9;
+                    }
+
+                    else if (chosenCard.StartsWith("E"))
+                    {
+                        cardValue = 8;
+                    }
+
+                    else if (chosenCard.StartsWith("Se"))
+                    {
+                        cardValue = 7;
+                    }
+
+                    else if (chosenCard.StartsWith("Si"))
+                    {
+                        cardValue = 6;
+                    }
+
+                    else if (chosenCard.StartsWith("Fi"))
+                    {
+                        cardValue = 5;
+                    }
+
+                    else if (chosenCard.StartsWith("Fo"))
+                    {
+                        cardValue = 4;
+                    }
+
+                    else if (chosenCard.StartsWith("Th"))
+                    {
+                        cardValue = 3;
+                    }
+
+                    else if (chosenCard.StartsWith("TW"))
+                    {
+                        cardValue = 2;
+                    }
+
+                    else if (chosenCard.StartsWith("A"))
+                    {
+                        cardValue = 1;
+                    }
+                    #endregion
+
+                    #region Find Suit Values
+                    if (chosenCard.EndsWith("H"))
+                    {
+                        suit = 1;
+                    }
+                    else if (chosenCard.EndsWith("C"))
+                    {
+                        suit = 2;
+                    }
+                    else if (chosenCard.EndsWith("D"))
+                    {
+                        suit = 3;
+                    }
+                    else if (chosenCard.EndsWith("S"))
+                    {
+                        suit = 4;
+                    }
+                    #endregion
+
+                    MoveCard(suit, cardValue);
+                }
+
+                private void listBox7_Click(object sender, EventArgs e)
+                {
+                    cardUp = true;
+                    chosenCard = listBox7.SelectedItem.ToString();
+
+                    #region Find Card Values 
+                    if (chosenCard.StartsWith("K"))
+                    {
+                        cardValue = 13;
+                    }
+
+                    else if (chosenCard.StartsWith("Q"))
+                    {
+                        cardValue = 12;
+                    }
+
+                    else if (chosenCard.StartsWith("J"))
+                    {
+                        cardValue = 11;
+                    }
+
+                    else if (chosenCard.StartsWith("Te"))
+                    {
+                        cardValue = 10;
+                    }
+
+                    else if (chosenCard.StartsWith("N"))
+                    {
+                        cardValue = 9;
+                    }
+
+                    else if (chosenCard.StartsWith("E"))
+                    {
+                        cardValue = 8;
+                    }
+
+                    else if (chosenCard.StartsWith("Se"))
+                    {
+                        cardValue = 7;
+                    }
+
+                    else if (chosenCard.StartsWith("Si"))
+                    {
+                        cardValue = 6;
+                    }
+
+                    else if (chosenCard.StartsWith("Fi"))
+                    {
+                        cardValue = 5;
+                    }
+
+                    else if (chosenCard.StartsWith("Fo"))
+                    {
+                        cardValue = 4;
+                    }
+
+                    else if (chosenCard.StartsWith("Th"))
+                    {
+                        cardValue = 3;
+                    }
+
+                    else if (chosenCard.StartsWith("TW"))
+                    {
+                        cardValue = 2;
+                    }
+
+                    else if (chosenCard.StartsWith("A"))
+                    {
+                        cardValue = 1;
+                    }
+                    #endregion
+
+                    #region Find Suit Values
+                    if (chosenCard.EndsWith("H"))
+                    {
+                        suit = 1;
+                    }
+                    else if (chosenCard.EndsWith("C"))
+                    {
+                        suit = 2;
+                    }
+                    else if (chosenCard.EndsWith("D"))
+                    {
+                        suit = 3;
+                    }
+                    else if (chosenCard.EndsWith("S"))
+                    {
+                        suit = 4;
+                    }
+                    #endregion
+
+                    MoveCard(suit, cardValue);
+                }
+                #endregion
+                */
     }
 }
+
