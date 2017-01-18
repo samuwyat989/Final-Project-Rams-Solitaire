@@ -15,15 +15,16 @@ namespace Final_Project_Rams_Solitaire
     public partial class Form1 : Form
     {
         bool cardUp;
-        string chosenCard, toCard;
+        string chosenCard;
+
+        int moveLine;
+        int currentLine;
 
         int suit;
         int suitNeed;
 
         int cardValue;
         int needValue;
-
-        int colour;
 
         int moveCount;
         int playTimeSec;
@@ -57,6 +58,7 @@ namespace Final_Project_Rams_Solitaire
 
         private void loadButton_Click(object sender, EventArgs e)
         {
+            #region Add start cards
             startPile.Add("HA");
             startPile.Add("DA");
             startPile.Add("SA");
@@ -109,44 +111,106 @@ namespace Final_Project_Rams_Solitaire
             startPile.Add("DK");
             startPile.Add("SK");
             startPile.Add("CK");
+            #endregion
 
-            lineOne.Add("KingH");
-            lineOne.Add("QueenC");
-            lineTwo.Add("KingS");
-            lineThree.Add("KingD");
+            lineOne.Add("SevenH");
+            lineOne.Add("SixC");
+
+            lineTwo.Add("SevenS");
+            lineThree.Add("SevenD");
+            lineFour.Add("SevenH");
             //lineOne.Insert(0, "KingH");           //adds to top of list
 
             listBox1.Items.Add(lineOne[0] + Environment.NewLine); // makes new line in a list box
             listBox1.Items.Add(lineOne[1]);
             listBox2.Items.Add(lineTwo[0]);
             listBox3.Items.Add(lineThree[0]);
-
-           
+            listBox4.Items.Add(lineFour[0]);
         }
 
-        public void MoveCard(int suit, int cardValue, int suitNeed, int needValue)
+        public void MoveCard(int suit, int cardValue, int suitNeed, int needValue, int moveLine, int currentLine)
         {
             if (cardUp)
             {
-
+                
                 MessageBox.Show("Card Info: " + suit + " " + cardValue + " " + suitNeed + " " + needValue);
 
-                lineThree.Add(chosenCard);
-                lineOne.Remove(chosenCard);
-                listBox3.Items.Add(chosenCard + Environment.NewLine);
-                listBox1.Items.Remove(chosenCard);
+                #region Move card in list and on screen
+                if (moveLine == 1 && moveLine != currentLine)
+                {
+                    lineOne.Add(chosenCard);
+                    listBox1.Items.Add(chosenCard + Environment.NewLine);
+                }
+                else if (moveLine == 2 && moveLine != currentLine)
+                {
+                    lineTwo.Add(chosenCard);
+                    listBox2.Items.Add(chosenCard + Environment.NewLine);
+                }
+                else if (moveLine == 3 && moveLine != currentLine)
+                {
+                    lineThree.Add(chosenCard);
+                    listBox3.Items.Add(chosenCard + Environment.NewLine);
+                }
+                else if (moveLine == 4 && moveLine != currentLine)
+                {
+                    lineFour.Add(chosenCard);
+                    listBox4.Items.Add(chosenCard + Environment.NewLine);
+                }
+                else if (moveLine == 5 && moveLine != currentLine)
+                {
+                    lineFive.Add(chosenCard);
+                    listBox5.Items.Add(chosenCard + Environment.NewLine);
+                }
+                else if (moveLine == 6 && moveLine != currentLine)
+                {
+                    lineSix.Add(chosenCard);
+                    listBox6.Items.Add(chosenCard + Environment.NewLine);
+                }
+                else if (moveLine == 7 && moveLine != currentLine)
+                {
+                    lineSeven.Add(chosenCard);
+                    listBox7.Items.Add(chosenCard + Environment.NewLine);
+                }
+                #endregion
 
-                //if (lineThree.Last() == "KingH" || lineThree.Last() == "KingD")
-                //{
-                //    lineThree.Add(lineOne[1]);
-                //    lineOne.Remove(lineOne[1]);
-                //    listBox3.Items.Add(lineThree[1] + Environment.NewLine);
-                //    listBox1.Items.Remove(lineThree[1]);
-                //}
-                //else
-                //{
-                //    MessageBox.Show("This card can not move");
-                //}
+                #region Remove card in list and on screen
+                if (currentLine == 1 && currentLine != moveLine)
+                {
+                    lineOne.Remove(chosenCard);
+                    listBox1.Items.Remove(chosenCard);
+                }
+                else if (currentLine == 2 && currentLine != moveLine)
+                {
+                    lineTwo.Remove(chosenCard);
+                    listBox2.Items.Remove(chosenCard);
+                }
+                else if (currentLine == 3 && currentLine != moveLine)
+                {
+                    lineThree.Remove(chosenCard);
+                    listBox3.Items.Remove(chosenCard);
+                }
+                else if (currentLine == 4 && currentLine != moveLine)
+                {
+                    lineFour.Remove(chosenCard);
+                    listBox4.Items.Remove(chosenCard);
+                }
+                else if (currentLine == 5 && currentLine != moveLine)
+                {
+                    lineFive.Remove(chosenCard);
+                    listBox5.Items.Remove(chosenCard);
+                }
+                else if (currentLine == 6 && currentLine != moveLine)
+                {
+                    lineSix.Remove(chosenCard);
+                    listBox6.Items.Remove(chosenCard);
+                }
+                else if (currentLine == 7 && currentLine != moveLine)
+                {
+                    lineSeven.Remove(chosenCard);
+                    listBox7.Items.Remove(chosenCard);
+                }
+#endregion
+
             }
         }
 
@@ -167,6 +231,1017 @@ namespace Final_Project_Rams_Solitaire
         private void Form1_Load(object sender, EventArgs e)
         {
             BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
+        public void CheckLines(int suit, int cardValue, int currentLine)
+        {
+            try
+            {
+                #region Find Last Line 1 Suit Values
+                if (lineOne.Last().EndsWith("H"))
+                {
+                    suitNeed = 1;
+                }
+                else if (lineOne.Last().EndsWith("D"))
+                {
+                    suitNeed = 2;
+                }
+                else if (lineOne.Last().EndsWith("C"))
+                {
+                    suitNeed = 3;
+                }
+                else if (lineOne.Last().EndsWith("S"))
+                {
+                    suitNeed = 4;
+                }
+                #endregion
+                #region Find Last Line 1 Card Values
+                if (lineOne.Last().StartsWith("K"))
+                {
+                    needValue = 13;
+                }
+
+                else if (lineOne.Last().StartsWith("Q"))
+                {
+                    needValue = 12;
+                }
+
+                else if (lineOne.Last().StartsWith("J"))
+                {
+                    needValue = 11;
+                }
+
+                else if (lineOne.Last().StartsWith("Te"))
+                {
+                    needValue = 10;
+                }
+
+                else if (lineOne.Last().StartsWith("N"))
+                {
+                    needValue = 9;
+                }
+
+                else if (lineOne.Last().StartsWith("E"))
+                {
+                    needValue = 8;
+                }
+
+                else if (lineOne.Last().StartsWith("Se"))
+                {
+                    needValue = 7;
+                }
+
+                else if (lineOne.Last().StartsWith("Si"))
+                {
+                    needValue = 6;
+                }
+
+                else if (lineOne.Last().StartsWith("Fi"))
+                {
+                    needValue = 5;
+                }
+
+                else if (lineOne.Last().StartsWith("Fo"))
+                {
+                    needValue = 4;
+                }
+
+                else if (lineOne.Last().StartsWith("Th"))
+                {
+                    needValue = 3;
+                }
+
+                else if (lineOne.Last().StartsWith("TW"))
+                {
+                    needValue = 2;
+                }
+
+                else if (lineOne.Last().StartsWith("A"))
+                {
+                    needValue = 1;
+                }
+                #endregion
+                moveLine = 1;
+            }
+            catch
+            {
+                suitNeed = 0;
+                needValue = 0;
+            }
+            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+            {
+                MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+            }
+            else
+            {
+                try
+                {
+                    #region Find Last Line 2 Suit Values
+                    if (lineTwo.Last().EndsWith("H"))
+                    {
+                        suitNeed = 1;
+                    }
+                    else if (lineTwo.Last().EndsWith("D"))
+                    {
+                        suitNeed = 2;
+                    }
+                    else if (lineTwo.Last().EndsWith("C"))
+                    {
+                        suitNeed = 3;
+                    }
+                    else if (lineTwo.Last().EndsWith("S"))
+                    {
+                        suitNeed = 4;
+                    }
+                    #endregion
+                    #region Find Last Line 2 Card Values
+                    if (lineTwo.Last().StartsWith("K"))
+                    {
+                        needValue = 13;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("Q"))
+                    {
+                        needValue = 12;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("J"))
+                    {
+                        needValue = 11;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("Te"))
+                    {
+                        needValue = 10;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("N"))
+                    {
+                        needValue = 9;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("E"))
+                    {
+                        needValue = 8;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("Se"))
+                    {
+                        needValue = 7;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("Si"))
+                    {
+                        needValue = 6;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("Fi"))
+                    {
+                        needValue = 5;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("Fo"))
+                    {
+                        needValue = 4;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("Th"))
+                    {
+                        needValue = 3;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("TW"))
+                    {
+                        needValue = 2;
+                    }
+
+                    else if (lineTwo.Last().StartsWith("A"))
+                    {
+                        needValue = 1;
+                    }
+                    #endregion
+                    moveLine = 2;
+                }
+                catch
+                {
+                    suitNeed = 0;
+                    needValue = 0;
+                }
+                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                {
+                    MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                }
+                else
+                {
+                    try
+                    {
+                        #region Find Last Line 3 Suit Values
+                        if (lineThree.Last().EndsWith("H"))
+                        {
+                            suitNeed = 1;
+                        }
+                        else if (lineThree.Last().EndsWith("D"))
+                        {
+                            suitNeed = 2;
+                        }
+                        else if (lineThree.Last().EndsWith("C"))
+                        {
+                            suitNeed = 3;
+                        }
+                        else if (lineThree.Last().EndsWith("S"))
+                        {
+                            suitNeed = 4;
+                        }
+                        #endregion
+                        #region Find Last Line 3 Card Values
+                        if (lineThree.Last().StartsWith("K"))
+                        {
+                            needValue = 13;
+                        }
+
+                        else if (lineThree.Last().StartsWith("Q"))
+                        {
+                            needValue = 12;
+                        }
+
+                        else if (lineThree.Last().StartsWith("J"))
+                        {
+                            needValue = 11;
+                        }
+
+                        else if (lineThree.Last().StartsWith("Te"))
+                        {
+                            needValue = 10;
+                        }
+
+                        else if (lineThree.Last().StartsWith("N"))
+                        {
+                            needValue = 9;
+                        }
+
+                        else if (lineThree.Last().StartsWith("E"))
+                        {
+                            needValue = 8;
+                        }
+
+                        else if (lineThree.Last().StartsWith("Se"))
+                        {
+                            needValue = 7;
+                        }
+
+                        else if (lineThree.Last().StartsWith("Si"))
+                        {
+                            needValue = 6;
+                        }
+
+                        else if (lineThree.Last().StartsWith("Fi"))
+                        {
+                            needValue = 5;
+                        }
+
+                        else if (lineThree.Last().StartsWith("Fo"))
+                        {
+                            needValue = 4;
+                        }
+
+                        else if (lineThree.Last().StartsWith("Th"))
+                        {
+                            needValue = 3;
+                        }
+
+                        else if (lineThree.Last().StartsWith("TW"))
+                        {
+                            needValue = 2;
+                        }
+
+                        else if (lineThree.Last().StartsWith("A"))
+                        {
+                            needValue = 1;
+                        }
+                        #endregion
+                        moveLine = 3;
+                    }
+                    catch
+                    {
+                        suitNeed = 0;
+                        needValue = 0;
+                    }
+                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                    {
+                        MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            #region Find Last Line 4 Suit Values
+                            if (lineFour.Last().EndsWith("H"))
+                            {
+                                suitNeed = 1;
+                            }
+                            else if (lineFour.Last().EndsWith("D"))
+                            {
+                                suitNeed = 2;
+                            }
+                            else if (lineFour.Last().EndsWith("C"))
+                            {
+                                suitNeed = 3;
+                            }
+                            else if (lineFour.Last().EndsWith("S"))
+                            {
+                                suitNeed = 4;
+                            }
+                            #endregion
+                            #region Find Last Line 4 Card Values
+                            if (lineFour.Last().StartsWith("K"))
+                            {
+                                needValue = 13;
+                            }
+
+                            else if (lineFour.Last().StartsWith("Q"))
+                            {
+                                needValue = 12;
+                            }
+
+                            else if (lineFour.Last().StartsWith("J"))
+                            {
+                                needValue = 11;
+                            }
+
+                            else if (lineFour.Last().StartsWith("Te"))
+                            {
+                                needValue = 10;
+                            }
+
+                            else if (lineFour.Last().StartsWith("N"))
+                            {
+                                needValue = 9;
+                            }
+
+                            else if (lineFour.Last().StartsWith("E"))
+                            {
+                                needValue = 8;
+                            }
+
+                            else if (lineFour.Last().StartsWith("Se"))
+                            {
+                                needValue = 7;
+                            }
+
+                            else if (lineFour.Last().StartsWith("Si"))
+                            {
+                                needValue = 6;
+                            }
+
+                            else if (lineFour.Last().StartsWith("Fi"))
+                            {
+                                needValue = 5;
+                            }
+
+                            else if (lineFour.Last().StartsWith("Fo"))
+                            {
+                                needValue = 4;
+                            }
+
+                            else if (lineFour.Last().StartsWith("Th"))
+                            {
+                                needValue = 3;
+                            }
+
+                            else if (lineFour.Last().StartsWith("TW"))
+                            {
+                                needValue = 2;
+                            }
+
+                            else if (lineFour.Last().StartsWith("A"))
+                            {
+                                needValue = 1;
+                            }
+                            #endregion
+                            moveLine = 4;
+                        }
+                        catch
+                        {
+                            suitNeed = 0;
+                            needValue = 0;
+                        }
+                       
+                        if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                        {
+                            MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                #region Find Last Line 5 Suit Values
+                                if (lineFive.Last().EndsWith("H"))
+                                {
+                                    suitNeed = 1;
+                                }
+                                else if (lineFive.Last().EndsWith("D"))
+                                {
+                                    suitNeed = 2;
+                                }
+                                else if (lineFive.Last().EndsWith("C"))
+                                {
+                                    suitNeed = 3;
+                                }
+                                else if (lineFive.Last().EndsWith("S"))
+                                {
+                                    suitNeed = 4;
+                                }
+                                #endregion
+                                #region Find Last Line 5 Card Values
+                                if (lineFive.Last().StartsWith("K"))
+                                {
+                                    needValue = 13;
+                                }
+
+                                else if (lineFive.Last().StartsWith("Q"))
+                                {
+                                    needValue = 12;
+                                }
+
+                                else if (lineFive.Last().StartsWith("J"))
+                                {
+                                    needValue = 11;
+                                }
+
+                                else if (lineFive.Last().StartsWith("Te"))
+                                {
+                                    needValue = 10;
+                                }
+
+                                else if (lineFive.Last().StartsWith("N"))
+                                {
+                                    needValue = 9;
+                                }
+
+                                else if (lineFive.Last().StartsWith("E"))
+                                {
+                                    needValue = 8;
+                                }
+
+                                else if (lineFive.Last().StartsWith("Se"))
+                                {
+                                    needValue = 7;
+                                }
+
+                                else if (lineFive.Last().StartsWith("Si"))
+                                {
+                                    needValue = 6;
+                                }
+
+                                else if (lineFive.Last().StartsWith("Fi"))
+                                {
+                                    needValue = 5;
+                                }
+
+                                else if (lineFive.Last().StartsWith("Fo"))
+                                {
+                                    needValue = 4;
+                                }
+
+                                else if (lineFive.Last().StartsWith("Th"))
+                                {
+                                    needValue = 3;
+                                }
+
+                                else if (lineFive.Last().StartsWith("TW"))
+                                {
+                                    needValue = 2;
+                                }
+
+                                else if (lineFive.Last().StartsWith("A"))
+                                {
+                                    needValue = 1;
+                                }
+                                #endregion
+                                moveLine = 5;
+                            }
+                            catch
+                            {
+                                suitNeed = 0;
+                                needValue = 0;
+                            }
+
+                            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                            {
+                                MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    #region Find Last Line 6 Suit Values
+                                    if (lineSix.Last().EndsWith("H"))
+                                    {
+                                        suitNeed = 1;
+                                    }
+                                    else if (lineSix.Last().EndsWith("D"))
+                                    {
+                                        suitNeed = 2;
+                                    }
+                                    else if (lineSix.Last().EndsWith("C"))
+                                    {
+                                        suitNeed = 3;
+                                    }
+                                    else if (lineSix.Last().EndsWith("S"))
+                                    {
+                                        suitNeed = 4;
+                                    }
+                                    #endregion
+                                    #region Find Last Line 6 Card Values
+                                    if (lineSix.Last().StartsWith("K"))
+                                    {
+                                        needValue = 13;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("Q"))
+                                    {
+                                        needValue = 12;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("J"))
+                                    {
+                                        needValue = 11;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("Te"))
+                                    {
+                                        needValue = 10;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("N"))
+                                    {
+                                        needValue = 9;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("E"))
+                                    {
+                                        needValue = 8;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("Se"))
+                                    {
+                                        needValue = 7;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("Si"))
+                                    {
+                                        needValue = 6;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("Fi"))
+                                    {
+                                        needValue = 5;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("Fo"))
+                                    {
+                                        needValue = 4;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("Th"))
+                                    {
+                                        needValue = 3;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("TW"))
+                                    {
+                                        needValue = 2;
+                                    }
+
+                                    else if (lineSix.Last().StartsWith("A"))
+                                    {
+                                        needValue = 1;
+                                    }
+                                    #endregion
+                                    moveLine = 6;
+                                }
+                                catch
+                                {
+                                    suitNeed = 0;
+                                    needValue = 0;
+                                }
+                                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                {
+                                    MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                }
+                                else
+                                {
+                                    try
+                                    {
+
+                                        #region Find Last Line 7 Suit Values
+                                        if (lineSeven.Last().EndsWith("H"))
+                                        {
+                                            suitNeed = 1;
+                                        }
+                                        else if (lineSeven.Last().EndsWith("D"))
+                                        {
+                                            suitNeed = 2;
+                                        }
+                                        else if (lineSeven.Last().EndsWith("C"))
+                                        {
+                                            suitNeed = 3;
+                                        }
+                                        else if (lineSeven.Last().EndsWith("S"))
+                                        {
+                                            suitNeed = 4;
+                                        }
+                                        #endregion
+                                        #region Find Last Line 7 Card Values
+                                        if (lineSeven.Last().StartsWith("K"))
+                                        {
+                                            needValue = 13;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("Q"))
+                                        {
+                                            needValue = 12;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("J"))
+                                        {
+                                            needValue = 11;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("Te"))
+                                        {
+                                            needValue = 10;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("N"))
+                                        {
+                                            needValue = 9;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("E"))
+                                        {
+                                            needValue = 8;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("Se"))
+                                        {
+                                            needValue = 7;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("Si"))
+                                        {
+                                            needValue = 6;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("Fi"))
+                                        {
+                                            needValue = 5;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("Fo"))
+                                        {
+                                            needValue = 4;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("Th"))
+                                        {
+                                            needValue = 3;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("TW"))
+                                        {
+                                            needValue = 2;
+                                        }
+
+                                        else if (lineSeven.Last().StartsWith("A"))
+                                        {
+                                            needValue = 1;
+                                        }
+                                        #endregion
+                                        moveLine = 7;
+                                    }
+                                    catch
+                                    {
+                                        suitNeed = 0;
+                                        needValue = 0;
+                                    }
+                                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                    {
+                                        MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                    }
+                                    else
+                                    {
+                                        #region Find Last Hearts Pile Card Values
+                                        suitNeed = 1;
+                                        if (goalPileH.Last().StartsWith("K"))
+                                        {
+                                            needValue = 13;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("Q"))
+                                        {
+                                            needValue = 12;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("J"))
+                                        {
+                                            needValue = 11;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("Te"))
+                                        {
+                                            needValue = 10;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("N"))
+                                        {
+                                            needValue = 9;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("E"))
+                                        {
+                                            needValue = 8;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("Se"))
+                                        {
+                                            needValue = 7;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("Si"))
+                                        {
+                                            needValue = 6;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("Fi"))
+                                        {
+                                            needValue = 5;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("Fo"))
+                                        {
+                                            needValue = 4;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("Th"))
+                                        {
+                                            needValue = 3;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("TW"))
+                                        {
+                                            needValue = 2;
+                                        }
+
+                                        else if (goalPileH.Last().StartsWith("A"))
+                                        {
+                                            needValue = 1;
+                                        }
+
+                                        #endregion
+                                        moveLine = 10;
+                                        if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                        {
+                                            MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                        }
+                                        else
+                                        {
+                                            #region Find Last Diamonds Pile Card Values
+                                            suitNeed = 2;
+                                            if (goalPileD.Last().StartsWith("K"))
+                                            {
+                                                needValue = 13;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("Q"))
+                                            {
+                                                needValue = 12;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("J"))
+                                            {
+                                                needValue = 11;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("Te"))
+                                            {
+                                                needValue = 10;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("N"))
+                                            {
+                                                needValue = 9;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("E"))
+                                            {
+                                                needValue = 8;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("Se"))
+                                            {
+                                                needValue = 7;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("Si"))
+                                            {
+                                                needValue = 6;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("Fi"))
+                                            {
+                                                needValue = 5;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("Fo"))
+                                            {
+                                                needValue = 4;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("Th"))
+                                            {
+                                                needValue = 3;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("TW"))
+                                            {
+                                                needValue = 2;
+                                            }
+
+                                            else if (goalPileD.Last().StartsWith("A"))
+                                            {
+                                                needValue = 1;
+                                            }
+
+                                            #endregion
+                                            moveLine = 11;
+                                            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                            {
+                                                MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                            }
+                                            else
+                                            {
+                                                #region Find Last Clubs Pile Card Values
+                                                suitNeed = 3;
+                                                if (goalPileC.Last().StartsWith("K"))
+                                                {
+                                                    needValue = 13;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("Q"))
+                                                {
+                                                    needValue = 12;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("J"))
+                                                {
+                                                    needValue = 11;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("Te"))
+                                                {
+                                                    needValue = 10;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("N"))
+                                                {
+                                                    needValue = 9;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("E"))
+                                                {
+                                                    needValue = 8;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("Se"))
+                                                {
+                                                    needValue = 7;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("Si"))
+                                                {
+                                                    needValue = 6;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("Fi"))
+                                                {
+                                                    needValue = 5;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("Fo"))
+                                                {
+                                                    needValue = 4;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("Th"))
+                                                {
+                                                    needValue = 3;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("TW"))
+                                                {
+                                                    needValue = 2;
+                                                }
+
+                                                else if (goalPileC.Last().StartsWith("A"))
+                                                {
+                                                    needValue = 1;
+                                                }
+                                                #endregion
+                                                moveLine = 12;
+                                                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                                {
+                                                    MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                                }
+                                                else
+                                                {
+                                                    #region Find Last Spades Pile Card Values
+                                                    suitNeed = 4;
+                                                    if (goalPileS.Last().StartsWith("K"))
+                                                    {
+                                                        needValue = 13;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("Q"))
+                                                    {
+                                                        needValue = 12;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("J"))
+                                                    {
+                                                        needValue = 11;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("Te"))
+                                                    {
+                                                        needValue = 10;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("N"))
+                                                    {
+                                                        needValue = 9;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("E"))
+                                                    {
+                                                        needValue = 8;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("Se"))
+                                                    {
+                                                        needValue = 7;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("Si"))
+                                                    {
+                                                        needValue = 6;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("Fi"))
+                                                    {
+                                                        needValue = 5;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("Fo"))
+                                                    {
+                                                        needValue = 4;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("Th"))
+                                                    {
+                                                        needValue = 3;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("TW"))
+                                                    {
+                                                        needValue = 2;
+                                                    }
+
+                                                    else if (goalPileS.Last().StartsWith("A"))
+                                                    {
+                                                        needValue = 1;
+                                                    }
+
+                                                    #endregion
+                                                    moveLine = 13;
+                                                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                                    {
+                                                        MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("This card can not be moved");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
         }
 
         #region Click Methods for all Playing Lines
@@ -265,973 +1340,13 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
 
-                CheckLines(suit, cardValue);
+                currentLine = 1;
+                CheckLines(suit, cardValue, currentLine);
             }
             else
             {
                 MessageBox.Show("This card is not uncovered, you can not move it");
             }
-        }
-
-
-        public void CheckLines(int suit, int cardValue)
-        {
-            #region Find Last Line 1 Suit Values
-            if (lineOne.Last().EndsWith("H"))
-            {
-                suitNeed = 1;
-            }
-            else if (lineOne.Last().EndsWith("D"))
-            {
-                suitNeed = 2;
-            }
-            else if (lineOne.Last().EndsWith("C"))
-            {
-                suitNeed = 3;
-            }
-            else if (lineOne.Last().EndsWith("S"))
-            {
-                suitNeed = 4;
-            }
-            #endregion
-            #region Find Last Line 1 Card Values
-            if (lineOne.Last().StartsWith("K"))
-            {
-                needValue = 13;
-            }
-
-            else if (lineOne.Last().StartsWith("Q"))
-            {
-                needValue = 12;
-            }
-
-            else if (lineOne.Last().StartsWith("J"))
-            {
-                needValue = 11;
-            }
-
-            else if (lineOne.Last().StartsWith("Te"))
-            {
-                needValue = 10;
-            }
-
-            else if (lineOne.Last().StartsWith("N"))
-            {
-                needValue = 9;
-            }
-
-            else if (lineOne.Last().StartsWith("E"))
-            {
-                needValue = 8;
-            }
-
-            else if (lineOne.Last().StartsWith("Se"))
-            {
-                needValue = 7;
-            }
-
-            else if (lineOne.Last().StartsWith("Si"))
-            {
-                needValue = 6;
-            }
-
-            else if (lineOne.Last().StartsWith("Fi"))
-            {
-                needValue = 5;
-            }
-
-            else if (lineOne.Last().StartsWith("Fo"))
-            {
-                needValue = 4;
-            }
-
-            else if (lineOne.Last().StartsWith("Th"))
-            {
-                needValue = 3;
-            }
-
-            else if (lineOne.Last().StartsWith("TW"))
-            {
-                needValue = 2;
-            }
-
-            else if (lineOne.Last().StartsWith("A"))
-            {
-                needValue = 1;
-            }
-            #endregion
-
-            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-            {
-                MoveCard(suit, cardValue, suitNeed, needValue);
-            }
-            else
-            {
-                #region Find Last Line 2 Suit Values
-                if (lineTwo.Last().EndsWith("H"))
-                {
-                    suitNeed = 1;
-                }
-                else if (lineTwo.Last().EndsWith("D"))
-                {
-                    suitNeed = 2;
-                }
-                else if (lineTwo.Last().EndsWith("C"))
-                {
-                    suitNeed = 3;
-                }
-                else if (lineTwo.Last().EndsWith("S"))
-                {
-                    suitNeed = 4;
-                }
-                #endregion
-                #region Find Last Line 2 Card Values
-                if (lineTwo.Last().StartsWith("K"))
-                {
-                    needValue = 13;
-                }
-
-                else if (lineTwo.Last().StartsWith("Q"))
-                {
-                    needValue = 12;
-                }
-
-                else if (lineTwo.Last().StartsWith("J"))
-                {
-                    needValue = 11;
-                }
-
-                else if (lineTwo.Last().StartsWith("Te"))
-                {
-                    needValue = 10;
-                }
-
-                else if (lineTwo.Last().StartsWith("N"))
-                {
-                    needValue = 9;
-                }
-
-                else if (lineTwo.Last().StartsWith("E"))
-                {
-                    needValue = 8;
-                }
-
-                else if (lineTwo.Last().StartsWith("Se"))
-                {
-                    needValue = 7;
-                }
-
-                else if (lineTwo.Last().StartsWith("Si"))
-                {
-                    needValue = 6;
-                }
-
-                else if (lineTwo.Last().StartsWith("Fi"))
-                {
-                    needValue = 5;
-                }
-
-                else if (lineTwo.Last().StartsWith("Fo"))
-                {
-                    needValue = 4;
-                }
-
-                else if (lineTwo.Last().StartsWith("Th"))
-                {
-                    needValue = 3;
-                }
-
-                else if (lineTwo.Last().StartsWith("TW"))
-                {
-                    needValue = 2;
-                }
-
-                else if (lineTwo.Last().StartsWith("A"))
-                {
-                    needValue = 1;
-                }
-                #endregion
-
-                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                {
-                    MoveCard(suit, cardValue, suitNeed, needValue);
-                }
-                else
-                {
-                    #region Find Last Line 3 Suit Values
-                    if (lineThree.Last().EndsWith("H"))
-                    {
-                        suitNeed = 1;
-                    }
-                    else if (lineThree.Last().EndsWith("D"))
-                    {
-                        suitNeed = 2;
-                    }
-                    else if (lineThree.Last().EndsWith("C"))
-                    {
-                        suitNeed = 3;
-                    }
-                    else if (lineThree.Last().EndsWith("S"))
-                    {
-                        suitNeed = 4;
-                    }
-                    #endregion
-                    #region Find Last Line 3 Card Values
-                    if (lineThree.Last().StartsWith("K"))
-                    {
-                        needValue = 13;
-                    }
-
-                    else if (lineThree.Last().StartsWith("Q"))
-                    {
-                        needValue = 12;
-                    }
-
-                    else if (lineThree.Last().StartsWith("J"))
-                    {
-                        needValue = 11;
-                    }
-
-                    else if (lineThree.Last().StartsWith("Te"))
-                    {
-                        needValue = 10;
-                    }
-
-                    else if (lineThree.Last().StartsWith("N"))
-                    {
-                        needValue = 9;
-                    }
-
-                    else if (lineThree.Last().StartsWith("E"))
-                    {
-                        needValue = 8;
-                    }
-
-                    else if (lineThree.Last().StartsWith("Se"))
-                    {
-                        needValue = 7;
-                    }
-
-                    else if (lineThree.Last().StartsWith("Si"))
-                    {
-                        needValue = 6;
-                    }
-
-                    else if (lineThree.Last().StartsWith("Fi"))
-                    {
-                        needValue = 5;
-                    }
-
-                    else if (lineThree.Last().StartsWith("Fo"))
-                    {
-                        needValue = 4;
-                    }
-
-                    else if (lineThree.Last().StartsWith("Th"))
-                    {
-                        needValue = 3;
-                    }
-
-                    else if (lineThree.Last().StartsWith("TW"))
-                    {
-                        needValue = 2;
-                    }
-
-                    else if (lineThree.Last().StartsWith("A"))
-                    {
-                        needValue = 1;
-                    }
-                    #endregion
-
-                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                    {
-                        MoveCard(suit, cardValue, suitNeed, needValue);
-                    }
-                    else
-                    {
-                        try
-                        {
-                            #region Find Last Line 4 Suit Values
-                            if (lineFour.Last().EndsWith("H"))
-                            {
-                                suitNeed = 1;
-                            }
-                            else if (lineFour.Last().EndsWith("D"))
-                            {
-                                suitNeed = 2;
-                            }
-                            else if (lineFour.Last().EndsWith("C"))
-                            {
-                                suitNeed = 3;
-                            }
-                            else if (lineFour.Last().EndsWith("S"))
-                            {
-                                suitNeed = 4;
-                            }
-                            #endregion
-                            #region Find Last Line 4 Card Values
-                            if (lineFour.Last().StartsWith("K"))
-                            {
-                                needValue = 13;
-                            }
-
-                            else if (lineFour.Last().StartsWith("Q"))
-                            {
-                                needValue = 12;
-                            }
-
-                            else if (lineFour.Last().StartsWith("J"))
-                            {
-                                needValue = 11;
-                            }
-
-                            else if (lineFour.Last().StartsWith("Te"))
-                            {
-                                needValue = 10;
-                            }
-
-                            else if (lineFour.Last().StartsWith("N"))
-                            {
-                                needValue = 9;
-                            }
-
-                            else if (lineFour.Last().StartsWith("E"))
-                            {
-                                needValue = 8;
-                            }
-
-                            else if (lineFour.Last().StartsWith("Se"))
-                            {
-                                needValue = 7;
-                            }
-
-                            else if (lineFour.Last().StartsWith("Si"))
-                            {
-                                needValue = 6;
-                            }
-
-                            else if (lineFour.Last().StartsWith("Fi"))
-                            {
-                                needValue = 5;
-                            }
-
-                            else if (lineFour.Last().StartsWith("Fo"))
-                            {
-                                needValue = 4;
-                            }
-
-                            else if (lineFour.Last().StartsWith("Th"))
-                            {
-                                needValue = 3;
-                            }
-
-                            else if (lineFour.Last().StartsWith("TW"))
-                            {
-                                needValue = 2;
-                            }
-
-                            else if (lineFour.Last().StartsWith("A"))
-                            {
-                                needValue = 1;
-                            }
-                            #endregion
-                        }
-                        catch
-                        {
-                            suitNeed = 0;
-                            needValue = 0;
-                        }
-                       
-                        if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                        {
-                            MoveCard(suit, cardValue, suitNeed, needValue);
-                        }
-                        else
-                        {
-                            #region Find Last Line 5 Suit Values
-                            if (lineFive.Last().EndsWith("H"))
-                            {
-                                suitNeed = 1;
-                            }
-                            else if (lineFive.Last().EndsWith("D"))
-                            {
-                                suitNeed = 2;
-                            }
-                            else if (lineFive.Last().EndsWith("C"))
-                            {
-                                suitNeed = 3;
-                            }
-                            else if (lineFive.Last().EndsWith("S"))
-                            {
-                                suitNeed = 4;
-                            }
-                            #endregion
-                            #region Find Last Line 5 Card Values
-                            if (lineFive.Last().StartsWith("K"))
-                            {
-                                needValue = 13;
-                            }
-
-                            else if (lineFive.Last().StartsWith("Q"))
-                            {
-                                needValue = 12;
-                            }
-
-                            else if (lineFive.Last().StartsWith("J"))
-                            {
-                                needValue = 11;
-                            }
-
-                            else if (lineFive.Last().StartsWith("Te"))
-                            {
-                                needValue = 10;
-                            }
-
-                            else if (lineFive.Last().StartsWith("N"))
-                            {
-                                needValue = 9;
-                            }
-
-                            else if (lineFive.Last().StartsWith("E"))
-                            {
-                                needValue = 8;
-                            }
-
-                            else if (lineFive.Last().StartsWith("Se"))
-                            {
-                                needValue = 7;
-                            }
-
-                            else if (lineFive.Last().StartsWith("Si"))
-                            {
-                                needValue = 6;
-                            }
-
-                            else if (lineFive.Last().StartsWith("Fi"))
-                            {
-                                needValue = 5;
-                            }
-
-                            else if (lineFive.Last().StartsWith("Fo"))
-                            {
-                                needValue = 4;
-                            }
-
-                            else if (lineFive.Last().StartsWith("Th"))
-                            {
-                                needValue = 3;
-                            }
-
-                            else if (lineFive.Last().StartsWith("TW"))
-                            {
-                                needValue = 2;
-                            }
-
-                            else if (lineFive.Last().StartsWith("A"))
-                            {
-                                needValue = 1;
-                            }
-                            #endregion
-
-                            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                            {
-                                MoveCard(suit, cardValue, suitNeed, needValue);
-                            }
-                            else
-                            {
-                                #region Find Last Line 6 Suit Values
-                                if (lineSix.Last().EndsWith("H"))
-                                {
-                                    suitNeed = 1;
-                                }
-                                else if (lineSix.Last().EndsWith("D"))
-                                {
-                                    suitNeed = 2;
-                                }
-                                else if (lineSix.Last().EndsWith("C"))
-                                {
-                                    suitNeed = 3;
-                                }
-                                else if (lineSix.Last().EndsWith("S"))
-                                {
-                                    suitNeed = 4;
-                                }
-                                #endregion
-                                #region Find Last Line 6 Card Values
-                                if (lineSix.Last().StartsWith("K"))
-                                {
-                                    needValue = 13;
-                                }
-
-                                else if (lineSix.Last().StartsWith("Q"))
-                                {
-                                    needValue = 12;
-                                }
-
-                                else if (lineSix.Last().StartsWith("J"))
-                                {
-                                    needValue = 11;
-                                }
-
-                                else if (lineSix.Last().StartsWith("Te"))
-                                {
-                                    needValue = 10;
-                                }
-
-                                else if (lineSix.Last().StartsWith("N"))
-                                {
-                                    needValue = 9;
-                                }
-
-                                else if (lineSix.Last().StartsWith("E"))
-                                {
-                                    needValue = 8;
-                                }
-
-                                else if (lineSix.Last().StartsWith("Se"))
-                                {
-                                    needValue = 7;
-                                }
-
-                                else if (lineSix.Last().StartsWith("Si"))
-                                {
-                                    needValue = 6;
-                                }
-
-                                else if (lineSix.Last().StartsWith("Fi"))
-                                {
-                                    needValue = 5;
-                                }
-
-                                else if (lineSix.Last().StartsWith("Fo"))
-                                {
-                                    needValue = 4;
-                                }
-
-                                else if (lineSix.Last().StartsWith("Th"))
-                                {
-                                    needValue = 3;
-                                }
-
-                                else if (lineSix.Last().StartsWith("TW"))
-                                {
-                                    needValue = 2;
-                                }
-
-                                else if (lineSix.Last().StartsWith("A"))
-                                {
-                                    needValue = 1;
-                                }
-                                #endregion
-
-                                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                                {
-                                    MoveCard(suit, cardValue, suitNeed, needValue);
-                                }
-                                else
-                                {
-                                    #region Find Last Line 7 Suit Values
-                                    if (lineSeven.Last().EndsWith("H"))
-                                    {
-                                        suitNeed = 1;
-                                    }
-                                    else if (lineSeven.Last().EndsWith("D"))
-                                    {
-                                        suitNeed = 2;
-                                    }
-                                    else if (lineSeven.Last().EndsWith("C"))
-                                    {
-                                        suitNeed = 3;
-                                    }
-                                    else if (lineSeven.Last().EndsWith("S"))
-                                    {
-                                        suitNeed = 4;
-                                    }
-                                    #endregion
-                                    #region Find Last Line 7 Card Values
-                                    if (lineSeven.Last().StartsWith("K"))
-                                    {
-                                        needValue = 13;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("Q"))
-                                    {
-                                        needValue = 12;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("J"))
-                                    {
-                                        needValue = 11;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("Te"))
-                                    {
-                                        needValue = 10;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("N"))
-                                    {
-                                        needValue = 9;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("E"))
-                                    {
-                                        needValue = 8;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("Se"))
-                                    {
-                                        needValue = 7;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("Si"))
-                                    {
-                                        needValue = 6;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("Fi"))
-                                    {
-                                        needValue = 5;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("Fo"))
-                                    {
-                                        needValue = 4;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("Th"))
-                                    {
-                                        needValue = 3;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("TW"))
-                                    {
-                                        needValue = 2;
-                                    }
-
-                                    else if (lineSeven.Last().StartsWith("A"))
-                                    {
-                                        needValue = 1;
-                                    }
-                                    #endregion
-
-                                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                                    {
-                                        MoveCard(suit, cardValue, suitNeed, needValue);
-                                    }
-                                    else
-                                    {
-                                        #region Find Last Hearts Pile Card Values
-                                        suitNeed = 1;
-                                        if (goalPileH.Last().StartsWith("K"))
-                                        {
-                                            needValue = 13;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("Q"))
-                                        {
-                                            needValue = 12;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("J"))
-                                        {
-                                            needValue = 11;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("Te"))
-                                        {
-                                            needValue = 10;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("N"))
-                                        {
-                                            needValue = 9;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("E"))
-                                        {
-                                            needValue = 8;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("Se"))
-                                        {
-                                            needValue = 7;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("Si"))
-                                        {
-                                            needValue = 6;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("Fi"))
-                                        {
-                                            needValue = 5;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("Fo"))
-                                        {
-                                            needValue = 4;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("Th"))
-                                        {
-                                            needValue = 3;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("TW"))
-                                        {
-                                            needValue = 2;
-                                        }
-
-                                        else if (goalPileH.Last().StartsWith("A"))
-                                        {
-                                            needValue = 1;
-                                        }
-
-                                        #endregion
-
-                                        if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                                        {
-                                            MoveCard(suit, cardValue, suitNeed, needValue);
-                                        }
-                                        else
-                                        {
-                                            #region Find Last Diamonds Pile Card Values
-                                            suitNeed = 2;
-                                            if (goalPileD.Last().StartsWith("K"))
-                                            {
-                                                needValue = 13;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("Q"))
-                                            {
-                                                needValue = 12;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("J"))
-                                            {
-                                                needValue = 11;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("Te"))
-                                            {
-                                                needValue = 10;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("N"))
-                                            {
-                                                needValue = 9;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("E"))
-                                            {
-                                                needValue = 8;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("Se"))
-                                            {
-                                                needValue = 7;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("Si"))
-                                            {
-                                                needValue = 6;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("Fi"))
-                                            {
-                                                needValue = 5;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("Fo"))
-                                            {
-                                                needValue = 4;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("Th"))
-                                            {
-                                                needValue = 3;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("TW"))
-                                            {
-                                                needValue = 2;
-                                            }
-
-                                            else if (goalPileD.Last().StartsWith("A"))
-                                            {
-                                                needValue = 1;
-                                            }
-
-                                            #endregion
-
-                                            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                                            {
-                                                MoveCard(suit, cardValue, suitNeed, needValue);
-                                            }
-                                            else
-                                            {
-                                                #region Find Last Clubs Pile Card Values
-                                                suitNeed = 3;
-                                                if (goalPileC.Last().StartsWith("K"))
-                                                {
-                                                    needValue = 13;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("Q"))
-                                                {
-                                                    needValue = 12;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("J"))
-                                                {
-                                                    needValue = 11;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("Te"))
-                                                {
-                                                    needValue = 10;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("N"))
-                                                {
-                                                    needValue = 9;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("E"))
-                                                {
-                                                    needValue = 8;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("Se"))
-                                                {
-                                                    needValue = 7;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("Si"))
-                                                {
-                                                    needValue = 6;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("Fi"))
-                                                {
-                                                    needValue = 5;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("Fo"))
-                                                {
-                                                    needValue = 4;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("Th"))
-                                                {
-                                                    needValue = 3;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("TW"))
-                                                {
-                                                    needValue = 2;
-                                                }
-
-                                                else if (goalPileC.Last().StartsWith("A"))
-                                                {
-                                                    needValue = 1;
-                                                }
-                                                #endregion
-
-                                                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                                                {
-                                                    MoveCard(suit, cardValue, suitNeed, needValue);
-                                                }
-                                                else
-                                                {
-                                                    #region Find Last Spades Pile Card Values
-                                                    suitNeed = 4;
-                                                    if (goalPileS.Last().StartsWith("K"))
-                                                    {
-                                                        needValue = 13;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("Q"))
-                                                    {
-                                                        needValue = 12;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("J"))
-                                                    {
-                                                        needValue = 11;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("Te"))
-                                                    {
-                                                        needValue = 10;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("N"))
-                                                    {
-                                                        needValue = 9;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("E"))
-                                                    {
-                                                        needValue = 8;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("Se"))
-                                                    {
-                                                        needValue = 7;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("Si"))
-                                                    {
-                                                        needValue = 6;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("Fi"))
-                                                    {
-                                                        needValue = 5;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("Fo"))
-                                                    {
-                                                        needValue = 4;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("Th"))
-                                                    {
-                                                        needValue = 3;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("TW"))
-                                                    {
-                                                        needValue = 2;
-                                                    }
-
-                                                    else if (goalPileS.Last().StartsWith("A"))
-                                                    {
-                                                        needValue = 1;
-                                                    }
-
-                                                    #endregion
-
-                                                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
-                                                    {
-                                                        MoveCard(suit, cardValue, suitNeed, needValue);
-                                                    }
-                                                    else
-                                                    {
-                                                        MessageBox.Show("This card can not be moved");
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }            
         }
 
         private void listBox2_Click(object sender, EventArgs e)
@@ -1309,7 +1424,6 @@ namespace Final_Project_Rams_Solitaire
                     cardValue = 1;
                 }
                 #endregion
-
                 #region Find Suit Values
                 if (chosenCard.EndsWith("H"))
                 {
@@ -1329,7 +1443,8 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
 
-                CheckLines(suit, cardValue);
+                currentLine = 2;
+                CheckLines(suit, cardValue, currentLine);
             }
             else
             {
@@ -1412,7 +1527,6 @@ namespace Final_Project_Rams_Solitaire
                     cardValue = 1;
                 }
                 #endregion
-
                 #region Find Suit Values
                 if (chosenCard.EndsWith("H"))
                 {
@@ -1432,7 +1546,8 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
 
-                CheckLines(suit, cardValue);
+                currentLine = 3;
+                CheckLines(suit, cardValue, currentLine);
             }
             else
             {
@@ -1515,7 +1630,6 @@ namespace Final_Project_Rams_Solitaire
                     cardValue = 1;
                 }
                 #endregion
-
                 #region Find Suit Values
                 if (chosenCard.EndsWith("H"))
                 {
@@ -1535,7 +1649,8 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
 
-                CheckLines(suit, cardValue);
+                currentLine = 4;
+                CheckLines(suit, cardValue, currentLine);
             }
             else
             {
@@ -1618,7 +1733,6 @@ namespace Final_Project_Rams_Solitaire
                     cardValue = 1;
                 }
                 #endregion
-
                 #region Find Suit Values
                 if (chosenCard.EndsWith("H"))
                 {
@@ -1638,7 +1752,8 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
 
-                CheckLines(suit, cardValue);
+                currentLine = 5;
+                CheckLines(suit, cardValue, currentLine);
             }
             else
             {
@@ -1720,7 +1835,6 @@ namespace Final_Project_Rams_Solitaire
                     cardValue = 1;
                 }
                 #endregion
-
                 #region Find Suit Values
                 if (chosenCard.EndsWith("H"))
                 {
@@ -1740,7 +1854,8 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
 
-                CheckLines(suit, cardValue);
+                currentLine = 6;
+                CheckLines(suit, cardValue, currentLine);
             }
             else
             {
@@ -1822,7 +1937,6 @@ namespace Final_Project_Rams_Solitaire
                     cardValue = 1;
                 }
                 #endregion
-
                 #region Find Suit Values
                 if (chosenCard.EndsWith("H"))
                 {
@@ -1842,7 +1956,8 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
 
-                CheckLines(suit, cardValue);
+                currentLine = 7;
+                CheckLines(suit, cardValue, currentLine);
             }
             else
             {
