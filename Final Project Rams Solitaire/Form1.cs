@@ -120,6 +120,8 @@ namespace Final_Project_Rams_Solitaire
             listBox1.Items.Add(lineOne[1]);
             listBox2.Items.Add(lineTwo[0]);
             listBox3.Items.Add(lineThree[0]);
+
+           
         }
 
         public void MoveCard(int suit, int cardValue, int suitNeed, int needValue)
@@ -170,6 +172,8 @@ namespace Final_Project_Rams_Solitaire
         #region Click Methods for all Playing Lines
         private void listBox1_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = listBox1.SelectedItem.ToString();
 
@@ -545,91 +549,99 @@ namespace Final_Project_Rams_Solitaire
                     }
                     else
                     {
-                        #region Find Last Line 4 Suit Values
-                        if (lineFour.Last().EndsWith("H"))
+                        try
                         {
-                            suitNeed = 1;
-                        }
-                        else if (lineFour.Last().EndsWith("D"))
-                        {
-                            suitNeed = 2;
-                        }
-                        else if (lineFour.Last().EndsWith("C"))
-                        {
-                            suitNeed = 3;
-                        }
-                        else if (lineFour.Last().EndsWith("S"))
-                        {
-                            suitNeed = 4;
-                        }
-                        #endregion
-                        #region Find Last Line 4 Card Values
-                        if (lineFour.Last().StartsWith("K"))
-                        {
-                            needValue = 13;
-                        }
+                            #region Find Last Line 4 Suit Values
+                            if (lineFour.Last().EndsWith("H"))
+                            {
+                                suitNeed = 1;
+                            }
+                            else if (lineFour.Last().EndsWith("D"))
+                            {
+                                suitNeed = 2;
+                            }
+                            else if (lineFour.Last().EndsWith("C"))
+                            {
+                                suitNeed = 3;
+                            }
+                            else if (lineFour.Last().EndsWith("S"))
+                            {
+                                suitNeed = 4;
+                            }
+                            #endregion
+                            #region Find Last Line 4 Card Values
+                            if (lineFour.Last().StartsWith("K"))
+                            {
+                                needValue = 13;
+                            }
 
-                        else if (lineFour.Last().StartsWith("Q"))
-                        {
-                            needValue = 12;
-                        }
+                            else if (lineFour.Last().StartsWith("Q"))
+                            {
+                                needValue = 12;
+                            }
 
-                        else if (lineFour.Last().StartsWith("J"))
-                        {
-                            needValue = 11;
-                        }
+                            else if (lineFour.Last().StartsWith("J"))
+                            {
+                                needValue = 11;
+                            }
 
-                        else if (lineFour.Last().StartsWith("Te"))
-                        {
-                            needValue = 10;
-                        }
+                            else if (lineFour.Last().StartsWith("Te"))
+                            {
+                                needValue = 10;
+                            }
 
-                        else if (lineFour.Last().StartsWith("N"))
-                        {
-                            needValue = 9;
-                        }
+                            else if (lineFour.Last().StartsWith("N"))
+                            {
+                                needValue = 9;
+                            }
 
-                        else if (lineFour.Last().StartsWith("E"))
-                        {
-                            needValue = 8;
-                        }
+                            else if (lineFour.Last().StartsWith("E"))
+                            {
+                                needValue = 8;
+                            }
 
-                        else if (lineFour.Last().StartsWith("Se"))
-                        {
-                            needValue = 7;
-                        }
+                            else if (lineFour.Last().StartsWith("Se"))
+                            {
+                                needValue = 7;
+                            }
 
-                        else if (lineFour.Last().StartsWith("Si"))
-                        {
-                            needValue = 6;
-                        }
+                            else if (lineFour.Last().StartsWith("Si"))
+                            {
+                                needValue = 6;
+                            }
 
-                        else if (lineFour.Last().StartsWith("Fi"))
-                        {
-                            needValue = 5;
-                        }
+                            else if (lineFour.Last().StartsWith("Fi"))
+                            {
+                                needValue = 5;
+                            }
 
-                        else if (lineFour.Last().StartsWith("Fo"))
-                        {
-                            needValue = 4;
-                        }
+                            else if (lineFour.Last().StartsWith("Fo"))
+                            {
+                                needValue = 4;
+                            }
 
-                        else if (lineFour.Last().StartsWith("Th"))
-                        {
-                            needValue = 3;
-                        }
+                            else if (lineFour.Last().StartsWith("Th"))
+                            {
+                                needValue = 3;
+                            }
 
-                        else if (lineFour.Last().StartsWith("TW"))
-                        {
-                            needValue = 2;
-                        }
+                            else if (lineFour.Last().StartsWith("TW"))
+                            {
+                                needValue = 2;
+                            }
 
-                        else if (lineFour.Last().StartsWith("A"))
-                        {
-                            needValue = 1;
+                            else if (lineFour.Last().StartsWith("A"))
+                            {
+                                needValue = 1;
+                            }
+                            #endregion
                         }
-                        #endregion
-
+                        catch
+                        {
+                            suitNeed = 0;
+                            needValue = 0;
+                        }
+                       
                         if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
                         {
                             MoveCard(suit, cardValue, suitNeed, needValue);
@@ -1224,6 +1236,8 @@ namespace Final_Project_Rams_Solitaire
 
         private void listBox2_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = listBox2.SelectedItem.ToString();
 
@@ -1325,96 +1339,101 @@ namespace Final_Project_Rams_Solitaire
 
         private void listBox3_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = listBox3.SelectedItem.ToString();
 
-            #region Find Card Values 
-            if (chosenCard.StartsWith("K"))
+            if (cardUp)
             {
-                cardValue = 13;
-            }
+                #region Find Card Values 
+                if (chosenCard.StartsWith("K"))
+                {
+                    cardValue = 13;
+                }
 
-            else if (chosenCard.StartsWith("Q"))
-            {
-                cardValue = 12;
-            }
+                else if (chosenCard.StartsWith("Q"))
+                {
+                    cardValue = 12;
+                }
 
-            else if (chosenCard.StartsWith("J"))
-            {
-                cardValue = 11;
-            }
+                else if (chosenCard.StartsWith("J"))
+                {
+                    cardValue = 11;
+                }
 
-            else if (chosenCard.StartsWith("Te"))
-            {
-                cardValue = 10;
-            }
+                else if (chosenCard.StartsWith("Te"))
+                {
+                    cardValue = 10;
+                }
 
-            else if (chosenCard.StartsWith("N"))
-            {
-                cardValue = 9;
-            }
+                else if (chosenCard.StartsWith("N"))
+                {
+                    cardValue = 9;
+                }
 
-            else if (chosenCard.StartsWith("E"))
-            {
-                cardValue = 8;
-            }
+                else if (chosenCard.StartsWith("E"))
+                {
+                    cardValue = 8;
+                }
 
-            else if (chosenCard.StartsWith("Se"))
-            {
-                cardValue = 7;
-            }
+                else if (chosenCard.StartsWith("Se"))
+                {
+                    cardValue = 7;
+                }
 
-            else if (chosenCard.StartsWith("Si"))
-            {
-                cardValue = 6;
-            }
+                else if (chosenCard.StartsWith("Si"))
+                {
+                    cardValue = 6;
+                }
 
-            else if (chosenCard.StartsWith("Fi"))
-            {
-                cardValue = 5;
-            }
+                else if (chosenCard.StartsWith("Fi"))
+                {
+                    cardValue = 5;
+                }
 
-            else if (chosenCard.StartsWith("Fo"))
-            {
-                cardValue = 4;
-            }
+                else if (chosenCard.StartsWith("Fo"))
+                {
+                    cardValue = 4;
+                }
 
-            else if (chosenCard.StartsWith("Th"))
-            {
-                cardValue = 3;
-            }
+                else if (chosenCard.StartsWith("Th"))
+                {
+                    cardValue = 3;
+                }
 
-            else if (chosenCard.StartsWith("TW"))
-            {
-                cardValue = 2;
-            }
+                else if (chosenCard.StartsWith("TW"))
+                {
+                    cardValue = 2;
+                }
 
-            else if (chosenCard.StartsWith("A"))
-            {
-                cardValue = 1;
-            }
-            #endregion
+                else if (chosenCard.StartsWith("A"))
+                {
+                    cardValue = 1;
+                }
+                #endregion
 
-            #region Find Suit Values
-            if (chosenCard.EndsWith("H"))
-            {
-                suit = 1;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            #endregion
+                #region Find Suit Values
+                if (chosenCard.EndsWith("H"))
+                {
+                    suit = 1;
+                }
+                else if (chosenCard.EndsWith("D"))
+                {
+                    suit = 2;
+                }
+                else if (chosenCard.EndsWith("C"))
+                {
+                    suit = 3;
+                }
+                else if (chosenCard.EndsWith("S"))
+                {
+                    suit = 4;
+                }
+                #endregion
 
-            CheckLines(suit, cardValue);
+                CheckLines(suit, cardValue);
+            }
             else
             {
                 MessageBox.Show("This card is not uncovered, you can not move it");
@@ -1423,96 +1442,101 @@ namespace Final_Project_Rams_Solitaire
 
         private void listBox4_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = listBox4.SelectedItem.ToString();
 
-            #region Find Card Values 
-            if (chosenCard.StartsWith("K"))
+            if (cardUp)
             {
-                cardValue = 13;
-            }
+                #region Find Card Values 
+                if (chosenCard.StartsWith("K"))
+                {
+                    cardValue = 13;
+                }
 
-            else if (chosenCard.StartsWith("Q"))
-            {
-                cardValue = 12;
-            }
+                else if (chosenCard.StartsWith("Q"))
+                {
+                    cardValue = 12;
+                }
 
-            else if (chosenCard.StartsWith("J"))
-            {
-                cardValue = 11;
-            }
+                else if (chosenCard.StartsWith("J"))
+                {
+                    cardValue = 11;
+                }
 
-            else if (chosenCard.StartsWith("Te"))
-            {
-                cardValue = 10;
-            }
+                else if (chosenCard.StartsWith("Te"))
+                {
+                    cardValue = 10;
+                }
 
-            else if (chosenCard.StartsWith("N"))
-            {
-                cardValue = 9;
-            }
+                else if (chosenCard.StartsWith("N"))
+                {
+                    cardValue = 9;
+                }
 
-            else if (chosenCard.StartsWith("E"))
-            {
-                cardValue = 8;
-            }
+                else if (chosenCard.StartsWith("E"))
+                {
+                    cardValue = 8;
+                }
 
-            else if (chosenCard.StartsWith("Se"))
-            {
-                cardValue = 7;
-            }
+                else if (chosenCard.StartsWith("Se"))
+                {
+                    cardValue = 7;
+                }
 
-            else if (chosenCard.StartsWith("Si"))
-            {
-                cardValue = 6;
-            }
+                else if (chosenCard.StartsWith("Si"))
+                {
+                    cardValue = 6;
+                }
 
-            else if (chosenCard.StartsWith("Fi"))
-            {
-                cardValue = 5;
-            }
+                else if (chosenCard.StartsWith("Fi"))
+                {
+                    cardValue = 5;
+                }
 
-            else if (chosenCard.StartsWith("Fo"))
-            {
-                cardValue = 4;
-            }
+                else if (chosenCard.StartsWith("Fo"))
+                {
+                    cardValue = 4;
+                }
 
-            else if (chosenCard.StartsWith("Th"))
-            {
-                cardValue = 3;
-            }
+                else if (chosenCard.StartsWith("Th"))
+                {
+                    cardValue = 3;
+                }
 
-            else if (chosenCard.StartsWith("TW"))
-            {
-                cardValue = 2;
-            }
+                else if (chosenCard.StartsWith("TW"))
+                {
+                    cardValue = 2;
+                }
 
-            else if (chosenCard.StartsWith("A"))
-            {
-                cardValue = 1;
-            }
-            #endregion
+                else if (chosenCard.StartsWith("A"))
+                {
+                    cardValue = 1;
+                }
+                #endregion
 
-            #region Find Suit Values
-            if (chosenCard.EndsWith("H"))
-            {
-                suit = 1;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            #endregion
+                #region Find Suit Values
+                if (chosenCard.EndsWith("H"))
+                {
+                    suit = 1;
+                }
+                else if (chosenCard.EndsWith("D"))
+                {
+                    suit = 2;
+                }
+                else if (chosenCard.EndsWith("C"))
+                {
+                    suit = 3;
+                }
+                else if (chosenCard.EndsWith("S"))
+                {
+                    suit = 4;
+                }
+                #endregion
 
-            CheckLines(suit, cardValue);
+                CheckLines(suit, cardValue);
+            }
             else
             {
                 MessageBox.Show("This card is not uncovered, you can not move it");
@@ -1521,96 +1545,101 @@ namespace Final_Project_Rams_Solitaire
 
         private void listBox5_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = listBox5.SelectedItem.ToString();
 
-            #region Find Card Values 
-            if (chosenCard.StartsWith("K"))
+            if (cardUp)
             {
-                cardValue = 13;
-            }
+                #region Find Card Values 
+                if (chosenCard.StartsWith("K"))
+                {
+                    cardValue = 13;
+                }
 
-            else if (chosenCard.StartsWith("Q"))
-            {
-                cardValue = 12;
-            }
+                else if (chosenCard.StartsWith("Q"))
+                {
+                    cardValue = 12;
+                }
 
-            else if (chosenCard.StartsWith("J"))
-            {
-                cardValue = 11;
-            }
+                else if (chosenCard.StartsWith("J"))
+                {
+                    cardValue = 11;
+                }
 
-            else if (chosenCard.StartsWith("Te"))
-            {
-                cardValue = 10;
-            }
+                else if (chosenCard.StartsWith("Te"))
+                {
+                    cardValue = 10;
+                }
 
-            else if (chosenCard.StartsWith("N"))
-            {
-                cardValue = 9;
-            }
+                else if (chosenCard.StartsWith("N"))
+                {
+                    cardValue = 9;
+                }
 
-            else if (chosenCard.StartsWith("E"))
-            {
-                cardValue = 8;
-            }
+                else if (chosenCard.StartsWith("E"))
+                {
+                    cardValue = 8;
+                }
 
-            else if (chosenCard.StartsWith("Se"))
-            {
-                cardValue = 7;
-            }
+                else if (chosenCard.StartsWith("Se"))
+                {
+                    cardValue = 7;
+                }
 
-            else if (chosenCard.StartsWith("Si"))
-            {
-                cardValue = 6;
-            }
+                else if (chosenCard.StartsWith("Si"))
+                {
+                    cardValue = 6;
+                }
 
-            else if (chosenCard.StartsWith("Fi"))
-            {
-                cardValue = 5;
-            }
+                else if (chosenCard.StartsWith("Fi"))
+                {
+                    cardValue = 5;
+                }
 
-            else if (chosenCard.StartsWith("Fo"))
-            {
-                cardValue = 4;
-            }
+                else if (chosenCard.StartsWith("Fo"))
+                {
+                    cardValue = 4;
+                }
 
-            else if (chosenCard.StartsWith("Th"))
-            {
-                cardValue = 3;
-            }
+                else if (chosenCard.StartsWith("Th"))
+                {
+                    cardValue = 3;
+                }
 
-            else if (chosenCard.StartsWith("TW"))
-            {
-                cardValue = 2;
-            }
+                else if (chosenCard.StartsWith("TW"))
+                {
+                    cardValue = 2;
+                }
 
-            else if (chosenCard.StartsWith("A"))
-            {
-                cardValue = 1;
-            }
-            #endregion
+                else if (chosenCard.StartsWith("A"))
+                {
+                    cardValue = 1;
+                }
+                #endregion
 
-            #region Find Suit Values
-            if (chosenCard.EndsWith("H"))
-            {
-                suit = 1;
-            }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            #endregion
+                #region Find Suit Values
+                if (chosenCard.EndsWith("H"))
+                {
+                    suit = 1;
+                }
+                else if (chosenCard.EndsWith("D"))
+                {
+                    suit = 2;
+                }
+                else if (chosenCard.EndsWith("C"))
+                {
+                    suit = 3;
+                }
+                else if (chosenCard.EndsWith("S"))
+                {
+                    suit = 4;
+                }
+                #endregion
 
-            CheckLines(suit, cardValue);
+                CheckLines(suit, cardValue);
+            }
             else
             {
                 MessageBox.Show("This card is not uncovered, you can not move it");
@@ -1619,96 +1648,100 @@ namespace Final_Project_Rams_Solitaire
 
         private void listBox6_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = listBox6.SelectedItem.ToString();
+            if (cardUp)
+            {
+                #region Find Card Values 
+                if (chosenCard.StartsWith("K"))
+                {
+                    cardValue = 13;
+                }
 
-            #region Find Card Values 
-            if (chosenCard.StartsWith("K"))
-            {
-                cardValue = 13;
-            }
+                else if (chosenCard.StartsWith("Q"))
+                {
+                    cardValue = 12;
+                }
 
-            else if (chosenCard.StartsWith("Q"))
-            {
-                cardValue = 12;
-            }
+                else if (chosenCard.StartsWith("J"))
+                {
+                    cardValue = 11;
+                }
 
-            else if (chosenCard.StartsWith("J"))
-            {
-                cardValue = 11;
-            }
+                else if (chosenCard.StartsWith("Te"))
+                {
+                    cardValue = 10;
+                }
 
-            else if (chosenCard.StartsWith("Te"))
-            {
-                cardValue = 10;
-            }
+                else if (chosenCard.StartsWith("N"))
+                {
+                    cardValue = 9;
+                }
 
-            else if (chosenCard.StartsWith("N"))
-            {
-                cardValue = 9;
-            }
+                else if (chosenCard.StartsWith("E"))
+                {
+                    cardValue = 8;
+                }
 
-            else if (chosenCard.StartsWith("E"))
-            {
-                cardValue = 8;
-            }
+                else if (chosenCard.StartsWith("Se"))
+                {
+                    cardValue = 7;
+                }
 
-            else if (chosenCard.StartsWith("Se"))
-            {
-                cardValue = 7;
-            }
+                else if (chosenCard.StartsWith("Si"))
+                {
+                    cardValue = 6;
+                }
 
-            else if (chosenCard.StartsWith("Si"))
-            {
-                cardValue = 6;
-            }
+                else if (chosenCard.StartsWith("Fi"))
+                {
+                    cardValue = 5;
+                }
 
-            else if (chosenCard.StartsWith("Fi"))
-            {
-                cardValue = 5;
-            }
+                else if (chosenCard.StartsWith("Fo"))
+                {
+                    cardValue = 4;
+                }
 
-            else if (chosenCard.StartsWith("Fo"))
-            {
-                cardValue = 4;
-            }
+                else if (chosenCard.StartsWith("Th"))
+                {
+                    cardValue = 3;
+                }
 
-            else if (chosenCard.StartsWith("Th"))
-            {
-                cardValue = 3;
-            }
+                else if (chosenCard.StartsWith("TW"))
+                {
+                    cardValue = 2;
+                }
 
-            else if (chosenCard.StartsWith("TW"))
-            {
-                cardValue = 2;
-            }
+                else if (chosenCard.StartsWith("A"))
+                {
+                    cardValue = 1;
+                }
+                #endregion
 
-            else if (chosenCard.StartsWith("A"))
-            {
-                cardValue = 1;
-            }
-            #endregion
+                #region Find Suit Values
+                if (chosenCard.EndsWith("H"))
+                {
+                    suit = 1;
+                }
+                else if (chosenCard.EndsWith("D"))
+                {
+                    suit = 2;
+                }
+                else if (chosenCard.EndsWith("C"))
+                {
+                    suit = 3;
+                }
+                else if (chosenCard.EndsWith("S"))
+                {
+                    suit = 4;
+                }
+                #endregion
 
-            #region Find Suit Values
-            if (chosenCard.EndsWith("H"))
-            {
-                suit = 1;
+                CheckLines(suit, cardValue);
             }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            #endregion
-
-            CheckLines(suit, cardValue);
             else
             {
                 MessageBox.Show("This card is not uncovered, you can not move it");
@@ -1717,96 +1750,100 @@ namespace Final_Project_Rams_Solitaire
 
         private void listBox7_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = listBox7.SelectedItem.ToString();
+            if (cardUp)
+            {
+                #region Find Card Values 
+                if (chosenCard.StartsWith("K"))
+                {
+                    cardValue = 13;
+                }
 
-            #region Find Card Values 
-            if (chosenCard.StartsWith("K"))
-            {
-                cardValue = 13;
-            }
+                else if (chosenCard.StartsWith("Q"))
+                {
+                    cardValue = 12;
+                }
 
-            else if (chosenCard.StartsWith("Q"))
-            {
-                cardValue = 12;
-            }
+                else if (chosenCard.StartsWith("J"))
+                {
+                    cardValue = 11;
+                }
 
-            else if (chosenCard.StartsWith("J"))
-            {
-                cardValue = 11;
-            }
+                else if (chosenCard.StartsWith("Te"))
+                {
+                    cardValue = 10;
+                }
 
-            else if (chosenCard.StartsWith("Te"))
-            {
-                cardValue = 10;
-            }
+                else if (chosenCard.StartsWith("N"))
+                {
+                    cardValue = 9;
+                }
 
-            else if (chosenCard.StartsWith("N"))
-            {
-                cardValue = 9;
-            }
+                else if (chosenCard.StartsWith("E"))
+                {
+                    cardValue = 8;
+                }
 
-            else if (chosenCard.StartsWith("E"))
-            {
-                cardValue = 8;
-            }
+                else if (chosenCard.StartsWith("Se"))
+                {
+                    cardValue = 7;
+                }
 
-            else if (chosenCard.StartsWith("Se"))
-            {
-                cardValue = 7;
-            }
+                else if (chosenCard.StartsWith("Si"))
+                {
+                    cardValue = 6;
+                }
 
-            else if (chosenCard.StartsWith("Si"))
-            {
-                cardValue = 6;
-            }
+                else if (chosenCard.StartsWith("Fi"))
+                {
+                    cardValue = 5;
+                }
 
-            else if (chosenCard.StartsWith("Fi"))
-            {
-                cardValue = 5;
-            }
+                else if (chosenCard.StartsWith("Fo"))
+                {
+                    cardValue = 4;
+                }
 
-            else if (chosenCard.StartsWith("Fo"))
-            {
-                cardValue = 4;
-            }
+                else if (chosenCard.StartsWith("Th"))
+                {
+                    cardValue = 3;
+                }
 
-            else if (chosenCard.StartsWith("Th"))
-            {
-                cardValue = 3;
-            }
+                else if (chosenCard.StartsWith("TW"))
+                {
+                    cardValue = 2;
+                }
 
-            else if (chosenCard.StartsWith("TW"))
-            {
-                cardValue = 2;
-            }
+                else if (chosenCard.StartsWith("A"))
+                {
+                    cardValue = 1;
+                }
+                #endregion
 
-            else if (chosenCard.StartsWith("A"))
-            {
-                cardValue = 1;
-            }
-            #endregion
+                #region Find Suit Values
+                if (chosenCard.EndsWith("H"))
+                {
+                    suit = 1;
+                }
+                else if (chosenCard.EndsWith("D"))
+                {
+                    suit = 2;
+                }
+                else if (chosenCard.EndsWith("C"))
+                {
+                    suit = 3;
+                }
+                else if (chosenCard.EndsWith("S"))
+                {
+                    suit = 4;
+                }
+                #endregion
 
-            #region Find Suit Values
-            if (chosenCard.EndsWith("H"))
-            {
-                suit = 1;
+                CheckLines(suit, cardValue);
             }
-            else if (chosenCard.EndsWith("D"))
-            {
-                suit = 2;
-            }
-            else if (chosenCard.EndsWith("C"))
-            {
-                suit = 3;
-            }
-            else if (chosenCard.EndsWith("S"))
-            {
-                suit = 4;
-            }
-            #endregion
-
-            CheckLines(suit, cardValue);
             else
             {
                 MessageBox.Show("This card is not uncovered, you can not move it");

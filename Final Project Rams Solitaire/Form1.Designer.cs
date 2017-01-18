@@ -40,6 +40,7 @@
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.listBox6 = new System.Windows.Forms.ListBox();
             this.listBox7 = new System.Windows.Forms.ListBox();
+            this.movesNumber = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loadButton
@@ -140,12 +141,23 @@
             this.listBox7.TabIndex = 16;
             this.listBox7.Click += new System.EventHandler(this.listBox7_Click);
             // 
+            // movesNumber
+            // 
+            this.movesNumber.AutoSize = true;
+            this.movesNumber.BackColor = System.Drawing.Color.Transparent;
+            this.movesNumber.ForeColor = System.Drawing.Color.White;
+            this.movesNumber.Location = new System.Drawing.Point(572, 434);
+            this.movesNumber.Name = "movesNumber";
+            this.movesNumber.Size = new System.Drawing.Size(0, 13);
+            this.movesNumber.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Final_Project_Rams_Solitaire.Properties.Resources.poker_table;
             this.ClientSize = new System.Drawing.Size(780, 484);
+            this.Controls.Add(this.movesNumber);
             this.Controls.Add(this.listBox7);
             this.Controls.Add(this.listBox6);
             this.Controls.Add(this.listBox5);
@@ -177,6 +189,7 @@
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.ListBox listBox6;
         private System.Windows.Forms.ListBox listBox7;
+        private System.Windows.Forms.Label movesNumber;
     }
 }
 
