@@ -258,6 +258,7 @@
             this.playCardBox.Name = "playCardBox";
             this.playCardBox.Size = new System.Drawing.Size(201, 69);
             this.playCardBox.TabIndex = 27;
+            this.playCardBox.Click += new System.EventHandler(this.playCardBox_Click);
             // 
             // Form1
             // 

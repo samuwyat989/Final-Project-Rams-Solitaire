@@ -16,6 +16,7 @@ namespace Final_Project_Rams_Solitaire
     {
         bool cardUp;
         string chosenCard;
+        int chosenCardLineNumber;
 
         int moveLine;
         int currentLine;
@@ -113,12 +114,23 @@ namespace Final_Project_Rams_Solitaire
             startPile.Add("CK");
             #endregion
 
+            drawPile.Add(startPile[0]);
+            drawPile.Add(startPile[1]);
+
             lineOne.Add("SevenH");
             lineOne.Add("SixC");
 
             lineTwo.Add("SevenS");
+            //lineThree.Add("EightD");
             lineThree.Add("SevenD");
-            lineFour.Add("SevenH");
+            lineFour.Add("SevenC");
+            lineFive.Add("SixH");
+            lineSix.Add("FiveD");
+            lineSeven.Add("FourC");
+            goalPileH.Add("TenH");
+            goalPileC.Add("TenC");
+            goalPileD.Add("TenD");
+            goalPileS.Add("TenS");
             //lineOne.Insert(0, "KingH");           //adds to top of list
 
             lineBox1.Items.Add(lineOne[0] + Environment.NewLine); // makes new line in a list box
@@ -126,6 +138,14 @@ namespace Final_Project_Rams_Solitaire
             lineBox2.Items.Add(lineTwo[0]);
             lineBox3.Items.Add(lineThree[0]);
             lineBox4.Items.Add(lineFour[0]);
+            lineBox5.Items.Add(lineFive[0]);
+            lineBox6.Items.Add(lineSix[0]);
+            lineBox7.Items.Add(lineSeven[0]);
+
+            heartsBox.Items.Add(goalPileH[0]);
+            clubsBox.Items.Add(goalPileC[0]);
+            diamondsBox.Items.Add(goalPileD[0]);
+            spadesBox.Items.Add(goalPileS[0]);
 
             loadButton.Enabled = false;
         }
@@ -140,6 +160,7 @@ namespace Final_Project_Rams_Solitaire
                 #region Move card in list and on screen
                 if (moveLine == 1 && moveLine != currentLine)
                 {
+                 //   for(int i = currentLine[chosenCard]; i < )
                     lineOne.Add(chosenCard);
                     lineBox1.Items.Add(chosenCard + Environment.NewLine);
                 }
@@ -1356,6 +1377,7 @@ namespace Final_Project_Rams_Solitaire
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
             chosenCard = lineBox2.SelectedItem.ToString();
+           // chosenCardLineNumber = lineTwo.Count() - 
 
             if (cardUp)
             {
@@ -1969,7 +1991,19 @@ namespace Final_Project_Rams_Solitaire
 
         private void drawCardButton_Click(object sender, EventArgs e)
         {
+            moveCount++;
+            movesNumber.Text = "MOVES: " + moveCount;
+
+            playPile.Add(drawPile[0]);
+            drawPile.Remove(drawPile[0]);
+
+            playCardBox.Items.Add(playPile[0]);
             //Add card to play card box
+        }
+
+        private void playCardBox_Click(object sender, EventArgs e)
+        {
+            //Add card to play lines
         }
     }
 }
