@@ -121,11 +121,13 @@ namespace Final_Project_Rams_Solitaire
             lineFour.Add("SevenH");
             //lineOne.Insert(0, "KingH");           //adds to top of list
 
-            listBox1.Items.Add(lineOne[0] + Environment.NewLine); // makes new line in a list box
-            listBox1.Items.Add(lineOne[1]);
-            listBox2.Items.Add(lineTwo[0]);
-            listBox3.Items.Add(lineThree[0]);
-            listBox4.Items.Add(lineFour[0]);
+            lineBox1.Items.Add(lineOne[0] + Environment.NewLine); // makes new line in a list box
+            lineBox1.Items.Add(lineOne[1]);
+            lineBox2.Items.Add(lineTwo[0]);
+            lineBox3.Items.Add(lineThree[0]);
+            lineBox4.Items.Add(lineFour[0]);
+
+            loadButton.Enabled = false;
         }
 
         public void MoveCard(int suit, int cardValue, int suitNeed, int needValue, int moveLine, int currentLine)
@@ -139,37 +141,37 @@ namespace Final_Project_Rams_Solitaire
                 if (moveLine == 1 && moveLine != currentLine)
                 {
                     lineOne.Add(chosenCard);
-                    listBox1.Items.Add(chosenCard + Environment.NewLine);
+                    lineBox1.Items.Add(chosenCard + Environment.NewLine);
                 }
                 else if (moveLine == 2 && moveLine != currentLine)
                 {
                     lineTwo.Add(chosenCard);
-                    listBox2.Items.Add(chosenCard + Environment.NewLine);
+                    lineBox2.Items.Add(chosenCard + Environment.NewLine);
                 }
                 else if (moveLine == 3 && moveLine != currentLine)
                 {
                     lineThree.Add(chosenCard);
-                    listBox3.Items.Add(chosenCard + Environment.NewLine);
+                    lineBox3.Items.Add(chosenCard + Environment.NewLine);
                 }
                 else if (moveLine == 4 && moveLine != currentLine)
                 {
                     lineFour.Add(chosenCard);
-                    listBox4.Items.Add(chosenCard + Environment.NewLine);
+                    lineBox4.Items.Add(chosenCard + Environment.NewLine);
                 }
                 else if (moveLine == 5 && moveLine != currentLine)
                 {
                     lineFive.Add(chosenCard);
-                    listBox5.Items.Add(chosenCard + Environment.NewLine);
+                    lineBox5.Items.Add(chosenCard + Environment.NewLine);
                 }
                 else if (moveLine == 6 && moveLine != currentLine)
                 {
                     lineSix.Add(chosenCard);
-                    listBox6.Items.Add(chosenCard + Environment.NewLine);
+                    lineBox6.Items.Add(chosenCard + Environment.NewLine);
                 }
                 else if (moveLine == 7 && moveLine != currentLine)
                 {
                     lineSeven.Add(chosenCard);
-                    listBox7.Items.Add(chosenCard + Environment.NewLine);
+                    lineBox7.Items.Add(chosenCard + Environment.NewLine);
                 }
                 #endregion
 
@@ -177,37 +179,37 @@ namespace Final_Project_Rams_Solitaire
                 if (currentLine == 1 && currentLine != moveLine)
                 {
                     lineOne.Remove(chosenCard);
-                    listBox1.Items.Remove(chosenCard);
+                    lineBox1.Items.Remove(chosenCard);
                 }
                 else if (currentLine == 2 && currentLine != moveLine)
                 {
                     lineTwo.Remove(chosenCard);
-                    listBox2.Items.Remove(chosenCard);
+                    lineBox2.Items.Remove(chosenCard);
                 }
                 else if (currentLine == 3 && currentLine != moveLine)
                 {
                     lineThree.Remove(chosenCard);
-                    listBox3.Items.Remove(chosenCard);
+                    lineBox3.Items.Remove(chosenCard);
                 }
                 else if (currentLine == 4 && currentLine != moveLine)
                 {
                     lineFour.Remove(chosenCard);
-                    listBox4.Items.Remove(chosenCard);
+                    lineBox4.Items.Remove(chosenCard);
                 }
                 else if (currentLine == 5 && currentLine != moveLine)
                 {
                     lineFive.Remove(chosenCard);
-                    listBox5.Items.Remove(chosenCard);
+                    lineBox5.Items.Remove(chosenCard);
                 }
                 else if (currentLine == 6 && currentLine != moveLine)
                 {
                     lineSix.Remove(chosenCard);
-                    listBox6.Items.Remove(chosenCard);
+                    lineBox6.Items.Remove(chosenCard);
                 }
                 else if (currentLine == 7 && currentLine != moveLine)
                 {
                     lineSeven.Remove(chosenCard);
-                    listBox7.Items.Remove(chosenCard);
+                    lineBox7.Items.Remove(chosenCard);
                 }
 #endregion
 
@@ -1250,7 +1252,7 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
-            chosenCard = listBox1.SelectedItem.ToString();
+            chosenCard = lineBox1.SelectedItem.ToString();
 
             if (cardUp)
             {
@@ -1320,7 +1322,6 @@ namespace Final_Project_Rams_Solitaire
                     cardValue = 1;
                 }
                 #endregion
-
                 #region Find Suit Values
                 if (chosenCard.EndsWith("H"))
                 {
@@ -1354,7 +1355,7 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
-            chosenCard = listBox2.SelectedItem.ToString();
+            chosenCard = lineBox2.SelectedItem.ToString();
 
             if (cardUp)
             {
@@ -1457,7 +1458,7 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
-            chosenCard = listBox3.SelectedItem.ToString();
+            chosenCard = lineBox3.SelectedItem.ToString();
 
             if (cardUp)
             {
@@ -1560,7 +1561,7 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
-            chosenCard = listBox4.SelectedItem.ToString();
+            chosenCard = lineBox4.SelectedItem.ToString();
 
             if (cardUp)
             {
@@ -1663,7 +1664,7 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
-            chosenCard = listBox5.SelectedItem.ToString();
+            chosenCard = lineBox5.SelectedItem.ToString();
 
             if (cardUp)
             {
@@ -1766,7 +1767,7 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
-            chosenCard = listBox6.SelectedItem.ToString();
+            chosenCard = lineBox6.SelectedItem.ToString();
             if (cardUp)
             {
                 #region Find Card Values 
@@ -1868,7 +1869,7 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             cardUp = true;
-            chosenCard = listBox7.SelectedItem.ToString();
+            chosenCard = lineBox7.SelectedItem.ToString();
             if (cardUp)
             {
                 #region Find Card Values 
@@ -1965,6 +1966,11 @@ namespace Final_Project_Rams_Solitaire
             }
         }
         #endregion
+
+        private void drawCardButton_Click(object sender, EventArgs e)
+        {
+            //Add card to play card box
+        }
     }
 }
 
