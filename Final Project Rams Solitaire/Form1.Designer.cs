@@ -55,9 +55,9 @@
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(28, 41);
+            this.loadButton.Location = new System.Drawing.Point(30, 23);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(75, 23);
+            this.loadButton.Size = new System.Drawing.Size(181, 83);
             this.loadButton.TabIndex = 0;
             this.loadButton.Text = "DEAL";
             this.loadButton.UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@
             // 
             this.drawCardButton.Location = new System.Drawing.Point(30, 112);
             this.drawCardButton.Name = "drawCardButton";
-            this.drawCardButton.Size = new System.Drawing.Size(154, 69);
+            this.drawCardButton.Size = new System.Drawing.Size(181, 46);
             this.drawCardButton.TabIndex = 26;
             this.drawCardButton.Text = "DRAW CARD";
             this.drawCardButton.UseVisualStyleBackColor = true;
@@ -254,9 +254,9 @@
             // playCardBox
             // 
             this.playCardBox.FormattingEnabled = true;
-            this.playCardBox.Location = new System.Drawing.Point(209, 112);
+            this.playCardBox.Location = new System.Drawing.Point(30, 164);
             this.playCardBox.Name = "playCardBox";
-            this.playCardBox.Size = new System.Drawing.Size(201, 69);
+            this.playCardBox.Size = new System.Drawing.Size(181, 17);
             this.playCardBox.TabIndex = 27;
             this.playCardBox.Click += new System.EventHandler(this.playCardBox_Click);
             // 
