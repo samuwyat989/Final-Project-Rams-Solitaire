@@ -17,7 +17,7 @@ namespace Final_Project_Rams_Solitaire
         bool cardUp;
         string chosenCard;
         int numberOfLines;
-        int selectedLineNumber;
+        int index;
 
         int moveLine;
         int currentLine;
@@ -185,23 +185,29 @@ namespace Final_Project_Rams_Solitaire
             loadButton.Enabled = false;
         }
 
-        public void MoveCard(int suit, int cardValue, int suitNeed, int needValue, int moveLine, int currentLine)
+        public void MoveCard(int moveLine, int currentLine, int index, int numberOfLines)
         {
             if (cardUp)
             {
 
-                //MessageBox.Show("Card Info: " + suit + " " + cardValue + " " + suitNeed + " " + needValue);
-
                 #region Move card in list and on screen
                 if (moveLine == 1 && moveLine != currentLine)
                 {
-                    lineOne.Add(chosenCard);
-                    lineBox1.Items.Add(chosenCard);
+                   // while(index <= numberOfLines)
+                   // {
+                        lineOne.Add(chosenCard);
+                        lineBox1.Items.Add(chosenCard);
+                   //     index++;
+                   // }         
                 }
                 else if (moveLine == 2 && moveLine != currentLine)
                 {
-                    lineTwo.Add(chosenCard);
-                    lineBox2.Items.Add(chosenCard);
+                    //while (index <= numberOfLines)
+                    //{
+                        lineTwo.Add(chosenCard);
+                        lineBox2.Items.Add(chosenCard);
+                    //    index++;
+                    //}
                 }
                 else if (moveLine == 3 && moveLine != currentLine)
                 {
@@ -322,7 +328,7 @@ namespace Final_Project_Rams_Solitaire
             BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        public void CheckLines(int suit, int cardValue, int currentLine)
+        public void CheckLines(int suit, int cardValue, int currentLine, int index, int numberOfLines)
         {
             try
             {
@@ -422,7 +428,7 @@ namespace Final_Project_Rams_Solitaire
                 suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
                 suit < suitNeed && needValue == 14 && cardValue == 13)
             {
-                MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                MoveCard(moveLine, currentLine, index, numberOfLines);
             }
             else
             {
@@ -524,7 +530,7 @@ namespace Final_Project_Rams_Solitaire
                     suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
                     suit < suitNeed && needValue == 14 && cardValue == 13)
                 {
-                    MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                    MoveCard(moveLine, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -626,7 +632,7 @@ namespace Final_Project_Rams_Solitaire
                         suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
                         suit < suitNeed && needValue == 14 && cardValue == 13)
                     {
-                        MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                        MoveCard(moveLine, currentLine, index, numberOfLines);
                     }
                     else
                     {
@@ -729,7 +735,7 @@ namespace Final_Project_Rams_Solitaire
                             suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
                             suit < suitNeed && needValue == 14 && cardValue == 13)
                         {
-                            MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                            MoveCard(moveLine, currentLine, index, numberOfLines);
                         }
                         else
                         {
@@ -832,7 +838,7 @@ namespace Final_Project_Rams_Solitaire
                                 suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
                                 suit < suitNeed && needValue == 14 && cardValue == 13)
                             {
-                                MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                MoveCard(moveLine, currentLine, index, numberOfLines);
                             }
                             else
                             {
@@ -934,7 +940,7 @@ namespace Final_Project_Rams_Solitaire
                                     suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
                                     suit < suitNeed && needValue == 14 && cardValue == 13)
                                 {
-                                    MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                    MoveCard(moveLine, currentLine, index, numberOfLines);
                                 }
                                 else
                                 {
@@ -1036,7 +1042,7 @@ namespace Final_Project_Rams_Solitaire
                                         suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
                                         suit < suitNeed && needValue == 14 && cardValue == 13)
                                     {
-                                        MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                        MoveCard(moveLine, currentLine, index, numberOfLines);
                                     }
                                     else
                                     {
@@ -1118,7 +1124,7 @@ namespace Final_Project_Rams_Solitaire
                                         if (suit == 1 && cardValue - 1 == needValue ||
                                             suit == 1 && cardValue == 1)
                                         {
-                                            MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                            MoveCard(moveLine, currentLine, index, numberOfLines);
                                         }
                                         else
                                         {
@@ -1200,7 +1206,7 @@ namespace Final_Project_Rams_Solitaire
                                             if (suit == 2 && cardValue - 1 == needValue ||
                                                 suit == 2 && cardValue == 1)
                                             {
-                                                MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                                MoveCard(moveLine, currentLine, index, numberOfLines);
                                             }
                                             else
                                             {
@@ -1283,7 +1289,7 @@ namespace Final_Project_Rams_Solitaire
                                                 if (suit == 3 && cardValue - 1 == needValue ||
                                                     suit == 3 && cardValue == 1)
                                                 {
-                                                    MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                                    MoveCard(moveLine, currentLine, index, numberOfLines);
                                                 }
                                                 else
                                                 {
@@ -1366,7 +1372,7 @@ namespace Final_Project_Rams_Solitaire
                                                     if (suit == 4 && cardValue - 1 == needValue ||
                                                         suit == 4 && cardValue == 1)
                                                     {
-                                                        MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
+                                                        MoveCard(moveLine, currentLine, index, numberOfLines);
                                                     }
                                                     else
                                                     {
@@ -1390,11 +1396,12 @@ namespace Final_Project_Rams_Solitaire
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
             numberOfLines = lineOne.Count - 1;
-            //selectedLineNumber = lineBox1.l
+            index = lineBox1.SelectedIndex;
+
             if (lineBox1.SelectedIndex != -1)
             {
                 cardUp = true;
-                chosenCard = lineBox1.SelectedItem.ToString();
+                chosenCard = lineBox1.Items[index].ToString();
 
                 if (cardUp)
                 {
@@ -1484,7 +1491,7 @@ namespace Final_Project_Rams_Solitaire
                     #endregion
 
                     currentLine = 1;
-                    CheckLines(suit, cardValue, currentLine);
+                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -1501,10 +1508,13 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = lineTwo.Count - 1;
+            index = lineBox2.SelectedIndex;
+
             if (lineBox2.SelectedIndex != -1)
             {
                 cardUp = true;
-                chosenCard = lineBox2.SelectedItem.ToString();
+                chosenCard = lineBox2.Items[index].ToString();
 
                 if (cardUp)
                 {
@@ -1594,7 +1604,7 @@ namespace Final_Project_Rams_Solitaire
                     #endregion
 
                     currentLine = 2;
-                    CheckLines(suit, cardValue, currentLine);
+                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -1611,10 +1621,13 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = lineThree.Count - 1;
+            index = lineBox3.SelectedIndex;
+
             if (lineBox3.SelectedIndex != -1)
             {
                 cardUp = true;
-                chosenCard = lineBox3.SelectedItem.ToString();
+                chosenCard = lineBox3.Items[index].ToString();
 
                 if (cardUp)
                 {
@@ -1704,7 +1717,7 @@ namespace Final_Project_Rams_Solitaire
                     #endregion
 
                     currentLine = 3;
-                    CheckLines(suit, cardValue, currentLine);
+                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -1721,10 +1734,13 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = lineFour.Count - 1;
+            index = lineBox4.SelectedIndex;
+
             if (lineBox4.SelectedIndex != -1)
             {
                 cardUp = true;
-                chosenCard = lineBox4.SelectedItem.ToString();
+                chosenCard = lineBox4.Items[index].ToString();
 
                 if (cardUp)
                 {
@@ -1814,7 +1830,7 @@ namespace Final_Project_Rams_Solitaire
                     #endregion
 
                     currentLine = 4;
-                    CheckLines(suit, cardValue, currentLine);
+                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -1831,10 +1847,13 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = lineFive.Count - 1;
+            index = lineBox5.SelectedIndex;
+
             if (lineBox5.SelectedIndex != -1)
             {
                 cardUp = true;
-                chosenCard = lineBox5.SelectedItem.ToString();
+                chosenCard = lineBox5.Items[index].ToString();
 
                 if (cardUp)
                 {
@@ -1924,7 +1943,7 @@ namespace Final_Project_Rams_Solitaire
                     #endregion
 
                     currentLine = 5;
-                    CheckLines(suit, cardValue, currentLine);
+                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -1941,10 +1960,13 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = lineSix.Count - 1;
+            index = lineBox6.SelectedIndex;
+
             if (lineBox6.SelectedIndex != -1)
             {
                 cardUp = true;
-                chosenCard = lineBox6.SelectedItem.ToString();
+                chosenCard = lineBox6.Items[index].ToString();
                 if (cardUp)
                 {
                     #region Find Card Values 
@@ -2033,7 +2055,7 @@ namespace Final_Project_Rams_Solitaire
                     #endregion
 
                     currentLine = 6;
-                    CheckLines(suit, cardValue, currentLine);
+                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -2050,10 +2072,13 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = lineSeven.Count - 1;
+            index = lineBox7.SelectedIndex;
+
             if (lineBox7.SelectedIndex != -1)
             {
                 cardUp = true;
-                chosenCard = lineBox7.SelectedItem.ToString();
+                chosenCard = lineBox7.Items[index].ToString();
                 if (cardUp)
                 {
                     #region Find Card Values 
@@ -2142,7 +2167,7 @@ namespace Final_Project_Rams_Solitaire
                     #endregion
 
                     currentLine = 7;
-                    CheckLines(suit, cardValue, currentLine);
+                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
                 }
                 else
                 {
@@ -2179,6 +2204,8 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = 0;
+            index = 100;
             if (playCardBox.SelectedIndex != -1)
             {
                 chosenCard = playCardBox.SelectedItem.ToString();
@@ -2267,7 +2294,7 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
                 currentLine = 0;
-                CheckLines(suit, cardValue, currentLine);
+                CheckLines(suit, cardValue, currentLine, index, numberOfLines);
             }
             else
             {
