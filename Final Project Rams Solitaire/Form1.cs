@@ -16,6 +16,8 @@ namespace Final_Project_Rams_Solitaire
     {
         bool cardUp;
         string chosenCard;
+        int numberOfLines;
+        int selectedLineNumber;
 
         int moveLine;
         int currentLine;
@@ -412,12 +414,13 @@ namespace Final_Project_Rams_Solitaire
             }
             catch
             {
-                suitNeed = 0;
-                needValue = 13;
+                moveLine = 1;
+                suitNeed = 5;
+                needValue = 14;
             }
             if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
                 suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
-                lineBox1.SelectedIndex == -1 && needValue == 13)
+                suit < suitNeed && needValue == 14 && cardValue == 13)
             {
                 MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
             }
@@ -513,10 +516,13 @@ namespace Final_Project_Rams_Solitaire
                 }
                 catch
                 {
-                    suitNeed = 0;
-                    needValue = 0;
+                    moveLine = 2;
+                    suitNeed = 5;
+                    needValue = 14;
                 }
-                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
+                    suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
+                    suit < suitNeed && needValue == 14 && cardValue == 13)
                 {
                     MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                 }
@@ -612,10 +618,13 @@ namespace Final_Project_Rams_Solitaire
                     }
                     catch
                     {
-                        suitNeed = 0;
-                        needValue = 0;
+                        moveLine = 3;
+                        suitNeed = 5;
+                        needValue = 14;
                     }
-                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
+                        suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
+                        suit < suitNeed && needValue == 14 && cardValue == 13)
                     {
                         MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                     }
@@ -711,11 +720,14 @@ namespace Final_Project_Rams_Solitaire
                         }
                         catch
                         {
-                            suitNeed = 0;
-                            needValue = 0;
+                            moveLine = 4;
+                            suitNeed = 5;
+                            needValue = 14;
                         }
 
-                        if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                        if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
+                            suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
+                            suit < suitNeed && needValue == 14 && cardValue == 13)
                         {
                             MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                         }
@@ -811,11 +823,14 @@ namespace Final_Project_Rams_Solitaire
                             }
                             catch
                             {
-                                suitNeed = 0;
-                                needValue = 0;
+                                moveLine = 5;
+                                suitNeed = 5;
+                                needValue = 14;
                             }
 
-                            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
+                                suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
+                                suit < suitNeed && needValue == 14 && cardValue == 13)
                             {
                                 MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                             }
@@ -911,10 +926,13 @@ namespace Final_Project_Rams_Solitaire
                                 }
                                 catch
                                 {
-                                    suitNeed = 0;
-                                    needValue = 0;
+                                    moveLine = 6;
+                                    suitNeed = 5;
+                                    needValue = 14;
                                 }
-                                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
+                                    suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
+                                    suit < suitNeed && needValue == 14 && cardValue == 13)
                                 {
                                     MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                                 }
@@ -1010,10 +1028,13 @@ namespace Final_Project_Rams_Solitaire
                                     }
                                     catch
                                     {
-                                        suitNeed = 0;
-                                        needValue = 0;
+                                        moveLine = 7;
+                                        suitNeed = 5;
+                                        needValue = 14;
                                     }
-                                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue)
+                                    if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
+                                        suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
+                                        suit < suitNeed && needValue == 14 && cardValue == 13)
                                     {
                                         MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                                     }
@@ -1092,10 +1113,10 @@ namespace Final_Project_Rams_Solitaire
                                         }
                                         catch
                                         {
-                                            needValue = 1;
+                                            needValue = 0;
                                         }
                                         if (suit == 1 && cardValue - 1 == needValue ||
-                                            suit == 1 && cardValue == needValue)
+                                            suit == 1 && cardValue == 1)
                                         {
                                             MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                                         }
@@ -1174,10 +1195,10 @@ namespace Final_Project_Rams_Solitaire
                                             }
                                             catch
                                             {
-                                                needValue = 1;
+                                                needValue = 0;
                                             }
                                             if (suit == 2 && cardValue - 1 == needValue ||
-                                                suit == 2 && cardValue == needValue)
+                                                suit == 2 && cardValue == 1)
                                             {
                                                 MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                                             }
@@ -1256,11 +1277,11 @@ namespace Final_Project_Rams_Solitaire
                                                 }
                                                 catch
                                                 {
-                                                    needValue = 1;
+                                                    needValue = 0;
                                                 }
 
                                                 if (suit == 3 && cardValue - 1 == needValue ||
-                                                    suit == 3 && cardValue == needValue)
+                                                    suit == 3 && cardValue == 1)
                                                 {
                                                     MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                                                 }
@@ -1340,10 +1361,10 @@ namespace Final_Project_Rams_Solitaire
                                                     }
                                                     catch
                                                     {
-                                                        needValue = 1;
+                                                        needValue = 0;
                                                     }
                                                     if (suit == 4 && cardValue - 1 == needValue ||
-                                                        suit == 4 && cardValue == needValue)
+                                                        suit == 4 && cardValue == 1)
                                                     {
                                                         MoveCard(suit, cardValue, suitNeed, needValue, moveLine, currentLine);
                                                     }
@@ -1368,6 +1389,8 @@ namespace Final_Project_Rams_Solitaire
         {
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
+            numberOfLines = lineOne.Count - 1;
+            //selectedLineNumber = lineBox1.l
             if (lineBox1.SelectedIndex != -1)
             {
                 cardUp = true;
