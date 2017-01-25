@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.loadButton = new System.Windows.Forms.Button();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.minLabel = new System.Windows.Forms.Label();
@@ -287,6 +288,7 @@
             this.Controls.Add(this.secLabel);
             this.Controls.Add(this.minLabel);
             this.Controls.Add(this.loadButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Rams Solitaire";
             this.Load += new System.EventHandler(this.Form1_Load);

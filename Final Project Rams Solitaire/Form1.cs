@@ -189,123 +189,600 @@ namespace Final_Project_Rams_Solitaire
         {
             if (cardUp)
             {
-
-                #region Move card in list and on screen
-                if (moveLine == 1 && moveLine != currentLine)
-                {
-                   // while(index <= numberOfLines)
-                   // {
-                        lineOne.Add(chosenCard);
-                        lineBox1.Items.Add(chosenCard);
-                   //     index++;
-                   // }         
-                }
-                else if (moveLine == 2 && moveLine != currentLine)
-                {
-                    //while (index <= numberOfLines)
-                    //{
-                        lineTwo.Add(chosenCard);
-                        lineBox2.Items.Add(chosenCard);
-                    //    index++;
-                    //}
-                }
-                else if (moveLine == 3 && moveLine != currentLine)
-                {
-                    lineThree.Add(chosenCard);
-                    lineBox3.Items.Add(chosenCard);
-                }
-                else if (moveLine == 4 && moveLine != currentLine)
-                {
-                    lineFour.Add(chosenCard);
-                    lineBox4.Items.Add(chosenCard);
-                }
-                else if (moveLine == 5 && moveLine != currentLine)
-                {
-                    lineFive.Add(chosenCard);
-                    lineBox5.Items.Add(chosenCard);
-                }
-                else if (moveLine == 6 && moveLine != currentLine)
-                {
-                    lineSix.Add(chosenCard);
-                    lineBox6.Items.Add(chosenCard);
-                }
-                else if (moveLine == 7 && moveLine != currentLine)
-                {
-                    lineSeven.Add(chosenCard);
-                    lineBox7.Items.Add(chosenCard);
-                }
-                else if (moveLine == 10 && moveLine != currentLine)
-                {
-                    goalPileH.Add(chosenCard);
-                    heartsBox.Items.Insert(0, chosenCard);
-                }
-                else if (moveLine == 11 && moveLine != currentLine)
-                {
-                    goalPileD.Add(chosenCard);
-                    diamondsBox.Items.Insert(0, chosenCard);
-                }
-                else if (moveLine == 12 && moveLine != currentLine)
-                {
-                    goalPileC.Add(chosenCard);
-                    clubsBox.Items.Insert(0, chosenCard);
-                }
-                else if (moveLine == 13 && moveLine != currentLine)
-                {
-                    goalPileS.Add(chosenCard);
-                    spadesBox.Items.Insert(0, chosenCard);
-                }
-                #endregion
-
-                #region Remove card in list and on screen
                 if (currentLine == 0)
                 {
-                    playPile.Remove(chosenCard);
-                    playCardBox.Items.Remove(chosenCard);
+                    #region Move cards from the play card box
+                    if (moveLine == 1 && moveLine != currentLine)
+                    {
+                        lineOne.Add(chosenCard);
+                        lineBox1.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 2 && moveLine != currentLine)
+                    {
+                        lineTwo.Add(chosenCard);
+                        lineBox2.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 3 && moveLine != currentLine)
+                    {
+                        lineThree.Add(chosenCard);
+                        lineBox3.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 4 && moveLine != currentLine)
+                    {
+                        lineFour.Add(chosenCard);
+                        lineBox4.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 5 && moveLine != currentLine)
+                    {
+                        lineFive.Add(chosenCard);
+                        lineBox5.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 6 && moveLine != currentLine)
+                    {
+                        lineSix.Add(chosenCard);
+                        lineBox6.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 7 && moveLine != currentLine)
+                    {
+                        lineSeven.Add(chosenCard);
+                        lineBox7.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    #endregion
                 }
-                if (currentLine == 1 && currentLine != moveLine)
+                else
                 {
-                    lineOne.Remove(chosenCard);
-                    lineBox1.Items.Remove(chosenCard);
+                    int cardLine = index;
+                    #region Move playing line cards
+                    if (moveLine == 1 && moveLine != currentLine)
+                    {
+                        while (index <= numberOfLines)
+                        {
+                            #region Add and Remove Cards
+                            if (currentLine == 2)
+                            {
+                                lineOne.Add(lineTwo[cardLine]);
+                                lineBox1.Items.Add(lineTwo[cardLine]);
+                                lineTwo.RemoveAt(cardLine);
+                                lineBox2.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 3)
+                            {
+                                lineOne.Add(lineThree[cardLine]);
+                                lineBox1.Items.Add(lineThree[cardLine]);
+                                lineThree.RemoveAt(cardLine);
+                                lineBox3.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 4)
+                            {
+                                lineOne.Add(lineFour[cardLine]);
+                                lineBox1.Items.Add(lineFour[cardLine]);
+                                lineFour.RemoveAt(cardLine);
+                                lineBox4.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 5)
+                            {
+                                lineOne.Add(lineFive[cardLine]);
+                                lineBox1.Items.Add(lineFive[cardLine]);
+                                lineFive.RemoveAt(cardLine);
+                                lineBox5.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 6)
+                            {
+                                lineOne.Add(lineSix[cardLine]);
+                                lineBox1.Items.Add(lineSix[cardLine]);
+                                lineSix.RemoveAt(cardLine);
+                                lineBox6.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 7)
+                            {
+                                lineOne.Add(lineSeven[cardLine]);
+                                lineBox1.Items.Add(lineSeven[cardLine]);
+                                lineSeven.RemoveAt(cardLine);
+                                lineBox7.Items.RemoveAt(cardLine);
+                            }
+                            #endregion
+                            index++;
+                        }
+                    }
+                    else if (moveLine == 2 && moveLine != currentLine)
+                    {
+                        while (index <= numberOfLines)
+                        {
+                            #region Add and Remove Cards
+                            if (currentLine == 1)
+                            {
+                                lineTwo.Add(lineOne[cardLine]);
+                                lineBox2.Items.Add(lineOne[cardLine]);
+                                lineOne.RemoveAt(cardLine);
+                                lineBox1.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 3)
+                            {
+                                lineTwo.Add(lineThree[cardLine]);
+                                lineBox2.Items.Add(lineThree[cardLine]);
+                                lineThree.RemoveAt(cardLine);
+                                lineBox3.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 4)
+                            {
+                                lineTwo.Add(lineFour[cardLine]);
+                                lineBox2.Items.Add(lineFour[cardLine]);
+                                lineFour.RemoveAt(cardLine);
+                                lineBox4.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 5)
+                            {
+                                lineTwo.Add(lineFive[cardLine]);
+                                lineBox2.Items.Add(lineFive[cardLine]);
+                                lineFive.RemoveAt(cardLine);
+                                lineBox5.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 6)
+                            {
+                                lineTwo.Add(lineSix[cardLine]);
+                                lineBox2.Items.Add(lineSix[cardLine]);
+                                lineSix.RemoveAt(cardLine);
+                                lineBox6.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 7)
+                            {
+                                lineTwo.Add(lineSeven[cardLine]);
+                                lineBox2.Items.Add(lineSeven[cardLine]);
+                                lineSeven.RemoveAt(cardLine);
+                                lineBox7.Items.RemoveAt(cardLine);
+                            }
+                            #endregion
+                            index++;
+                        }
+                    }
+                    else if (moveLine == 3 && moveLine != currentLine)
+                    {
+                        while (index <= numberOfLines)
+                        {
+                            #region Add and Remove Cards
+                            if (currentLine == 1)
+                            {
+                                lineThree.Add(lineOne[cardLine]);
+                                lineBox3.Items.Add(lineOne[cardLine]);
+                                lineOne.RemoveAt(cardLine);
+                                lineBox1.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 2)
+                            {
+                                lineThree.Add(lineTwo[cardLine]);
+                                lineBox3.Items.Add(lineTwo[cardLine]);
+                                lineTwo.RemoveAt(cardLine);
+                                lineBox2.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 4)
+                            {
+                                lineThree.Add(lineFour[cardLine]);
+                                lineBox3.Items.Add(lineFour[cardLine]);
+                                lineFour.RemoveAt(cardLine);
+                                lineBox4.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 5)
+                            {
+                                lineThree.Add(lineFive[cardLine]);
+                                lineBox3.Items.Add(lineFive[cardLine]);
+                                lineFive.RemoveAt(cardLine);
+                                lineBox5.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 6)
+                            {
+                                lineThree.Add(lineSix[cardLine]);
+                                lineBox3.Items.Add(lineSix[cardLine]);
+                                lineSix.RemoveAt(cardLine);
+                                lineBox6.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 7)
+                            {
+                                lineThree.Add(lineSeven[cardLine]);
+                                lineBox3.Items.Add(lineSeven[cardLine]);
+                                lineSeven.RemoveAt(cardLine);
+                                lineBox7.Items.RemoveAt(cardLine);
+                            }
+                            #endregion
+                            index++;
+                        }
+                    }
+                    else if (moveLine == 4 && moveLine != currentLine)
+                    {
+                        while (index <= numberOfLines)
+                        {
+                            #region Add and Remove Cards
+                            if (currentLine == 1)
+                            {
+                                lineFour.Add(lineOne[cardLine]);
+                                lineBox4.Items.Add(lineOne[cardLine]);
+                                lineOne.RemoveAt(cardLine);
+                                lineBox1.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 2)
+                            {
+                                lineFour.Add(lineTwo[cardLine]);
+                                lineBox4.Items.Add(lineTwo[cardLine]);
+                                lineTwo.RemoveAt(cardLine);
+                                lineBox2.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 3)
+                            {
+                                lineFour.Add(lineThree[cardLine]);
+                                lineBox4.Items.Add(lineThree[cardLine]);
+                                lineThree.RemoveAt(cardLine);
+                                lineBox3.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 5)
+                            {
+                                lineFour.Add(lineFive[cardLine]);
+                                lineBox4.Items.Add(lineFive[cardLine]);
+                                lineFive.RemoveAt(cardLine);
+                                lineBox5.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 6)
+                            {
+                                lineFour.Add(lineSix[cardLine]);
+                                lineBox4.Items.Add(lineSix[cardLine]);
+                                lineSix.RemoveAt(cardLine);
+                                lineBox6.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 7)
+                            {
+                                lineFour.Add(lineSeven[cardLine]);
+                                lineBox4.Items.Add(lineSeven[cardLine]);
+                                lineSeven.RemoveAt(cardLine);
+                                lineBox7.Items.RemoveAt(cardLine);
+                            }
+                            #endregion
+                            index++;
+                        }
+                    }
+                    else if (moveLine == 5 && moveLine != currentLine)
+                    {
+                        while (index <= numberOfLines)
+                        {
+                            #region Add and Remove Cards
+                            if (currentLine == 1)
+                            {
+                                lineFive.Add(lineOne[cardLine]);
+                                lineBox5.Items.Add(lineOne[cardLine]);
+                                lineOne.RemoveAt(cardLine);
+                                lineBox1.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 2)
+                            {
+                                lineFive.Add(lineTwo[cardLine]);
+                                lineBox5.Items.Add(lineTwo[cardLine]);
+                                lineTwo.RemoveAt(cardLine);
+                                lineBox2.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 3)
+                            {
+                                lineFive.Add(lineThree[cardLine]);
+                                lineBox5.Items.Add(lineThree[cardLine]);
+                                lineThree.RemoveAt(cardLine);
+                                lineBox3.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 4)
+                            {
+                                lineFive.Add(lineFour[cardLine]);
+                                lineBox5.Items.Add(lineFour[cardLine]);
+                                lineFour.RemoveAt(cardLine);
+                                lineBox4.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 6)
+                            {
+                                lineFive.Add(lineSix[cardLine]);
+                                lineBox5.Items.Add(lineSix[cardLine]);
+                                lineSix.RemoveAt(cardLine);
+                                lineBox6.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 7)
+                            {
+                                lineFive.Add(lineSeven[cardLine]);
+                                lineBox5.Items.Add(lineSeven[cardLine]);
+                                lineSeven.RemoveAt(cardLine);
+                                lineBox7.Items.RemoveAt(cardLine);
+                            }
+                            #endregion
+                            index++;
+                        }
+                    }
+                    else if (moveLine == 6 && moveLine != currentLine)
+                    {
+                        while (index <= numberOfLines)
+                        {
+                            #region Add and Remove Cards
+                            if (currentLine == 1)
+                            {
+                                lineSix.Add(lineOne[cardLine]);
+                                lineBox6.Items.Add(lineOne[cardLine]);
+                                lineOne.RemoveAt(cardLine);
+                                lineBox1.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 2)
+                            {
+                                lineSix.Add(lineTwo[cardLine]);
+                                lineBox6.Items.Add(lineTwo[cardLine]);
+                                lineTwo.RemoveAt(cardLine);
+                                lineBox2.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 3)
+                            {
+                                lineSix.Add(lineThree[cardLine]);
+                                lineBox6.Items.Add(lineThree[cardLine]);
+                                lineThree.RemoveAt(cardLine);
+                                lineBox3.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 4)
+                            {
+                                lineSix.Add(lineFour[cardLine]);
+                                lineBox6.Items.Add(lineFour[cardLine]);
+                                lineFour.RemoveAt(cardLine);
+                                lineBox4.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 5)
+                            {
+                                lineSix.Add(lineFive[cardLine]);
+                                lineBox6.Items.Add(lineFive[cardLine]);
+                                lineFive.RemoveAt(cardLine);
+                                lineBox5.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 7)
+                            {
+                                lineSix.Add(lineSeven[cardLine]);
+                                lineBox6.Items.Add(lineSeven[cardLine]);
+                                lineSeven.RemoveAt(cardLine);
+                                lineBox7.Items.RemoveAt(cardLine);
+                            }
+                            #endregion
+                            index++;
+                        }
+                    }
+                    else if (moveLine == 7 && moveLine != currentLine)
+                    {
+                        while (index <= numberOfLines)
+                        {
+                            #region Add and Remove Cards
+                            if (currentLine == 1)
+                            {
+                                lineSeven.Add(lineOne[cardLine]);
+                                lineBox7.Items.Add(lineOne[cardLine]);
+                                lineOne.RemoveAt(cardLine);
+                                lineBox1.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 2)
+                            {
+                                lineSeven.Add(lineTwo[cardLine]);
+                                lineBox7.Items.Add(lineTwo[cardLine]);
+                                lineTwo.RemoveAt(cardLine);
+                                lineBox2.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 3)
+                            {
+                                lineSeven.Add(lineThree[cardLine]);
+                                lineBox7.Items.Add(lineThree[cardLine]);
+                                lineThree.RemoveAt(cardLine);
+                                lineBox3.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 4)
+                            {
+                                lineSeven.Add(lineFour[cardLine]);
+                                lineBox7.Items.Add(lineFour[cardLine]);
+                                lineFour.RemoveAt(cardLine);
+                                lineBox4.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 5)
+                            {
+                                lineSeven.Add(lineFive[cardLine]);
+                                lineBox7.Items.Add(lineFive[cardLine]);
+                                lineFive.RemoveAt(cardLine);
+                                lineBox5.Items.RemoveAt(cardLine);
+                            }
+                            else if (currentLine == 6)
+                            {
+                                lineSeven.Add(lineSix[cardLine]);
+                                lineBox7.Items.Add(lineSix[cardLine]);
+                                lineSix.RemoveAt(cardLine);
+                                lineBox6.Items.RemoveAt(cardLine);
+                            }
+                            #endregion
+                            index++;
+                        }
+                    }
+                    else if (moveLine == 10 && moveLine != currentLine)
+                    {
+                        goalPileH.Add(chosenCard);
+                        heartsBox.Items.Insert(0, chosenCard);
+                        #region Remove Card
+                        if (currentLine == 2)
+                        {
+                            lineTwo.Remove(chosenCard);
+                            lineBox2.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 1)
+                        {
+                            lineOne.Remove(chosenCard);
+                            lineBox1.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 3)
+                        {
+                            lineThree.Remove(chosenCard);
+                            lineBox3.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 4)
+                        {
+                            lineFour.Remove(chosenCard);
+                            lineBox4.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 5)
+                        {
+                            lineFive.Remove(chosenCard);
+                            lineBox5.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 6)
+                        {
+                            lineSix.Remove(chosenCard);
+                            lineBox6.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 7)
+                        {
+                            lineSeven.Remove(chosenCard);
+                            lineBox7.Items.Remove(chosenCard);
+                        }
+                        #endregion
+                    }
+                    else if (moveLine == 11 && moveLine != currentLine)
+                    {
+                        goalPileD.Add(chosenCard);
+                        diamondsBox.Items.Insert(0, chosenCard);
+                        #region Remove Card
+                        if (currentLine == 2)
+                        {
+                            lineTwo.Remove(chosenCard);
+                            lineBox2.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 1)
+                        {
+                            lineOne.Remove(chosenCard);
+                            lineBox1.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 3)
+                        {
+                            lineThree.Remove(chosenCard);
+                            lineBox3.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 4)
+                        {
+                            lineFour.Remove(chosenCard);
+                            lineBox4.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 5)
+                        {
+                            lineFive.Remove(chosenCard);
+                            lineBox5.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 6)
+                        {
+                            lineSix.Remove(chosenCard);
+                            lineBox6.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 7)
+                        {
+                            lineSeven.Remove(chosenCard);
+                            lineBox7.Items.Remove(chosenCard);
+                        }
+                        #endregion
+                    }
+                    else if (moveLine == 12 && moveLine != currentLine)
+                    {
+                        goalPileC.Add(chosenCard);
+                        clubsBox.Items.Insert(0, chosenCard);
+                        #region Remove Card
+                        if (currentLine == 2)
+                        {
+                            lineTwo.Remove(chosenCard);
+                            lineBox2.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 1)
+                        {
+                            lineOne.Remove(chosenCard);
+                            lineBox1.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 3)
+                        {
+                            lineThree.Remove(chosenCard);
+                            lineBox3.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 4)
+                        {
+                            lineFour.Remove(chosenCard);
+                            lineBox4.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 5)
+                        {
+                            lineFive.Remove(chosenCard);
+                            lineBox5.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 6)
+                        {
+                            lineSix.Remove(chosenCard);
+                            lineBox6.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 7)
+                        {
+                            lineSeven.Remove(chosenCard);
+                            lineBox7.Items.Remove(chosenCard);
+                        }
+                        #endregion
+                    }
+                    else if (moveLine == 13 && moveLine != currentLine)
+                    {
+                        goalPileS.Add(chosenCard);
+                        spadesBox.Items.Insert(0, chosenCard);
+                        #region Remove Card
+                        if (currentLine == 2)
+                        {
+                            lineTwo.Remove(chosenCard);
+                            lineBox2.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 1)
+                        {
+                            lineOne.Remove(chosenCard);
+                            lineBox1.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 3)
+                        {
+                            lineThree.Remove(chosenCard);
+                            lineBox3.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 4)
+                        {
+                            lineFour.Remove(chosenCard);
+                            lineBox4.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 5)
+                        {
+                            lineFive.Remove(chosenCard);
+                            lineBox5.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 6)
+                        {
+                            lineSix.Remove(chosenCard);
+                            lineBox6.Items.Remove(chosenCard);
+                        }
+                        else if (currentLine == 7)
+                        {
+                            lineSeven.Remove(chosenCard);
+                            lineBox7.Items.Remove(chosenCard);
+                        }
+                        #endregion
+                    }
+                    #endregion
+
+                    //if (heartsBox.SelectedIndex != -1 && clubsBox.SelectedIndex != -1 && diamondsBox.SelectedIndex != -1 && spadesBox.SelectedIndex != -1)
+                    //{
+                    //    if (goalPileC.Last().StartsWith("K") && goalPileH.Last().StartsWith("K") && goalPileS.Last().StartsWith("K") && goalPileD.Last().StartsWith("K"))
+                    //    {
+                    //        gameTimer.Stop();
+                    //        WinScreen();
+                    //    }
+                    //}
                 }
-                else if (currentLine == 2 && currentLine != moveLine)
-                {
-                    lineTwo.Remove(chosenCard);
-                    lineBox2.Items.Remove(chosenCard);
-                }
-                else if (currentLine == 3 && currentLine != moveLine)
-                {
-                    lineThree.Remove(chosenCard);
-                    lineBox3.Items.Remove(chosenCard);
-                }
-                else if (currentLine == 4 && currentLine != moveLine)
-                {
-                    lineFour.Remove(chosenCard);
-                    lineBox4.Items.Remove(chosenCard);
-                }
-                else if (currentLine == 5 && currentLine != moveLine)
-                {
-                    lineFive.Remove(chosenCard);
-                    lineBox5.Items.Remove(chosenCard);
-                }
-                else if (currentLine == 6 && currentLine != moveLine)
-                {
-                    lineSix.Remove(chosenCard);
-                    lineBox6.Items.Remove(chosenCard);
-                }
-                else if (currentLine == 7 && currentLine != moveLine)
-                {
-                    lineSeven.Remove(chosenCard);
-                    lineBox7.Items.Remove(chosenCard);
-                }
-                #endregion
-                //if (heartsBox.SelectedIndex != -1 && clubsBox.SelectedIndex != -1 && diamondsBox.SelectedIndex != -1 && spadesBox.SelectedIndex != -1)
-                //{
-                //    if (goalPileC.Last().StartsWith("K") && goalPileH.Last().StartsWith("K") && goalPileS.Last().StartsWith("K") && goalPileD.Last().StartsWith("K"))
-                //    {
-                //        gameTimer.Stop();
-                //        WinScreen();
-                //    }
-                //}
             }
         }
 
@@ -2206,6 +2683,7 @@ namespace Final_Project_Rams_Solitaire
             movesNumber.Text = "MOVES: " + moveCount;
             numberOfLines = 0;
             index = 100;
+            cardUp = true;
             if (playCardBox.SelectedIndex != -1)
             {
                 chosenCard = playCardBox.SelectedItem.ToString();
