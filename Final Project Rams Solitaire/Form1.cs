@@ -62,58 +62,58 @@ namespace Final_Project_Rams_Solitaire
         private void loadButton_Click(object sender, EventArgs e)
         {
             #region Add start cards
-            startPile.Add("AceH");
-            startPile.Add("AceD");
-            startPile.Add("AceS");
-            startPile.Add("AceC");
-            startPile.Add("TwoH");
-            startPile.Add("TwoD");
-            startPile.Add("TwoS");
-            startPile.Add("TwoC");
-            startPile.Add("ThreeH");
-            startPile.Add("ThreeD");
-            startPile.Add("ThreeS");
-            startPile.Add("ThreeC");
-            startPile.Add("FourH");
-            startPile.Add("FourD");
-            startPile.Add("FourS");
-            startPile.Add("FourC");
-            startPile.Add("FiveH");
-            startPile.Add("FiveD");
-            startPile.Add("FiveS");
-            startPile.Add("FiveC");
-            startPile.Add("SixH");
-            startPile.Add("SixD");
-            startPile.Add("SixS");
-            startPile.Add("SixC");
-            startPile.Add("SevenH");
-            startPile.Add("SevenD");
-            startPile.Add("SevenS");
-            startPile.Add("SevenC");
-            startPile.Add("EightH");
-            startPile.Add("EightD");
-            startPile.Add("EightS");
-            startPile.Add("EightC");
-            startPile.Add("NineH");
-            startPile.Add("NineD");
-            startPile.Add("NineS");
-            startPile.Add("NineC");
-            startPile.Add("TenH");
-            startPile.Add("TenD");
-            startPile.Add("TenS");
-            startPile.Add("TenC");
-            startPile.Add("JackH");
-            startPile.Add("JackD");
-            startPile.Add("JackS");
-            startPile.Add("JackC");
-            startPile.Add("QueenH");
-            startPile.Add("QueenD");
-            startPile.Add("QueenS");
-            startPile.Add("QueenC");
-            startPile.Add("KingH");
-            startPile.Add("KingD");
-            startPile.Add("KingS");
-            startPile.Add("KingC");
+            startPile.Add("Ace♥H");
+            startPile.Add("Ace♦D");       
+            startPile.Add("Ace♠S");
+            startPile.Add("Ace♣C");
+            startPile.Add("Two♥H");
+            startPile.Add("Two♦D");
+            startPile.Add("Two♠S");
+            startPile.Add("Two♣C");
+            startPile.Add("Three♥H");
+            startPile.Add("Three♦D");
+            startPile.Add("Three♠S");
+            startPile.Add("Three♣C");
+            startPile.Add("Four♥H");
+            startPile.Add("Four♦D");
+            startPile.Add("Four♠S");
+            startPile.Add("Four♣C");
+            startPile.Add("Five♥H");
+            startPile.Add("Five♦D");
+            startPile.Add("Five♠S");
+            startPile.Add("Five♣C");
+            startPile.Add("Six♥H");
+            startPile.Add("Six♦D");
+            startPile.Add("Six♠S");
+            startPile.Add("Six♣C");
+            startPile.Add("Seven♥H");
+            startPile.Add("Seven♦D");
+            startPile.Add("Seven♠S");
+            startPile.Add("Seven♣C");
+            startPile.Add("Eight♥H");
+            startPile.Add("Eight♦D");
+            startPile.Add("Eight♠S");
+            startPile.Add("Eight♣C");
+            startPile.Add("Nine♥H");
+            startPile.Add("Nine♦D");
+            startPile.Add("Nine♠S");
+            startPile.Add("Nine♣C");
+            startPile.Add("Ten♥H");
+            startPile.Add("Ten♦D");
+            startPile.Add("Ten♠S");
+            startPile.Add("Ten♣C");
+            startPile.Add("Jack♥H");
+            startPile.Add("Jack♦D");
+            startPile.Add("Jack♠S");
+            startPile.Add("Jack♣C");
+            startPile.Add("Queen♥H");
+            startPile.Add("Queen♦D");
+            startPile.Add("Queen♠S");
+            startPile.Add("Queen♣C");
+            startPile.Add("King♥H");
+            startPile.Add("King♦D");
+            startPile.Add("King♠S");
+            startPile.Add("King♣C");
             #endregion
 
             #region Deal Random Cards
@@ -238,6 +238,34 @@ namespace Final_Project_Rams_Solitaire
                     {
                         lineSeven.Add(chosenCard);
                         lineBox7.Items.Add(chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 10 && moveLine != currentLine)
+                    {
+                        goalPileH.Add(chosenCard);
+                        heartsBox.Items.Insert(0,chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 11 && moveLine != currentLine)
+                    {
+                        goalPileD.Add(chosenCard);
+                        diamondsBox.Items.Insert(0, chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 12 && moveLine != currentLine)
+                    {
+                        goalPileC.Add(chosenCard);
+                        clubsBox.Items.Insert(0,chosenCard);
+                        playPile.Remove(chosenCard);
+                        playCardBox.Items.Remove(chosenCard);
+                    }
+                    else if (moveLine == 13 && moveLine != currentLine)
+                    {
+                        goalPileS.Add(chosenCard);
+                        spadesBox.Items.Insert(0,chosenCard);
                         playPile.Remove(chosenCard);
                         playCardBox.Items.Remove(chosenCard);
                     }

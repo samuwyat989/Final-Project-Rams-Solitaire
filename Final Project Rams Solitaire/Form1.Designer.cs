@@ -52,6 +52,7 @@
             this.spadesLabel = new System.Windows.Forms.Label();
             this.drawCardButton = new System.Windows.Forms.Button();
             this.playCardBox = new System.Windows.Forms.ListBox();
+            this.displayTimeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loadButton
@@ -73,82 +74,100 @@
             // 
             this.minLabel.AutoSize = true;
             this.minLabel.BackColor = System.Drawing.Color.Transparent;
+            this.minLabel.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minLabel.ForeColor = System.Drawing.Color.White;
-            this.minLabel.Location = new System.Drawing.Point(786, 140);
+            this.minLabel.Location = new System.Drawing.Point(529, 68);
             this.minLabel.Name = "minLabel";
-            this.minLabel.Size = new System.Drawing.Size(0, 13);
+            this.minLabel.Size = new System.Drawing.Size(30, 32);
             this.minLabel.TabIndex = 8;
+            this.minLabel.Text = "0";
             // 
             // secLabel
             // 
             this.secLabel.AutoSize = true;
             this.secLabel.BackColor = System.Drawing.Color.Transparent;
+            this.secLabel.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.secLabel.ForeColor = System.Drawing.Color.White;
-            this.secLabel.Location = new System.Drawing.Point(812, 140);
+            this.secLabel.Location = new System.Drawing.Point(554, 68);
             this.secLabel.Name = "secLabel";
-            this.secLabel.Size = new System.Drawing.Size(0, 13);
+            this.secLabel.Size = new System.Drawing.Size(61, 32);
             this.secLabel.TabIndex = 9;
+            this.secLabel.Text = ": 00";
             // 
             // lineBox1
             // 
+            this.lineBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineBox1.FormattingEnabled = true;
-            this.lineBox1.Location = new System.Drawing.Point(30, 220);
+            this.lineBox1.ItemHeight = 20;
+            this.lineBox1.Location = new System.Drawing.Point(30, 140);
             this.lineBox1.Name = "lineBox1";
-            this.lineBox1.Size = new System.Drawing.Size(100, 238);
+            this.lineBox1.Size = new System.Drawing.Size(100, 324);
             this.lineBox1.TabIndex = 10;
             this.lineBox1.Click += new System.EventHandler(this.listBox1_Click);
             // 
             // lineBox2
             // 
+            this.lineBox2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineBox2.FormattingEnabled = true;
-            this.lineBox2.Location = new System.Drawing.Point(136, 220);
+            this.lineBox2.ItemHeight = 20;
+            this.lineBox2.Location = new System.Drawing.Point(136, 140);
             this.lineBox2.Name = "lineBox2";
-            this.lineBox2.Size = new System.Drawing.Size(100, 238);
+            this.lineBox2.Size = new System.Drawing.Size(100, 324);
             this.lineBox2.TabIndex = 11;
             this.lineBox2.Click += new System.EventHandler(this.listBox2_Click);
             // 
             // lineBox3
             // 
+            this.lineBox3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineBox3.FormattingEnabled = true;
-            this.lineBox3.Location = new System.Drawing.Point(242, 220);
+            this.lineBox3.ItemHeight = 20;
+            this.lineBox3.Location = new System.Drawing.Point(242, 140);
             this.lineBox3.Name = "lineBox3";
-            this.lineBox3.Size = new System.Drawing.Size(100, 238);
+            this.lineBox3.Size = new System.Drawing.Size(100, 324);
             this.lineBox3.TabIndex = 12;
             this.lineBox3.Click += new System.EventHandler(this.listBox3_Click);
             // 
             // lineBox4
             // 
+            this.lineBox4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineBox4.FormattingEnabled = true;
-            this.lineBox4.Location = new System.Drawing.Point(348, 220);
+            this.lineBox4.ItemHeight = 20;
+            this.lineBox4.Location = new System.Drawing.Point(348, 140);
             this.lineBox4.Name = "lineBox4";
-            this.lineBox4.Size = new System.Drawing.Size(100, 238);
+            this.lineBox4.Size = new System.Drawing.Size(100, 324);
             this.lineBox4.TabIndex = 13;
             this.lineBox4.Click += new System.EventHandler(this.listBox4_Click);
             // 
             // lineBox5
             // 
+            this.lineBox5.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineBox5.FormattingEnabled = true;
-            this.lineBox5.Location = new System.Drawing.Point(454, 220);
+            this.lineBox5.ItemHeight = 20;
+            this.lineBox5.Location = new System.Drawing.Point(454, 140);
             this.lineBox5.Name = "lineBox5";
-            this.lineBox5.Size = new System.Drawing.Size(100, 238);
+            this.lineBox5.Size = new System.Drawing.Size(100, 324);
             this.lineBox5.TabIndex = 14;
             this.lineBox5.Click += new System.EventHandler(this.listBox5_Click);
             // 
             // lineBox6
             // 
+            this.lineBox6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineBox6.FormattingEnabled = true;
-            this.lineBox6.Location = new System.Drawing.Point(560, 220);
+            this.lineBox6.ItemHeight = 20;
+            this.lineBox6.Location = new System.Drawing.Point(560, 140);
             this.lineBox6.Name = "lineBox6";
-            this.lineBox6.Size = new System.Drawing.Size(100, 238);
+            this.lineBox6.Size = new System.Drawing.Size(100, 324);
             this.lineBox6.TabIndex = 15;
             this.lineBox6.Click += new System.EventHandler(this.listBox6_Click);
             // 
             // lineBox7
             // 
+            this.lineBox7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineBox7.FormattingEnabled = true;
-            this.lineBox7.Location = new System.Drawing.Point(666, 220);
+            this.lineBox7.ItemHeight = 20;
+            this.lineBox7.Location = new System.Drawing.Point(666, 140);
             this.lineBox7.Name = "lineBox7";
-            this.lineBox7.Size = new System.Drawing.Size(100, 238);
+            this.lineBox7.Size = new System.Drawing.Size(100, 324);
             this.lineBox7.TabIndex = 16;
             this.lineBox7.Click += new System.EventHandler(this.listBox7_Click);
             // 
@@ -156,11 +175,13 @@
             // 
             this.movesNumber.AutoSize = true;
             this.movesNumber.BackColor = System.Drawing.Color.Transparent;
+            this.movesNumber.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.movesNumber.ForeColor = System.Drawing.Color.White;
-            this.movesNumber.Location = new System.Drawing.Point(786, 106);
+            this.movesNumber.Location = new System.Drawing.Point(416, 23);
             this.movesNumber.Name = "movesNumber";
-            this.movesNumber.Size = new System.Drawing.Size(0, 13);
+            this.movesNumber.Size = new System.Drawing.Size(143, 32);
             this.movesNumber.TabIndex = 17;
+            this.movesNumber.Text = "MOVES: 0";
             // 
             // heartsBox
             // 
@@ -244,9 +265,9 @@
             // 
             // drawCardButton
             // 
-            this.drawCardButton.Location = new System.Drawing.Point(30, 112);
+            this.drawCardButton.Location = new System.Drawing.Point(217, 23);
             this.drawCardButton.Name = "drawCardButton";
-            this.drawCardButton.Size = new System.Drawing.Size(181, 46);
+            this.drawCardButton.Size = new System.Drawing.Size(181, 58);
             this.drawCardButton.TabIndex = 26;
             this.drawCardButton.Text = "DRAW CARD";
             this.drawCardButton.UseVisualStyleBackColor = true;
@@ -254,12 +275,26 @@
             // 
             // playCardBox
             // 
+            this.playCardBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playCardBox.FormattingEnabled = true;
-            this.playCardBox.Location = new System.Drawing.Point(30, 164);
+            this.playCardBox.ItemHeight = 15;
+            this.playCardBox.Location = new System.Drawing.Point(217, 87);
             this.playCardBox.Name = "playCardBox";
-            this.playCardBox.Size = new System.Drawing.Size(181, 17);
+            this.playCardBox.Size = new System.Drawing.Size(181, 19);
             this.playCardBox.TabIndex = 27;
             this.playCardBox.Click += new System.EventHandler(this.playCardBox_Click);
+            // 
+            // displayTimeLabel
+            // 
+            this.displayTimeLabel.AutoSize = true;
+            this.displayTimeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.displayTimeLabel.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayTimeLabel.ForeColor = System.Drawing.Color.White;
+            this.displayTimeLabel.Location = new System.Drawing.Point(416, 68);
+            this.displayTimeLabel.Name = "displayTimeLabel";
+            this.displayTimeLabel.Size = new System.Drawing.Size(120, 32);
+            this.displayTimeLabel.TabIndex = 28;
+            this.displayTimeLabel.Text = "TIME    :";
             // 
             // Form1
             // 
@@ -267,6 +302,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Final_Project_Rams_Solitaire.Properties.Resources.poker_table;
             this.ClientSize = new System.Drawing.Size(928, 484);
+            this.Controls.Add(this.displayTimeLabel);
             this.Controls.Add(this.playCardBox);
             this.Controls.Add(this.drawCardButton);
             this.Controls.Add(this.spadesLabel);
@@ -321,6 +357,7 @@
         private System.Windows.Forms.Label spadesLabel;
         private System.Windows.Forms.Button drawCardButton;
         private System.Windows.Forms.ListBox playCardBox;
+        private System.Windows.Forms.Label displayTimeLabel;
     }
 }
 
