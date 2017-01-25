@@ -302,10 +302,15 @@ namespace Final_Project_Rams_Solitaire
                             lineBox1.Items.Add(lineTwo[cardLine]);
                             lineTwo.RemoveAt(cardLine);
                             lineBox2.Items.RemoveAt(cardLine);
-                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                if (lineBox2.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                }
                             }
+                            catch { }
+
                         }
                         else if (currentLine == 3)
                         {
@@ -313,10 +318,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox1.Items.Add(lineThree[cardLine]);
                             lineThree.RemoveAt(cardLine);
                             lineBox3.Items.RemoveAt(cardLine);
-                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                if (lineBox3.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 4)
                         {
@@ -324,10 +333,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox1.Items.Add(lineFour[cardLine]);
                             lineFour.RemoveAt(cardLine);
                             lineBox4.Items.RemoveAt(cardLine);
-                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                if (lineBox4.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 5)
                         {
@@ -335,10 +348,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox1.Items.Add(lineFive[cardLine]);
                             lineFive.RemoveAt(cardLine);
                             lineBox5.Items.RemoveAt(cardLine);
-                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                if (lineBox5.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 6)
                         {
@@ -346,10 +363,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox1.Items.Add(lineSix[cardLine]);
                             lineSix.RemoveAt(cardLine);
                             lineBox6.Items.RemoveAt(cardLine);
-                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                if (lineBox6.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 7)
                         {
@@ -357,10 +378,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox1.Items.Add(lineSeven[cardLine]);
                             lineSeven.RemoveAt(cardLine);
                             lineBox7.Items.RemoveAt(cardLine);
-                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                if (lineBox7.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         #endregion
                         index++;
@@ -384,10 +409,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox2.Items.Add(lineThree[cardLine]);
                             lineThree.RemoveAt(cardLine);
                             lineBox3.Items.RemoveAt(cardLine);
-                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                if (lineBox3.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 4)
                         {
@@ -395,10 +424,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox2.Items.Add(lineFour[cardLine]);
                             lineFour.RemoveAt(cardLine);
                             lineBox4.Items.RemoveAt(cardLine);
-                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                if (lineBox4.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 5)
                         {
@@ -406,10 +439,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox2.Items.Add(lineFive[cardLine]);
                             lineFive.RemoveAt(cardLine);
                             lineBox5.Items.RemoveAt(cardLine);
-                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                if (lineBox5.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 6)
                         {
@@ -417,10 +454,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox2.Items.Add(lineSix[cardLine]);
                             lineSix.RemoveAt(cardLine);
                             lineBox6.Items.RemoveAt(cardLine);
-                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                if (lineBox6.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 7)
                         {
@@ -428,10 +469,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox2.Items.Add(lineSeven[cardLine]);
                             lineSeven.RemoveAt(cardLine);
                             lineBox7.Items.RemoveAt(cardLine);
-                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                if (lineBox7.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         #endregion
                         index++;
@@ -455,10 +500,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox3.Items.Add(lineTwo[cardLine]);
                             lineTwo.RemoveAt(cardLine);
                             lineBox2.Items.RemoveAt(cardLine);
-                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                if (lineBox2.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 4)
                         {
@@ -466,10 +515,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox3.Items.Add(lineFour[cardLine]);
                             lineFour.RemoveAt(cardLine);
                             lineBox4.Items.RemoveAt(cardLine);
-                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                if (lineBox4.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 5)
                         {
@@ -477,10 +530,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox3.Items.Add(lineFive[cardLine]);
                             lineFive.RemoveAt(cardLine);
                             lineBox5.Items.RemoveAt(cardLine);
-                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                if (lineBox5.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 6)
                         {
@@ -488,10 +545,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox3.Items.Add(lineSix[cardLine]);
                             lineSix.RemoveAt(cardLine);
                             lineBox6.Items.RemoveAt(cardLine);
-                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                if (lineBox6.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 7)
                         {
@@ -499,10 +560,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox3.Items.Add(lineSeven[cardLine]);
                             lineSeven.RemoveAt(cardLine);
                             lineBox7.Items.RemoveAt(cardLine);
-                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                if (lineBox7.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         #endregion
                         index++;
@@ -526,10 +591,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox4.Items.Add(lineTwo[cardLine]);
                             lineTwo.RemoveAt(cardLine);
                             lineBox2.Items.RemoveAt(cardLine);
-                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                if (lineBox2.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 3)
                         {
@@ -537,10 +606,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox4.Items.Add(lineThree[cardLine]);
                             lineThree.RemoveAt(cardLine);
                             lineBox3.Items.RemoveAt(cardLine);
-                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                if (lineBox3.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 5)
                         {
@@ -548,10 +621,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox4.Items.Add(lineFive[cardLine]);
                             lineFive.RemoveAt(cardLine);
                             lineBox5.Items.RemoveAt(cardLine);
-                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                if (lineBox5.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 6)
                         {
@@ -559,10 +636,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox4.Items.Add(lineSix[cardLine]);
                             lineSix.RemoveAt(cardLine);
                             lineBox6.Items.RemoveAt(cardLine);
-                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                if (lineBox6.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 7)
                         {
@@ -570,10 +651,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox4.Items.Add(lineSeven[cardLine]);
                             lineSeven.RemoveAt(cardLine);
                             lineBox7.Items.RemoveAt(cardLine);
-                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                if (lineBox7.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         #endregion
                         index++;
@@ -597,10 +682,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox5.Items.Add(lineTwo[cardLine]);
                             lineTwo.RemoveAt(cardLine);
                             lineBox2.Items.RemoveAt(cardLine);
-                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                if (lineBox2.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 3)
                         {
@@ -608,10 +697,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox5.Items.Add(lineThree[cardLine]);
                             lineThree.RemoveAt(cardLine);
                             lineBox3.Items.RemoveAt(cardLine);
-                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                if (lineBox3.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 4)
                         {
@@ -619,10 +712,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox5.Items.Add(lineFour[cardLine]);
                             lineFour.RemoveAt(cardLine);
                             lineBox4.Items.RemoveAt(cardLine);
-                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                if (lineBox4.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 6)
                         {
@@ -630,10 +727,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox5.Items.Add(lineSix[cardLine]);
                             lineSix.RemoveAt(cardLine);
                             lineBox6.Items.RemoveAt(cardLine);
-                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                if (lineBox6.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 7)
                         {
@@ -641,10 +742,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox5.Items.Add(lineSeven[cardLine]);
                             lineSeven.RemoveAt(cardLine);
                             lineBox7.Items.RemoveAt(cardLine);
-                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                if (lineBox7.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         #endregion
                         index++;
@@ -668,10 +773,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox6.Items.Add(lineTwo[cardLine]);
                             lineTwo.RemoveAt(cardLine);
                             lineBox2.Items.RemoveAt(cardLine);
-                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                if (lineBox2.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 3)
                         {
@@ -679,10 +788,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox6.Items.Add(lineThree[cardLine]);
                             lineThree.RemoveAt(cardLine);
                             lineBox3.Items.RemoveAt(cardLine);
-                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                if (lineBox3.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 4)
                         {
@@ -690,10 +803,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox6.Items.Add(lineFour[cardLine]);
                             lineFour.RemoveAt(cardLine);
                             lineBox4.Items.RemoveAt(cardLine);
-                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                if (lineBox4.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 5)
                         {
@@ -701,10 +818,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox6.Items.Add(lineFive[cardLine]);
                             lineFive.RemoveAt(cardLine);
                             lineBox5.Items.RemoveAt(cardLine);
-                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                if (lineBox5.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 7)
                         {
@@ -712,10 +833,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox6.Items.Add(lineSeven[cardLine]);
                             lineSeven.RemoveAt(cardLine);
                             lineBox7.Items.RemoveAt(cardLine);
-                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                if (lineBox7.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         #endregion
                         index++;
@@ -739,10 +864,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox7.Items.Add(lineTwo[cardLine]);
                             lineTwo.RemoveAt(cardLine);
                             lineBox2.Items.RemoveAt(cardLine);
-                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                if (lineBox2.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 3)
                         {
@@ -750,10 +879,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox7.Items.Add(lineThree[cardLine]);
                             lineThree.RemoveAt(cardLine);
                             lineBox3.Items.RemoveAt(cardLine);
-                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                if (lineBox3.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 4)
                         {
@@ -761,10 +894,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox7.Items.Add(lineFour[cardLine]);
                             lineFour.RemoveAt(cardLine);
                             lineBox4.Items.RemoveAt(cardLine);
-                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                if (lineBox4.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 5)
                         {
@@ -772,10 +909,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox7.Items.Add(lineFive[cardLine]);
                             lineFive.RemoveAt(cardLine);
                             lineBox5.Items.RemoveAt(cardLine);
-                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                if (lineBox5.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         else if (currentLine == 6)
                         {
@@ -783,10 +924,14 @@ namespace Final_Project_Rams_Solitaire
                             lineBox7.Items.Add(lineSix[cardLine]);
                             lineSix.RemoveAt(cardLine);
                             lineBox6.Items.RemoveAt(cardLine);
-                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            try
                             {
-                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                if (lineBox6.Items[cardLine - 1] == "Face Down")
+                                {
+                                    lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                                }
                             }
+                            catch { }
                         }
                         #endregion
                         index++;
@@ -799,10 +944,14 @@ namespace Final_Project_Rams_Solitaire
                     #region Remove Card
                     if (currentLine == 2)
                     {
-                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineTwo.Remove(chosenCard);
                         lineBox2.Items.Remove(chosenCard);
                     }
@@ -813,46 +962,67 @@ namespace Final_Project_Rams_Solitaire
                     }
                     else if (currentLine == 3)
                     {
-                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
+
                         }
+                        catch { }
                         lineThree.Remove(chosenCard);
                         lineBox3.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 4)
                     {
-                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFour.Remove(chosenCard);
                         lineBox4.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 5)
                     {
-                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFive.Remove(chosenCard);
                         lineBox5.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 6)
                     {
-                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSix.Remove(chosenCard);
                         lineBox6.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 7)
                     {
-                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSeven.Remove(chosenCard);
                         lineBox7.Items.Remove(chosenCard);
                     }
@@ -865,10 +1035,14 @@ namespace Final_Project_Rams_Solitaire
                     #region Remove Card
                     if (currentLine == 2)
                     {
-                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineTwo.Remove(chosenCard);
                         lineBox2.Items.Remove(chosenCard);
                     }
@@ -879,46 +1053,66 @@ namespace Final_Project_Rams_Solitaire
                     }
                     else if (currentLine == 3)
                     {
-                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineThree.Remove(chosenCard);
                         lineBox3.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 4)
                     {
-                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFour.Remove(chosenCard);
                         lineBox4.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 5)
                     {
-                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFive.Remove(chosenCard);
                         lineBox5.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 6)
                     {
-                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSix.Remove(chosenCard);
                         lineBox6.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 7)
                     {
-                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSeven.Remove(chosenCard);
                         lineBox7.Items.Remove(chosenCard);
                     }
@@ -931,10 +1125,14 @@ namespace Final_Project_Rams_Solitaire
                     #region Remove Card
                     if (currentLine == 2)
                     {
-                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineTwo.Remove(chosenCard);
                         lineBox2.Items.Remove(chosenCard);
                     }
@@ -945,46 +1143,66 @@ namespace Final_Project_Rams_Solitaire
                     }
                     else if (currentLine == 3)
                     {
-                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineThree.Remove(chosenCard);
                         lineBox3.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 4)
                     {
-                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFour.Remove(chosenCard);
                         lineBox4.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 5)
                     {
-                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFive.Remove(chosenCard);
                         lineBox5.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 6)
                     {
-                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSix.Remove(chosenCard);
                         lineBox6.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 7)
                     {
-                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSeven.Remove(chosenCard);
                         lineBox7.Items.Remove(chosenCard);
                     }
@@ -997,12 +1215,16 @@ namespace Final_Project_Rams_Solitaire
                     #region Remove Card
                     if (currentLine == 2)
                     {
-                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
+                            lineTwo.Remove(chosenCard);
+                            lineBox2.Items.Remove(chosenCard);
                         }
-                        lineTwo.Remove(chosenCard);
-                        lineBox2.Items.Remove(chosenCard);
+                        catch { }
                     }
                     else if (currentLine == 1)
                     {
@@ -1011,46 +1233,66 @@ namespace Final_Project_Rams_Solitaire
                     }
                     else if (currentLine == 3)
                     {
-                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineThree.Remove(chosenCard);
                         lineBox3.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 4)
                     {
-                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFour.Remove(chosenCard);
                         lineBox4.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 5)
                     {
-                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineFive.Remove(chosenCard);
                         lineBox5.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 6)
                     {
-                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSix.Remove(chosenCard);
                         lineBox6.Items.Remove(chosenCard);
                     }
                     else if (currentLine == 7)
                     {
-                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        try
                         {
-                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
+                        catch { }
                         lineSeven.Remove(chosenCard);
                         lineBox7.Items.Remove(chosenCard);
                     }
