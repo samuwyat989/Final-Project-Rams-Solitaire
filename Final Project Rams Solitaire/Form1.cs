@@ -14,7 +14,6 @@ namespace Final_Project_Rams_Solitaire
 {
     public partial class Form1 : Form
     {
-        bool cardUp;
         string chosenCard;
         int numberOfLines;
         int index;
@@ -127,52 +126,71 @@ namespace Final_Project_Rams_Solitaire
             {
                 r = cardDeal.Next(startPile.Count);
                 lineTwo.Add((string)startPile[r]);
-                lineBox2.Items.Add((string)startPile[r]);
                 startPile.Remove((string)startPile[r]);
             }
+            lineBox2.Items.Add("Face Down");
+            lineBox2.Items.Add(lineTwo[1]);
 
             for (int i = 0; i < 3; i++)
             {
                 r = cardDeal.Next(startPile.Count);
                 lineThree.Add((string)startPile[r]);
-                lineBox3.Items.Add((string)startPile[r]);
                 startPile.Remove((string)startPile[r]);
             }
-
+            lineBox3.Items.Add("Face Down");
+            lineBox3.Items.Add("Face Down");
+            lineBox3.Items.Add(lineThree[2]);
 
             for (int i = 0; i < 4; i++)
             {
                 r = cardDeal.Next(startPile.Count);
                 lineFour.Add((string)startPile[r]);
-                lineBox4.Items.Add((string)startPile[r]);
                 startPile.Remove((string)startPile[r]);
             }
-
+            lineBox4.Items.Add("Face Down");
+            lineBox4.Items.Add("Face Down");
+            lineBox4.Items.Add("Face Down");
+            lineBox4.Items.Add(lineFour[3]);
 
             for (int i = 0; i < 5; i++)
             {
                 r = cardDeal.Next(startPile.Count);
                 lineFive.Add((string)startPile[r]);
-                lineBox5.Items.Add((string)startPile[r]);
                 startPile.Remove((string)startPile[r]);
             }
+            lineBox5.Items.Add("Face Down");
+            lineBox5.Items.Add("Face Down");
+            lineBox5.Items.Add("Face Down");
+            lineBox5.Items.Add("Face Down");
+            lineBox5.Items.Add(lineFive[4]);
 
             for (int i = 0; i < 6; i++)
             {
                 r = cardDeal.Next(startPile.Count);
                 lineSix.Add((string)startPile[r]);
-                lineBox6.Items.Add((string)startPile[r]);
                 startPile.Remove((string)startPile[r]);
             }
-
+            lineBox6.Items.Add("Face Down");
+            lineBox6.Items.Add("Face Down");
+            lineBox6.Items.Add("Face Down");
+            lineBox6.Items.Add("Face Down");
+            lineBox6.Items.Add("Face Down");
+            lineBox6.Items.Add(lineSix[5]);
 
             for (int i = 0; i < 7; i++)
             {
                 r = cardDeal.Next(startPile.Count);
                 lineSeven.Add((string)startPile[r]);
-                lineBox7.Items.Add((string)startPile[r]);
                 startPile.Remove((string)startPile[r]);
             }
+            lineBox7.Items.Add("Face Down");
+            lineBox7.Items.Add("Face Down");
+            lineBox7.Items.Add("Face Down");
+            lineBox7.Items.Add("Face Down");
+            lineBox7.Items.Add("Face Down");
+            lineBox7.Items.Add("Face Down");
+            lineBox7.Items.Add(lineSeven[6]);
+
             for (int i = 0; i < 24; i++)
             {
                 r = cardDeal.Next(startPile.Count);
@@ -186,9 +204,7 @@ namespace Final_Project_Rams_Solitaire
         }
 
         public void MoveCard(int moveLine, int currentLine, int index, int numberOfLines)
-        {
-            if (cardUp)
-            {
+        {  
                 if (currentLine == 0)
                 {
                     #region Move cards from the play card box
@@ -274,533 +290,775 @@ namespace Final_Project_Rams_Solitaire
                 else
                 {
                     int cardLine = index;
-                    #region Move playing line cards
-                    if (moveLine == 1 && moveLine != currentLine)
+                #region Move playing line cards
+                if (moveLine == 1 && moveLine != currentLine)
+                {
+                    while (index <= numberOfLines)
                     {
-                        while (index <= numberOfLines)
-                        {
-                            #region Add and Remove Cards
-                            if (currentLine == 2)
-                            {
-                                lineOne.Add(lineTwo[cardLine]);
-                                lineBox1.Items.Add(lineTwo[cardLine]);
-                                lineTwo.RemoveAt(cardLine);
-                                lineBox2.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 3)
-                            {
-                                lineOne.Add(lineThree[cardLine]);
-                                lineBox1.Items.Add(lineThree[cardLine]);
-                                lineThree.RemoveAt(cardLine);
-                                lineBox3.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 4)
-                            {
-                                lineOne.Add(lineFour[cardLine]);
-                                lineBox1.Items.Add(lineFour[cardLine]);
-                                lineFour.RemoveAt(cardLine);
-                                lineBox4.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 5)
-                            {
-                                lineOne.Add(lineFive[cardLine]);
-                                lineBox1.Items.Add(lineFive[cardLine]);
-                                lineFive.RemoveAt(cardLine);
-                                lineBox5.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 6)
-                            {
-                                lineOne.Add(lineSix[cardLine]);
-                                lineBox1.Items.Add(lineSix[cardLine]);
-                                lineSix.RemoveAt(cardLine);
-                                lineBox6.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 7)
-                            {
-                                lineOne.Add(lineSeven[cardLine]);
-                                lineBox1.Items.Add(lineSeven[cardLine]);
-                                lineSeven.RemoveAt(cardLine);
-                                lineBox7.Items.RemoveAt(cardLine);
-                            }
-                            #endregion
-                            index++;
-                        }
-                    }
-                    else if (moveLine == 2 && moveLine != currentLine)
-                    {
-                        while (index <= numberOfLines)
-                        {
-                            #region Add and Remove Cards
-                            if (currentLine == 1)
-                            {
-                                lineTwo.Add(lineOne[cardLine]);
-                                lineBox2.Items.Add(lineOne[cardLine]);
-                                lineOne.RemoveAt(cardLine);
-                                lineBox1.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 3)
-                            {
-                                lineTwo.Add(lineThree[cardLine]);
-                                lineBox2.Items.Add(lineThree[cardLine]);
-                                lineThree.RemoveAt(cardLine);
-                                lineBox3.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 4)
-                            {
-                                lineTwo.Add(lineFour[cardLine]);
-                                lineBox2.Items.Add(lineFour[cardLine]);
-                                lineFour.RemoveAt(cardLine);
-                                lineBox4.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 5)
-                            {
-                                lineTwo.Add(lineFive[cardLine]);
-                                lineBox2.Items.Add(lineFive[cardLine]);
-                                lineFive.RemoveAt(cardLine);
-                                lineBox5.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 6)
-                            {
-                                lineTwo.Add(lineSix[cardLine]);
-                                lineBox2.Items.Add(lineSix[cardLine]);
-                                lineSix.RemoveAt(cardLine);
-                                lineBox6.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 7)
-                            {
-                                lineTwo.Add(lineSeven[cardLine]);
-                                lineBox2.Items.Add(lineSeven[cardLine]);
-                                lineSeven.RemoveAt(cardLine);
-                                lineBox7.Items.RemoveAt(cardLine);
-                            }
-                            #endregion
-                            index++;
-                        }
-                    }
-                    else if (moveLine == 3 && moveLine != currentLine)
-                    {
-                        while (index <= numberOfLines)
-                        {
-                            #region Add and Remove Cards
-                            if (currentLine == 1)
-                            {
-                                lineThree.Add(lineOne[cardLine]);
-                                lineBox3.Items.Add(lineOne[cardLine]);
-                                lineOne.RemoveAt(cardLine);
-                                lineBox1.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 2)
-                            {
-                                lineThree.Add(lineTwo[cardLine]);
-                                lineBox3.Items.Add(lineTwo[cardLine]);
-                                lineTwo.RemoveAt(cardLine);
-                                lineBox2.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 4)
-                            {
-                                lineThree.Add(lineFour[cardLine]);
-                                lineBox3.Items.Add(lineFour[cardLine]);
-                                lineFour.RemoveAt(cardLine);
-                                lineBox4.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 5)
-                            {
-                                lineThree.Add(lineFive[cardLine]);
-                                lineBox3.Items.Add(lineFive[cardLine]);
-                                lineFive.RemoveAt(cardLine);
-                                lineBox5.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 6)
-                            {
-                                lineThree.Add(lineSix[cardLine]);
-                                lineBox3.Items.Add(lineSix[cardLine]);
-                                lineSix.RemoveAt(cardLine);
-                                lineBox6.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 7)
-                            {
-                                lineThree.Add(lineSeven[cardLine]);
-                                lineBox3.Items.Add(lineSeven[cardLine]);
-                                lineSeven.RemoveAt(cardLine);
-                                lineBox7.Items.RemoveAt(cardLine);
-                            }
-                            #endregion
-                            index++;
-                        }
-                    }
-                    else if (moveLine == 4 && moveLine != currentLine)
-                    {
-                        while (index <= numberOfLines)
-                        {
-                            #region Add and Remove Cards
-                            if (currentLine == 1)
-                            {
-                                lineFour.Add(lineOne[cardLine]);
-                                lineBox4.Items.Add(lineOne[cardLine]);
-                                lineOne.RemoveAt(cardLine);
-                                lineBox1.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 2)
-                            {
-                                lineFour.Add(lineTwo[cardLine]);
-                                lineBox4.Items.Add(lineTwo[cardLine]);
-                                lineTwo.RemoveAt(cardLine);
-                                lineBox2.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 3)
-                            {
-                                lineFour.Add(lineThree[cardLine]);
-                                lineBox4.Items.Add(lineThree[cardLine]);
-                                lineThree.RemoveAt(cardLine);
-                                lineBox3.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 5)
-                            {
-                                lineFour.Add(lineFive[cardLine]);
-                                lineBox4.Items.Add(lineFive[cardLine]);
-                                lineFive.RemoveAt(cardLine);
-                                lineBox5.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 6)
-                            {
-                                lineFour.Add(lineSix[cardLine]);
-                                lineBox4.Items.Add(lineSix[cardLine]);
-                                lineSix.RemoveAt(cardLine);
-                                lineBox6.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 7)
-                            {
-                                lineFour.Add(lineSeven[cardLine]);
-                                lineBox4.Items.Add(lineSeven[cardLine]);
-                                lineSeven.RemoveAt(cardLine);
-                                lineBox7.Items.RemoveAt(cardLine);
-                            }
-                            #endregion
-                            index++;
-                        }
-                    }
-                    else if (moveLine == 5 && moveLine != currentLine)
-                    {
-                        while (index <= numberOfLines)
-                        {
-                            #region Add and Remove Cards
-                            if (currentLine == 1)
-                            {
-                                lineFive.Add(lineOne[cardLine]);
-                                lineBox5.Items.Add(lineOne[cardLine]);
-                                lineOne.RemoveAt(cardLine);
-                                lineBox1.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 2)
-                            {
-                                lineFive.Add(lineTwo[cardLine]);
-                                lineBox5.Items.Add(lineTwo[cardLine]);
-                                lineTwo.RemoveAt(cardLine);
-                                lineBox2.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 3)
-                            {
-                                lineFive.Add(lineThree[cardLine]);
-                                lineBox5.Items.Add(lineThree[cardLine]);
-                                lineThree.RemoveAt(cardLine);
-                                lineBox3.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 4)
-                            {
-                                lineFive.Add(lineFour[cardLine]);
-                                lineBox5.Items.Add(lineFour[cardLine]);
-                                lineFour.RemoveAt(cardLine);
-                                lineBox4.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 6)
-                            {
-                                lineFive.Add(lineSix[cardLine]);
-                                lineBox5.Items.Add(lineSix[cardLine]);
-                                lineSix.RemoveAt(cardLine);
-                                lineBox6.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 7)
-                            {
-                                lineFive.Add(lineSeven[cardLine]);
-                                lineBox5.Items.Add(lineSeven[cardLine]);
-                                lineSeven.RemoveAt(cardLine);
-                                lineBox7.Items.RemoveAt(cardLine);
-                            }
-                            #endregion
-                            index++;
-                        }
-                    }
-                    else if (moveLine == 6 && moveLine != currentLine)
-                    {
-                        while (index <= numberOfLines)
-                        {
-                            #region Add and Remove Cards
-                            if (currentLine == 1)
-                            {
-                                lineSix.Add(lineOne[cardLine]);
-                                lineBox6.Items.Add(lineOne[cardLine]);
-                                lineOne.RemoveAt(cardLine);
-                                lineBox1.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 2)
-                            {
-                                lineSix.Add(lineTwo[cardLine]);
-                                lineBox6.Items.Add(lineTwo[cardLine]);
-                                lineTwo.RemoveAt(cardLine);
-                                lineBox2.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 3)
-                            {
-                                lineSix.Add(lineThree[cardLine]);
-                                lineBox6.Items.Add(lineThree[cardLine]);
-                                lineThree.RemoveAt(cardLine);
-                                lineBox3.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 4)
-                            {
-                                lineSix.Add(lineFour[cardLine]);
-                                lineBox6.Items.Add(lineFour[cardLine]);
-                                lineFour.RemoveAt(cardLine);
-                                lineBox4.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 5)
-                            {
-                                lineSix.Add(lineFive[cardLine]);
-                                lineBox6.Items.Add(lineFive[cardLine]);
-                                lineFive.RemoveAt(cardLine);
-                                lineBox5.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 7)
-                            {
-                                lineSix.Add(lineSeven[cardLine]);
-                                lineBox6.Items.Add(lineSeven[cardLine]);
-                                lineSeven.RemoveAt(cardLine);
-                                lineBox7.Items.RemoveAt(cardLine);
-                            }
-                            #endregion
-                            index++;
-                        }
-                    }
-                    else if (moveLine == 7 && moveLine != currentLine)
-                    {
-                        while (index <= numberOfLines)
-                        {
-                            #region Add and Remove Cards
-                            if (currentLine == 1)
-                            {
-                                lineSeven.Add(lineOne[cardLine]);
-                                lineBox7.Items.Add(lineOne[cardLine]);
-                                lineOne.RemoveAt(cardLine);
-                                lineBox1.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 2)
-                            {
-                                lineSeven.Add(lineTwo[cardLine]);
-                                lineBox7.Items.Add(lineTwo[cardLine]);
-                                lineTwo.RemoveAt(cardLine);
-                                lineBox2.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 3)
-                            {
-                                lineSeven.Add(lineThree[cardLine]);
-                                lineBox7.Items.Add(lineThree[cardLine]);
-                                lineThree.RemoveAt(cardLine);
-                                lineBox3.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 4)
-                            {
-                                lineSeven.Add(lineFour[cardLine]);
-                                lineBox7.Items.Add(lineFour[cardLine]);
-                                lineFour.RemoveAt(cardLine);
-                                lineBox4.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 5)
-                            {
-                                lineSeven.Add(lineFive[cardLine]);
-                                lineBox7.Items.Add(lineFive[cardLine]);
-                                lineFive.RemoveAt(cardLine);
-                                lineBox5.Items.RemoveAt(cardLine);
-                            }
-                            else if (currentLine == 6)
-                            {
-                                lineSeven.Add(lineSix[cardLine]);
-                                lineBox7.Items.Add(lineSix[cardLine]);
-                                lineSix.RemoveAt(cardLine);
-                                lineBox6.Items.RemoveAt(cardLine);
-                            }
-                            #endregion
-                            index++;
-                        }
-                    }
-                    else if (moveLine == 10 && moveLine != currentLine)
-                    {
-                        goalPileH.Add(chosenCard);
-                        heartsBox.Items.Insert(0, chosenCard);
-                        #region Remove Card
+                        #region Add and Remove Cards
                         if (currentLine == 2)
                         {
-                            lineTwo.Remove(chosenCard);
-                            lineBox2.Items.Remove(chosenCard);
-                        }
-                        else if (currentLine == 1)
-                        {
-                            lineOne.Remove(chosenCard);
-                            lineBox1.Items.Remove(chosenCard);
+                            lineOne.Add(lineTwo[cardLine]);
+                            lineBox1.Items.Add(lineTwo[cardLine]);
+                            lineTwo.RemoveAt(cardLine);
+                            lineBox2.Items.RemoveAt(cardLine);
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 3)
                         {
-                            lineThree.Remove(chosenCard);
-                            lineBox3.Items.Remove(chosenCard);
+                            lineOne.Add(lineThree[cardLine]);
+                            lineBox1.Items.Add(lineThree[cardLine]);
+                            lineThree.RemoveAt(cardLine);
+                            lineBox3.Items.RemoveAt(cardLine);
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 4)
                         {
-                            lineFour.Remove(chosenCard);
-                            lineBox4.Items.Remove(chosenCard);
+                            lineOne.Add(lineFour[cardLine]);
+                            lineBox1.Items.Add(lineFour[cardLine]);
+                            lineFour.RemoveAt(cardLine);
+                            lineBox4.Items.RemoveAt(cardLine);
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 5)
                         {
-                            lineFive.Remove(chosenCard);
-                            lineBox5.Items.Remove(chosenCard);
+                            lineOne.Add(lineFive[cardLine]);
+                            lineBox1.Items.Add(lineFive[cardLine]);
+                            lineFive.RemoveAt(cardLine);
+                            lineBox5.Items.RemoveAt(cardLine);
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 6)
                         {
-                            lineSix.Remove(chosenCard);
-                            lineBox6.Items.Remove(chosenCard);
+                            lineOne.Add(lineSix[cardLine]);
+                            lineBox1.Items.Add(lineSix[cardLine]);
+                            lineSix.RemoveAt(cardLine);
+                            lineBox6.Items.RemoveAt(cardLine);
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 7)
                         {
-                            lineSeven.Remove(chosenCard);
-                            lineBox7.Items.Remove(chosenCard);
+                            lineOne.Add(lineSeven[cardLine]);
+                            lineBox1.Items.Add(lineSeven[cardLine]);
+                            lineSeven.RemoveAt(cardLine);
+                            lineBox7.Items.RemoveAt(cardLine);
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
                         #endregion
+                        index++;
                     }
-                    else if (moveLine == 11 && moveLine != currentLine)
+                }
+                else if (moveLine == 2 && moveLine != currentLine)
+                {
+                    while (index <= numberOfLines)
                     {
-                        goalPileD.Add(chosenCard);
-                        diamondsBox.Items.Insert(0, chosenCard);
-                        #region Remove Card
-                        if (currentLine == 2)
+                        #region Add and Remove Cards
+                        if (currentLine == 1)
                         {
-                            lineTwo.Remove(chosenCard);
-                            lineBox2.Items.Remove(chosenCard);
-                        }
-                        else if (currentLine == 1)
-                        {
-                            lineOne.Remove(chosenCard);
-                            lineBox1.Items.Remove(chosenCard);
+                            lineTwo.Add(lineOne[cardLine]);
+                            lineBox2.Items.Add(lineOne[cardLine]);
+                            lineOne.RemoveAt(cardLine);
+                            lineBox1.Items.RemoveAt(cardLine);
                         }
                         else if (currentLine == 3)
                         {
-                            lineThree.Remove(chosenCard);
-                            lineBox3.Items.Remove(chosenCard);
+                            lineTwo.Add(lineThree[cardLine]);
+                            lineBox2.Items.Add(lineThree[cardLine]);
+                            lineThree.RemoveAt(cardLine);
+                            lineBox3.Items.RemoveAt(cardLine);
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 4)
                         {
-                            lineFour.Remove(chosenCard);
-                            lineBox4.Items.Remove(chosenCard);
+                            lineTwo.Add(lineFour[cardLine]);
+                            lineBox2.Items.Add(lineFour[cardLine]);
+                            lineFour.RemoveAt(cardLine);
+                            lineBox4.Items.RemoveAt(cardLine);
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 5)
                         {
-                            lineFive.Remove(chosenCard);
-                            lineBox5.Items.Remove(chosenCard);
+                            lineTwo.Add(lineFive[cardLine]);
+                            lineBox2.Items.Add(lineFive[cardLine]);
+                            lineFive.RemoveAt(cardLine);
+                            lineBox5.Items.RemoveAt(cardLine);
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 6)
                         {
-                            lineSix.Remove(chosenCard);
-                            lineBox6.Items.Remove(chosenCard);
+                            lineTwo.Add(lineSix[cardLine]);
+                            lineBox2.Items.Add(lineSix[cardLine]);
+                            lineSix.RemoveAt(cardLine);
+                            lineBox6.Items.RemoveAt(cardLine);
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 7)
                         {
-                            lineSeven.Remove(chosenCard);
-                            lineBox7.Items.Remove(chosenCard);
+                            lineTwo.Add(lineSeven[cardLine]);
+                            lineBox2.Items.Add(lineSeven[cardLine]);
+                            lineSeven.RemoveAt(cardLine);
+                            lineBox7.Items.RemoveAt(cardLine);
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
                         #endregion
+                        index++;
                     }
-                    else if (moveLine == 12 && moveLine != currentLine)
+                }
+                else if (moveLine == 3 && moveLine != currentLine)
+                {
+                    while (index <= numberOfLines)
                     {
-                        goalPileC.Add(chosenCard);
-                        clubsBox.Items.Insert(0, chosenCard);
-                        #region Remove Card
-                        if (currentLine == 2)
+                        #region Add and Remove Cards
+                        if (currentLine == 1)
                         {
-                            lineTwo.Remove(chosenCard);
-                            lineBox2.Items.Remove(chosenCard);
+                            lineThree.Add(lineOne[cardLine]);
+                            lineBox3.Items.Add(lineOne[cardLine]);
+                            lineOne.RemoveAt(cardLine);
+                            lineBox1.Items.RemoveAt(cardLine);
                         }
-                        else if (currentLine == 1)
+                        else if (currentLine == 2)
                         {
-                            lineOne.Remove(chosenCard);
-                            lineBox1.Items.Remove(chosenCard);
+                            lineThree.Add(lineTwo[cardLine]);
+                            lineBox3.Items.Add(lineTwo[cardLine]);
+                            lineTwo.RemoveAt(cardLine);
+                            lineBox2.Items.RemoveAt(cardLine);
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 4)
+                        {
+                            lineThree.Add(lineFour[cardLine]);
+                            lineBox3.Items.Add(lineFour[cardLine]);
+                            lineFour.RemoveAt(cardLine);
+                            lineBox4.Items.RemoveAt(cardLine);
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 5)
+                        {
+                            lineThree.Add(lineFive[cardLine]);
+                            lineBox3.Items.Add(lineFive[cardLine]);
+                            lineFive.RemoveAt(cardLine);
+                            lineBox5.Items.RemoveAt(cardLine);
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 6)
+                        {
+                            lineThree.Add(lineSix[cardLine]);
+                            lineBox3.Items.Add(lineSix[cardLine]);
+                            lineSix.RemoveAt(cardLine);
+                            lineBox6.Items.RemoveAt(cardLine);
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 7)
+                        {
+                            lineThree.Add(lineSeven[cardLine]);
+                            lineBox3.Items.Add(lineSeven[cardLine]);
+                            lineSeven.RemoveAt(cardLine);
+                            lineBox7.Items.RemoveAt(cardLine);
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
+                        }
+                        #endregion
+                        index++;
+                    }
+                }
+                else if (moveLine == 4 && moveLine != currentLine)
+                {
+                    while (index <= numberOfLines)
+                    {
+                        #region Add and Remove Cards
+                        if (currentLine == 1)
+                        {
+                            lineFour.Add(lineOne[cardLine]);
+                            lineBox4.Items.Add(lineOne[cardLine]);
+                            lineOne.RemoveAt(cardLine);
+                            lineBox1.Items.RemoveAt(cardLine);
+                        }
+                        else if (currentLine == 2)
+                        {
+                            lineFour.Add(lineTwo[cardLine]);
+                            lineBox4.Items.Add(lineTwo[cardLine]);
+                            lineTwo.RemoveAt(cardLine);
+                            lineBox2.Items.RemoveAt(cardLine);
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 3)
                         {
-                            lineThree.Remove(chosenCard);
-                            lineBox3.Items.Remove(chosenCard);
-                        }
-                        else if (currentLine == 4)
-                        {
-                            lineFour.Remove(chosenCard);
-                            lineBox4.Items.Remove(chosenCard);
+                            lineFour.Add(lineThree[cardLine]);
+                            lineBox4.Items.Add(lineThree[cardLine]);
+                            lineThree.RemoveAt(cardLine);
+                            lineBox3.Items.RemoveAt(cardLine);
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 5)
                         {
-                            lineFive.Remove(chosenCard);
-                            lineBox5.Items.Remove(chosenCard);
+                            lineFour.Add(lineFive[cardLine]);
+                            lineBox4.Items.Add(lineFive[cardLine]);
+                            lineFive.RemoveAt(cardLine);
+                            lineBox5.Items.RemoveAt(cardLine);
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 6)
                         {
-                            lineSix.Remove(chosenCard);
-                            lineBox6.Items.Remove(chosenCard);
+                            lineFour.Add(lineSix[cardLine]);
+                            lineBox4.Items.Add(lineSix[cardLine]);
+                            lineSix.RemoveAt(cardLine);
+                            lineBox6.Items.RemoveAt(cardLine);
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 7)
                         {
-                            lineSeven.Remove(chosenCard);
-                            lineBox7.Items.Remove(chosenCard);
+                            lineFour.Add(lineSeven[cardLine]);
+                            lineBox4.Items.Add(lineSeven[cardLine]);
+                            lineSeven.RemoveAt(cardLine);
+                            lineBox7.Items.RemoveAt(cardLine);
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
                         #endregion
+                        index++;
                     }
-                    else if (moveLine == 13 && moveLine != currentLine)
+                }
+                else if (moveLine == 5 && moveLine != currentLine)
+                {
+                    while (index <= numberOfLines)
                     {
-                        goalPileS.Add(chosenCard);
-                        spadesBox.Items.Insert(0, chosenCard);
-                        #region Remove Card
-                        if (currentLine == 2)
+                        #region Add and Remove Cards
+                        if (currentLine == 1)
                         {
-                            lineTwo.Remove(chosenCard);
-                            lineBox2.Items.Remove(chosenCard);
+                            lineFive.Add(lineOne[cardLine]);
+                            lineBox5.Items.Add(lineOne[cardLine]);
+                            lineOne.RemoveAt(cardLine);
+                            lineBox1.Items.RemoveAt(cardLine);
                         }
-                        else if (currentLine == 1)
+                        else if (currentLine == 2)
                         {
-                            lineOne.Remove(chosenCard);
-                            lineBox1.Items.Remove(chosenCard);
+                            lineFive.Add(lineTwo[cardLine]);
+                            lineBox5.Items.Add(lineTwo[cardLine]);
+                            lineTwo.RemoveAt(cardLine);
+                            lineBox2.Items.RemoveAt(cardLine);
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 3)
                         {
-                            lineThree.Remove(chosenCard);
-                            lineBox3.Items.Remove(chosenCard);
+                            lineFive.Add(lineThree[cardLine]);
+                            lineBox5.Items.Add(lineThree[cardLine]);
+                            lineThree.RemoveAt(cardLine);
+                            lineBox3.Items.RemoveAt(cardLine);
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 4)
                         {
-                            lineFour.Remove(chosenCard);
-                            lineBox4.Items.Remove(chosenCard);
-                        }
-                        else if (currentLine == 5)
-                        {
-                            lineFive.Remove(chosenCard);
-                            lineBox5.Items.Remove(chosenCard);
+                            lineFive.Add(lineFour[cardLine]);
+                            lineBox5.Items.Add(lineFour[cardLine]);
+                            lineFour.RemoveAt(cardLine);
+                            lineBox4.Items.RemoveAt(cardLine);
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 6)
                         {
-                            lineSix.Remove(chosenCard);
-                            lineBox6.Items.Remove(chosenCard);
+                            lineFive.Add(lineSix[cardLine]);
+                            lineBox5.Items.Add(lineSix[cardLine]);
+                            lineSix.RemoveAt(cardLine);
+                            lineBox6.Items.RemoveAt(cardLine);
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
                         }
                         else if (currentLine == 7)
                         {
-                            lineSeven.Remove(chosenCard);
-                            lineBox7.Items.Remove(chosenCard);
+                            lineFive.Add(lineSeven[cardLine]);
+                            lineBox5.Items.Add(lineSeven[cardLine]);
+                            lineSeven.RemoveAt(cardLine);
+                            lineBox7.Items.RemoveAt(cardLine);
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
                         }
                         #endregion
+                        index++;
+                    }
+                }
+                else if (moveLine == 6 && moveLine != currentLine)
+                {
+                    while (index <= numberOfLines)
+                    {
+                        #region Add and Remove Cards
+                        if (currentLine == 1)
+                        {
+                            lineSix.Add(lineOne[cardLine]);
+                            lineBox6.Items.Add(lineOne[cardLine]);
+                            lineOne.RemoveAt(cardLine);
+                            lineBox1.Items.RemoveAt(cardLine);
+                        }
+                        else if (currentLine == 2)
+                        {
+                            lineSix.Add(lineTwo[cardLine]);
+                            lineBox6.Items.Add(lineTwo[cardLine]);
+                            lineTwo.RemoveAt(cardLine);
+                            lineBox2.Items.RemoveAt(cardLine);
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 3)
+                        {
+                            lineSix.Add(lineThree[cardLine]);
+                            lineBox6.Items.Add(lineThree[cardLine]);
+                            lineThree.RemoveAt(cardLine);
+                            lineBox3.Items.RemoveAt(cardLine);
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 4)
+                        {
+                            lineSix.Add(lineFour[cardLine]);
+                            lineBox6.Items.Add(lineFour[cardLine]);
+                            lineFour.RemoveAt(cardLine);
+                            lineBox4.Items.RemoveAt(cardLine);
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 5)
+                        {
+                            lineSix.Add(lineFive[cardLine]);
+                            lineBox6.Items.Add(lineFive[cardLine]);
+                            lineFive.RemoveAt(cardLine);
+                            lineBox5.Items.RemoveAt(cardLine);
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 7)
+                        {
+                            lineSix.Add(lineSeven[cardLine]);
+                            lineBox6.Items.Add(lineSeven[cardLine]);
+                            lineSeven.RemoveAt(cardLine);
+                            lineBox7.Items.RemoveAt(cardLine);
+                            if (lineBox7.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                            }
+                        }
+                        #endregion
+                        index++;
+                    }
+                }
+                else if (moveLine == 7 && moveLine != currentLine)
+                {
+                    while (index <= numberOfLines)
+                    {
+                        #region Add and Remove Cards
+                        if (currentLine == 1)
+                        {
+                            lineSeven.Add(lineOne[cardLine]);
+                            lineBox7.Items.Add(lineOne[cardLine]);
+                            lineOne.RemoveAt(cardLine);
+                            lineBox1.Items.RemoveAt(cardLine);
+                        }
+                        else if (currentLine == 2)
+                        {
+                            lineSeven.Add(lineTwo[cardLine]);
+                            lineBox7.Items.Add(lineTwo[cardLine]);
+                            lineTwo.RemoveAt(cardLine);
+                            lineBox2.Items.RemoveAt(cardLine);
+                            if (lineBox2.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 3)
+                        {
+                            lineSeven.Add(lineThree[cardLine]);
+                            lineBox7.Items.Add(lineThree[cardLine]);
+                            lineThree.RemoveAt(cardLine);
+                            lineBox3.Items.RemoveAt(cardLine);
+                            if (lineBox3.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 4)
+                        {
+                            lineSeven.Add(lineFour[cardLine]);
+                            lineBox7.Items.Add(lineFour[cardLine]);
+                            lineFour.RemoveAt(cardLine);
+                            lineBox4.Items.RemoveAt(cardLine);
+                            if (lineBox4.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 5)
+                        {
+                            lineSeven.Add(lineFive[cardLine]);
+                            lineBox7.Items.Add(lineFive[cardLine]);
+                            lineFive.RemoveAt(cardLine);
+                            lineBox5.Items.RemoveAt(cardLine);
+                            if (lineBox5.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                            }
+                        }
+                        else if (currentLine == 6)
+                        {
+                            lineSeven.Add(lineSix[cardLine]);
+                            lineBox7.Items.Add(lineSix[cardLine]);
+                            lineSix.RemoveAt(cardLine);
+                            lineBox6.Items.RemoveAt(cardLine);
+                            if (lineBox6.Items[cardLine - 1] == "Face Down")
+                            {
+                                lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                            }
+                        }
+                        #endregion
+                        index++;
+                    }
+                }
+                else if (moveLine == 10 && moveLine != currentLine)
+                {
+                    goalPileH.Add(chosenCard);
+                    heartsBox.Items.Insert(0, chosenCard);
+                    #region Remove Card
+                    if (currentLine == 2)
+                    {
+                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                        }
+                        lineTwo.Remove(chosenCard);
+                        lineBox2.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 1)
+                    {
+                        lineOne.Remove(chosenCard);
+                        lineBox1.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 3)
+                    {
+                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                        }
+                        lineThree.Remove(chosenCard);
+                        lineBox3.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 4)
+                    {
+                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                        }
+                        lineFour.Remove(chosenCard);
+                        lineBox4.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 5)
+                    {
+                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                        }
+                        lineFive.Remove(chosenCard);
+                        lineBox5.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 6)
+                    {
+                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                        }
+                        lineSix.Remove(chosenCard);
+                        lineBox6.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 7)
+                    {
+                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                        }
+                        lineSeven.Remove(chosenCard);
+                        lineBox7.Items.Remove(chosenCard);
                     }
                     #endregion
+                }
+                else if (moveLine == 11 && moveLine != currentLine)
+                {
+                    goalPileD.Add(chosenCard);
+                    diamondsBox.Items.Insert(0, chosenCard);
+                    #region Remove Card
+                    if (currentLine == 2)
+                    {
+                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                        }
+                        lineTwo.Remove(chosenCard);
+                        lineBox2.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 1)
+                    {
+                        lineOne.Remove(chosenCard);
+                        lineBox1.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 3)
+                    {
+                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                        }
+                        lineThree.Remove(chosenCard);
+                        lineBox3.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 4)
+                    {
+                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                        }
+                        lineFour.Remove(chosenCard);
+                        lineBox4.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 5)
+                    {
+                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                        }
+                        lineFive.Remove(chosenCard);
+                        lineBox5.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 6)
+                    {
+                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                        }
+                        lineSix.Remove(chosenCard);
+                        lineBox6.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 7)
+                    {
+                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                        }
+                        lineSeven.Remove(chosenCard);
+                        lineBox7.Items.Remove(chosenCard);
+                    }
+                    #endregion
+                }
+                else if (moveLine == 12 && moveLine != currentLine)
+                {
+                    goalPileC.Add(chosenCard);
+                    clubsBox.Items.Insert(0, chosenCard);
+                    #region Remove Card
+                    if (currentLine == 2)
+                    {
+                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                        }
+                        lineTwo.Remove(chosenCard);
+                        lineBox2.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 1)
+                    {
+                        lineOne.Remove(chosenCard);
+                        lineBox1.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 3)
+                    {
+                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                        }
+                        lineThree.Remove(chosenCard);
+                        lineBox3.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 4)
+                    {
+                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                        }
+                        lineFour.Remove(chosenCard);
+                        lineBox4.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 5)
+                    {
+                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                        }
+                        lineFive.Remove(chosenCard);
+                        lineBox5.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 6)
+                    {
+                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                        }
+                        lineSix.Remove(chosenCard);
+                        lineBox6.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 7)
+                    {
+                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                        }
+                        lineSeven.Remove(chosenCard);
+                        lineBox7.Items.Remove(chosenCard);
+                    }
+                    #endregion
+                }
+                else if (moveLine == 13 && moveLine != currentLine)
+                {
+                    goalPileS.Add(chosenCard);
+                    spadesBox.Items.Insert(0, chosenCard);
+                    #region Remove Card
+                    if (currentLine == 2)
+                    {
+                        if (lineBox2.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox2.Items[cardLine - 1] = lineTwo[cardLine - 1];
+                        }
+                        lineTwo.Remove(chosenCard);
+                        lineBox2.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 1)
+                    {
+                        lineOne.Remove(chosenCard);
+                        lineBox1.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 3)
+                    {
+                        if (lineBox3.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox3.Items[cardLine - 1] = lineThree[cardLine - 1];
+                        }
+                        lineThree.Remove(chosenCard);
+                        lineBox3.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 4)
+                    {
+                        if (lineBox4.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox4.Items[cardLine - 1] = lineFour[cardLine - 1];
+                        }
+                        lineFour.Remove(chosenCard);
+                        lineBox4.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 5)
+                    {
+                        if (lineBox5.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox5.Items[cardLine - 1] = lineFive[cardLine - 1];
+                        }
+                        lineFive.Remove(chosenCard);
+                        lineBox5.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 6)
+                    {
+                        if (lineBox6.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox6.Items[cardLine - 1] = lineSix[cardLine - 1];
+                        }
+                        lineSix.Remove(chosenCard);
+                        lineBox6.Items.Remove(chosenCard);
+                    }
+                    else if (currentLine == 7)
+                    {
+                        if (lineBox7.Items[cardLine - 1] == "Face Down")
+                        {
+                            lineBox7.Items[cardLine - 1] = lineSeven[cardLine - 1];
+                        }
+                        lineSeven.Remove(chosenCard);
+                        lineBox7.Items.Remove(chosenCard);
+                    }
+                    #endregion
+                }
+                    #endregion
+
+                    
 
                     //if (heartsBox.SelectedIndex != -1 && clubsBox.SelectedIndex != -1 && diamondsBox.SelectedIndex != -1 && spadesBox.SelectedIndex != -1)
                     //{
@@ -812,7 +1070,7 @@ namespace Final_Project_Rams_Solitaire
                     //}
                 }
             }
-        }
+        
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -1894,7 +2152,7 @@ namespace Final_Project_Rams_Solitaire
                 }
             }
         }
-          
+
         #region Click Methods for all Playing Lines
         private void listBox1_Click(object sender, EventArgs e)
         {
@@ -1905,103 +2163,94 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineBox1.SelectedIndex != -1)
             {
-                cardUp = true;
                 chosenCard = lineBox1.Items[index].ToString();
 
-                if (cardUp)
+                #region Find Card Values 
+                if (chosenCard.StartsWith("K"))
                 {
-                    #region Find Card Values 
-                    if (chosenCard.StartsWith("K"))
-                    {
-                        cardValue = 13;
-                    }
-
-                    else if (chosenCard.StartsWith("Q"))
-                    {
-                        cardValue = 12;
-                    }
-
-                    else if (chosenCard.StartsWith("J"))
-                    {
-                        cardValue = 11;
-                    }
-
-                    else if (chosenCard.StartsWith("Te"))
-                    {
-                        cardValue = 10;
-                    }
-
-                    else if (chosenCard.StartsWith("N"))
-                    {
-                        cardValue = 9;
-                    }
-
-                    else if (chosenCard.StartsWith("E"))
-                    {
-                        cardValue = 8;
-                    }
-
-                    else if (chosenCard.StartsWith("Se"))
-                    {
-                        cardValue = 7;
-                    }
-
-                    else if (chosenCard.StartsWith("Si"))
-                    {
-                        cardValue = 6;
-                    }
-
-                    else if (chosenCard.StartsWith("Fi"))
-                    {
-                        cardValue = 5;
-                    }
-
-                    else if (chosenCard.StartsWith("Fo"))
-                    {
-                        cardValue = 4;
-                    }
-
-                    else if (chosenCard.StartsWith("Th"))
-                    {
-                        cardValue = 3;
-                    }
-
-                    else if (chosenCard.StartsWith("Tw"))
-                    {
-                        cardValue = 2;
-                    }
-
-                    else if (chosenCard.StartsWith("A"))
-                    {
-                        cardValue = 1;
-                    }
-                    #endregion
-                    #region Find Suit Values
-                    if (chosenCard.EndsWith("H"))
-                    {
-                        suit = 1;
-                    }
-                    else if (chosenCard.EndsWith("D"))
-                    {
-                        suit = 2;
-                    }
-                    else if (chosenCard.EndsWith("C"))
-                    {
-                        suit = 3;
-                    }
-                    else if (chosenCard.EndsWith("S"))
-                    {
-                        suit = 4;
-                    }
-                    #endregion
-
-                    currentLine = 1;
-                    CheckLines(suit, cardValue, currentLine, index, numberOfLines);
+                    cardValue = 13;
                 }
-                else
+
+                else if (chosenCard.StartsWith("Q"))
                 {
-                    MessageBox.Show("This card is not uncovered, you can not move it");
+                    cardValue = 12;
                 }
+
+                else if (chosenCard.StartsWith("J"))
+                {
+                    cardValue = 11;
+                }
+
+                else if (chosenCard.StartsWith("Te"))
+                {
+                    cardValue = 10;
+                }
+
+                else if (chosenCard.StartsWith("N"))
+                {
+                    cardValue = 9;
+                }
+
+                else if (chosenCard.StartsWith("E"))
+                {
+                    cardValue = 8;
+                }
+
+                else if (chosenCard.StartsWith("Se"))
+                {
+                    cardValue = 7;
+                }
+
+                else if (chosenCard.StartsWith("Si"))
+                {
+                    cardValue = 6;
+                }
+
+                else if (chosenCard.StartsWith("Fi"))
+                {
+                    cardValue = 5;
+                }
+
+                else if (chosenCard.StartsWith("Fo"))
+                {
+                    cardValue = 4;
+                }
+
+                else if (chosenCard.StartsWith("Th"))
+                {
+                    cardValue = 3;
+                }
+
+                else if (chosenCard.StartsWith("Tw"))
+                {
+                    cardValue = 2;
+                }
+
+                else if (chosenCard.StartsWith("A"))
+                {
+                    cardValue = 1;
+                }
+                #endregion
+                #region Find Suit Values
+                if (chosenCard.EndsWith("H"))
+                {
+                    suit = 1;
+                }
+                else if (chosenCard.EndsWith("D"))
+                {
+                    suit = 2;
+                }
+                else if (chosenCard.EndsWith("C"))
+                {
+                    suit = 3;
+                }
+                else if (chosenCard.EndsWith("S"))
+                {
+                    suit = 4;
+                }
+                #endregion
+                currentLine = 1;
+                CheckLines(suit, cardValue, currentLine, index, numberOfLines);
             }
             else
             {
@@ -2018,10 +2267,9 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineBox2.SelectedIndex != -1)
             {
-                cardUp = true;
                 chosenCard = lineBox2.Items[index].ToString();
 
-                if (cardUp)
+                if (chosenCard != "Face Down")
                 {
                     #region Find Card Values 
                     if (chosenCard.StartsWith("K"))
@@ -2131,10 +2379,9 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineBox3.SelectedIndex != -1)
             {
-                cardUp = true;
                 chosenCard = lineBox3.Items[index].ToString();
 
-                if (cardUp)
+                if (chosenCard != "Face Down")
                 {
                     #region Find Card Values 
                     if (chosenCard.StartsWith("K"))
@@ -2244,10 +2491,9 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineBox4.SelectedIndex != -1)
             {
-                cardUp = true;
                 chosenCard = lineBox4.Items[index].ToString();
 
-                if (cardUp)
+                if (chosenCard != "Face Down")
                 {
                     #region Find Card Values 
                     if (chosenCard.StartsWith("K"))
@@ -2357,10 +2603,9 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineBox5.SelectedIndex != -1)
             {
-                cardUp = true;
                 chosenCard = lineBox5.Items[index].ToString();
 
-                if (cardUp)
+                if (chosenCard != "Face Down")
                 {
                     #region Find Card Values 
                     if (chosenCard.StartsWith("K"))
@@ -2470,9 +2715,8 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineBox6.SelectedIndex != -1)
             {
-                cardUp = true;
                 chosenCard = lineBox6.Items[index].ToString();
-                if (cardUp)
+                if (chosenCard != "Face Down")
                 {
                     #region Find Card Values 
                     if (chosenCard.StartsWith("K"))
@@ -2582,9 +2826,8 @@ namespace Final_Project_Rams_Solitaire
 
             if (lineBox7.SelectedIndex != -1)
             {
-                cardUp = true;
                 chosenCard = lineBox7.Items[index].ToString();
-                if (cardUp)
+                if (chosenCard != "Face Down")
                 {
                     #region Find Card Values 
                     if (chosenCard.StartsWith("K"))
@@ -2711,7 +2954,6 @@ namespace Final_Project_Rams_Solitaire
             movesNumber.Text = "MOVES: " + moveCount;
             numberOfLines = 0;
             index = 100;
-            cardUp = true;
             if (playCardBox.SelectedIndex != -1)
             {
                 chosenCard = playCardBox.SelectedItem.ToString();
