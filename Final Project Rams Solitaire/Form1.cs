@@ -1,4 +1,8 @@
-﻿using System;
+﻿///Created by Sam Wyatt as a final project.
+///Due: 25 January, 2017.
+///This is a basic text version of solitaire on easy mode.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,35 +18,31 @@ namespace Final_Project_Rams_Solitaire
 {
     public partial class Form1 : Form
     {
+        //Declaire global variables 
         string chosenCard;
         int numberOfLines;
         int index;
-
         int moveLine;
         int currentLine;
-
         int suit;
         int suitNeed;
-
         int cardValue;
         int needValue;
-
         int moveCount;
         int playTimeSec;
         int playTimeMin;
 
-        Random cardDeal = new Random();
+        Random cardDeal = new Random(); //Create a random generator
 
-        List<string> startPile = new List<string>();
-
-        List<string> drawPile = new List<string>();
-        List<string> playPile = new List<string>();
-
+        List<string> startPile = new List<string>(); // Create list of all 52 cards in the DEAL pile
+        List<string> drawPile = new List<string>(); //Create list for cards in the DRAW CARD pile  
+        List<string> playPile = new List<string>(); //Create list for the playable cards from the DRAW CARD list
+        //Create list for the slots to put your cards to win the game
         List<string> goalPileH = new List<string>();
         List<string> goalPileC = new List<string>();
         List<string> goalPileD = new List<string>();
         List<string> goalPileS = new List<string>();
-
+        //Craete list for playing line cards
         List<string> lineOne = new List<string>();
         List<string> lineTwo = new List<string>();
         List<string> lineThree = new List<string>();
@@ -54,7 +54,6 @@ namespace Final_Project_Rams_Solitaire
         public Form1()
         {
             InitializeComponent();
-            gameTimer.Start();
             drawCardButton.Enabled = false;
         }
 
@@ -113,22 +112,23 @@ namespace Final_Project_Rams_Solitaire
             startPile.Add("King♦D");
             startPile.Add("King♠S");
             startPile.Add("King♣C");
-            #endregion
+            #endregion 
+            //Adds all 52 cards to startpile list
 
             #region Deal Random Cards
-            int r = cardDeal.Next(startPile.Count);
+            int r = cardDeal.Next(startPile.Count); // Sets what numbers the random generator can use. Create random number.
 
-            lineOne.Add((string)startPile[r]);
-            lineBox1.Items.Add((string)startPile[r]);
-            startPile.Remove((string)startPile[r]);
+            lineOne.Add((string)startPile[r]); // add that item to the list of the first line
+            lineBox1.Items.Add((string)startPile[r]); //show the item in the listbox of the first line
+            startPile.Remove((string)startPile[r]); //remove the item from the start list so it can not be chosen again
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++) //this creates a new number, adds it to the list of the second line and removes from start list.
             {
                 r = cardDeal.Next(startPile.Count);
                 lineTwo.Add((string)startPile[r]);
                 startPile.Remove((string)startPile[r]);
             }
-            lineBox2.Items.Add("Face Down");
+            lineBox2.Items.Add("Face Down");//The loop above does not show the items in the list so the face down cards can work.
             lineBox2.Items.Add(lineTwo[1]);
 
             for (int i = 0; i < 3; i++)
@@ -199,101 +199,106 @@ namespace Final_Project_Rams_Solitaire
             }
             #endregion
 
+            // allows for the DRAW CARD button to be used and starts timer as the game has started. 
             drawCardButton.Enabled = true;
-            loadButton.Enabled = false;
+            gameTimer.Start();
+            loadButton.Enabled = false; //So the player can not deal again
         }
 
         public void MoveCard(int moveLine, int currentLine, int index, int numberOfLines)
-        {  
-                if (currentLine == 0)
+        {
+            if (currentLine == 0) //if the card is in the play card box.
+            {
+                #region Move cards from the play card box
+                if (moveLine == 1 && moveLine != currentLine) // this allows the program to not move the card to the same place.
                 {
-                    #region Move cards from the play card box
-                    if (moveLine == 1 && moveLine != currentLine)
-                    {
-                        lineOne.Add(chosenCard);
-                        lineBox1.Items.Add(chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 2 && moveLine != currentLine)
-                    {
-                        lineTwo.Add(chosenCard);
-                        lineBox2.Items.Add(chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 3 && moveLine != currentLine)
-                    {
-                        lineThree.Add(chosenCard);
-                        lineBox3.Items.Add(chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 4 && moveLine != currentLine)
-                    {
-                        lineFour.Add(chosenCard);
-                        lineBox4.Items.Add(chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 5 && moveLine != currentLine)
-                    {
-                        lineFive.Add(chosenCard);
-                        lineBox5.Items.Add(chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 6 && moveLine != currentLine)
-                    {
-                        lineSix.Add(chosenCard);
-                        lineBox6.Items.Add(chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 7 && moveLine != currentLine)
-                    {
-                        lineSeven.Add(chosenCard);
-                        lineBox7.Items.Add(chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 10 && moveLine != currentLine)
-                    {
-                        goalPileH.Add(chosenCard);
-                        heartsBox.Items.Insert(0,chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 11 && moveLine != currentLine)
-                    {
-                        goalPileD.Add(chosenCard);
-                        diamondsBox.Items.Insert(0, chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 12 && moveLine != currentLine)
-                    {
-                        goalPileC.Add(chosenCard);
-                        clubsBox.Items.Insert(0,chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    else if (moveLine == 13 && moveLine != currentLine)
-                    {
-                        goalPileS.Add(chosenCard);
-                        spadesBox.Items.Insert(0,chosenCard);
-                        playPile.Remove(chosenCard);
-                        playCardBox.Items.Remove(chosenCard);
-                    }
-                    #endregion
+                    lineOne.Add(chosenCard); //the move line is given from the Check Lines method, so the card moves to that line
+                    lineBox1.Items.Add(chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
                 }
-                else
+                else if (moveLine == 2 && moveLine != currentLine)
                 {
-                    int cardLine = index;
+                    lineTwo.Add(chosenCard);
+                    lineBox2.Items.Add(chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 3 && moveLine != currentLine)
+                {
+                    lineThree.Add(chosenCard);
+                    lineBox3.Items.Add(chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 4 && moveLine != currentLine)
+                {
+                    lineFour.Add(chosenCard);
+                    lineBox4.Items.Add(chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 5 && moveLine != currentLine)
+                {
+                    lineFive.Add(chosenCard);
+                    lineBox5.Items.Add(chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 6 && moveLine != currentLine)
+                {
+                    lineSix.Add(chosenCard);
+                    lineBox6.Items.Add(chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 7 && moveLine != currentLine)
+                {
+                    lineSeven.Add(chosenCard);
+                    lineBox7.Items.Add(chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 10 && moveLine != currentLine) //moveLine 10 is hearts goal pile
+                {
+                    goalPileH.Add(chosenCard);
+                    heartsBox.Items.Insert(0, chosenCard); //Insert adds the card to the top so it is visable 
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 11 && moveLine != currentLine) //moveLine 11 is diamonds goal pile
+                {
+                    goalPileD.Add(chosenCard);
+                    diamondsBox.Items.Insert(0, chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 12 && moveLine != currentLine) //moveLine 12 is clubs goal pile
+                {
+                    goalPileC.Add(chosenCard);
+                    clubsBox.Items.Insert(0, chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                else if (moveLine == 13 && moveLine != currentLine) //moveLine 13 is spades goal pile
+                {
+                    goalPileS.Add(chosenCard);
+                    spadesBox.Items.Insert(0, chosenCard);
+                    playPile.Remove(chosenCard);
+                    playCardBox.Items.Remove(chosenCard);
+                }
+                #endregion
+            }
+            else //if the card on the board.
+            {
                 #region Move playing line cards
+                int cardLine = index; // this allows for the beginning value to stay unchanged
                 if (moveLine == 1 && moveLine != currentLine)
                 {
-                    while (index <= numberOfLines)
+                    ///this loop adds to the move line from the current line at the card line, removes the card line and continues to do
+                    ///the same thing until there is nothing below it. While this is happening it checks if the card above is face down
+                    ///and if so turns it over by displaying the value given to it on the lines list in the dealing process. 
+                    while (index <= numberOfLines) 
                     {
                         #region Add and Remove Cards
                         if (currentLine == 2)
@@ -302,6 +307,8 @@ namespace Final_Project_Rams_Solitaire
                             lineBox1.Items.Add(lineTwo[cardLine]);
                             lineTwo.RemoveAt(cardLine);
                             lineBox2.Items.RemoveAt(cardLine);
+                            ///the try/catch is there to make sure it does not crash if the card at the top of the line is selected
+                            ///this will crash as there is no card above it.
                             try
                             {
                                 if (lineBox2.Items[cardLine - 1] == "Face Down")
@@ -939,6 +946,8 @@ namespace Final_Project_Rams_Solitaire
                 }
                 else if (moveLine == 10 && moveLine != currentLine)
                 {
+                    ///This adds the selected card to the corrisponding goal pile but also checks to see if the card above is face down
+                    ///and if so overturns it.
                     goalPileH.Add(chosenCard);
                     heartsBox.Items.Insert(0, chosenCard);
                     #region Remove Card
@@ -1298,44 +1307,42 @@ namespace Final_Project_Rams_Solitaire
                     }
                     #endregion
                 }
-                    #endregion
+                #endregion
 
-                    
-
-                    //if (heartsBox.SelectedIndex != -1 && clubsBox.SelectedIndex != -1 && diamondsBox.SelectedIndex != -1 && spadesBox.SelectedIndex != -1)
-                    //{
-                    //    if (goalPileC.Last().StartsWith("K") && goalPileH.Last().StartsWith("K") && goalPileS.Last().StartsWith("K") && goalPileD.Last().StartsWith("K"))
-                    //    {
-                    //        gameTimer.Stop();
-                    //        WinScreen();
-                    //    }
-                    //}
+                try // the try/catch is there to make sure it does not crash if the is no card in any box
+                {
+                    if (goalPileC.Last().StartsWith("K") && goalPileH.Last().StartsWith("K") && goalPileS.Last().StartsWith("K") && goalPileD.Last().StartsWith("K"))
+                    {//checks if all piles have kings.
+                        gameTimer.Stop(); // stops timer
+                        WinScreen(); // Starts the win scene
+                    }
                 }
+                catch { }
             }
-        
+        }     
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            playTimeSec++;
+            playTimeSec++; // the tick is set at 1 second and this keeps track of those seconds
 
-            if (playTimeSec == 60)
+            if (playTimeSec == 60) //when the game timer gets to 1 minute it adds to the minute label and resets the seconds label
             {
                 playTimeMin++;
                 playTimeSec = 0;
             }
 
-            secLabel.Text = playTimeSec.ToString(":00");
-            minLabel.Text = playTimeMin + "";
+            secLabel.Text = playTimeSec.ToString(":00");//displays seconds
+            minLabel.Text = playTimeMin + "";//displays minutes
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            BackgroundImageLayout = ImageLayout.Stretch;
+            BackgroundImageLayout = ImageLayout.Stretch;// makes the background fit the whole form with one image
         }
 
         public void CheckLines(int suit, int cardValue, int currentLine, int index, int numberOfLines)
         {
-            try
+            try//try/catch is needed to make sure it will not break, if the line has no cards 
             {
                 #region Find Last Line 1 Suit Values
                 if (lineOne.Last().EndsWith("H"))
@@ -1422,6 +1429,7 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
                 moveLine = 1;
+                //searches line one and determines the suit and value of its last card
             }
             catch
             {
@@ -1429,11 +1437,12 @@ namespace Final_Project_Rams_Solitaire
                 suitNeed = 5;
                 needValue = 14;
             }
-            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue || 
+            //this makes so that only opposite colors and a card with a value one below the last in the line it is moving to, can move.
+            if (suit <= 2 && suitNeed >= 3 && cardValue + 1 == needValue ||  
                 suit >= 3 && suitNeed <= 2 && cardValue + 1 == needValue ||
-                suit < suitNeed && needValue == 14 && cardValue == 13)
+                suit < suitNeed && needValue == 14 && cardValue == 13) //this allows kings to move to lines with no cards 
             {
-                MoveCard(moveLine, currentLine, index, numberOfLines);
+                MoveCard(moveLine, currentLine, index, numberOfLines); //this sends the important info to the Move Card method
             }
             else
             {
@@ -2051,9 +2060,9 @@ namespace Final_Project_Rams_Solitaire
                                     }
                                     else
                                     {
-                                        suitNeed = 3;
+                                        suitNeed = 3;//sets the needed suit to black(this does not do anything)
                                         moveLine = 10;
-                                        try
+                                        try //try/catch is needed to make sure it will not break, if the pile has no cards 
                                         {
                                             #region Find Last Hearts Pile Card Values
                                             if (goalPileH.Last().StartsWith("K"))
@@ -2121,15 +2130,17 @@ namespace Final_Project_Rams_Solitaire
                                                 needValue = 1;
                                             }
                                             #endregion
+                                            //searches hearts pile and determines the value of its last card
                                         }
                                         catch
                                         {
-                                            needValue = 0;
+                                            needValue = 0;//if there is no cards then the needed card is an ace
                                         }
-                                        if (suit == 1 && cardValue - 1 == needValue ||
-                                            suit == 1 && cardValue == 1)
+                                        //only hearts can go through and allows cards that are one bigger than the last to be moved.
+                                        if (suit == 1 && cardValue - 1 == needValue || 
+                                            suit == 1 && cardValue == 1)//allows aces to be moved in at any time as they start
                                         {
-                                            MoveCard(moveLine, currentLine, index, numberOfLines);
+                                            MoveCard(moveLine, currentLine, index, numberOfLines); //sends info to the Move Card method
                                         }
                                         else
                                         {
@@ -2395,20 +2406,19 @@ namespace Final_Project_Rams_Solitaire
             }
         }
 
-        #region Click Methods for all Playing Lines
         private void listBox1_Click(object sender, EventArgs e)
         {
+            //adds to the number of moves and displays it
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
-            numberOfLines = lineOne.Count - 1;
-            index = lineBox1.SelectedIndex;
+            numberOfLines = lineOne.Count - 1; //counts the number of line there are with items in them in the line 
+            index = lineBox1.SelectedIndex; // determines the line number of the selected card
 
-            if (lineBox1.SelectedIndex != -1)
+            if (lineBox1.SelectedIndex != -1)//this determines if the line has cards or not
             {
-                chosenCard = lineBox1.Items[index].ToString();
-
+                chosenCard = lineBox1.Items[index].ToString();//finds the content of the line that was selected 
                 #region Find Card Values 
-                if (chosenCard.StartsWith("K"))
+                if (chosenCard.StartsWith("K")) // determines the value of the card based off of what it starts with.
                 {
                     cardValue = 13;
                 }
@@ -2474,7 +2484,7 @@ namespace Final_Project_Rams_Solitaire
                 }
                 #endregion
                 #region Find Suit Values
-                if (chosenCard.EndsWith("H"))
+                if (chosenCard.EndsWith("H"))//determines the suit based off of what it ends with. The red are smaller than the black.
                 {
                     suit = 1;
                 }
@@ -2491,8 +2501,8 @@ namespace Final_Project_Rams_Solitaire
                     suit = 4;
                 }
                 #endregion
-                currentLine = 1;
-                CheckLines(suit, cardValue, currentLine, index, numberOfLines);
+                currentLine = 1; //sets what playing line the card is in
+                CheckLines(suit, cardValue, currentLine, index, numberOfLines); //sends important info to the Check Lines method
             }
             else
             {
@@ -2500,6 +2510,7 @@ namespace Final_Project_Rams_Solitaire
             }
         }
 
+        //The comments for listBox2 - listBox7 and playCardBox are identical to listBox1.
         private void listBox2_Click(object sender, EventArgs e)
         {
             moveCount++;
@@ -3169,24 +3180,24 @@ namespace Final_Project_Rams_Solitaire
                 MessageBox.Show("This line has no cards.");
             }
         }
-        #endregion
 
         private void drawCardButton_Click(object sender, EventArgs e)
         {
+            //adds one to the game moves and displays it
             moveCount++;
             movesNumber.Text = "MOVES: " + moveCount;
 
-            if(drawPile.Count() != 0)
+            if(drawPile.Count() != 0)//if there are cards left in the list
             {
-                playPile.Add(drawPile[0]);
-                drawPile.Remove(drawPile[0]);
-                playCardBox.Items.Insert(0, playPile.Last());
+                playPile.Add(drawPile[0]);//add the first card of the draw pile list to the last on the play pile list 
+                drawPile.Remove(drawPile[0]);//remove the card that was added to the play pile list in the draw card list
+                playCardBox.Items.Insert(0, playPile.Last());//display the the card that was just added to the top of the box
             }
-            else
+            else//if there are no cards left in the list
             {
-                drawPile.AddRange(playPile);
-                playPile.Clear();
-                playCardBox.Items.Clear();
+                drawPile.AddRange(playPile); //add all the play pile list items back to the draw pile list
+                playPile.Clear(); //remove all cards from list
+                playCardBox.Items.Clear(); //remove all itmes from item box
             }
         }
 
@@ -3291,9 +3302,11 @@ namespace Final_Project_Rams_Solitaire
                 MessageBox.Show("There are no cards, click the DRAW CARD or DEAL button.");
             }
         }
+
         public void WinScreen()
         {
-            loadButton.Dispose();
+            //remove all buttons, labels and listboxes
+            loadButton.Visible = false;
             drawCardButton.Visible = false;
             playCardBox.Visible = false;
             heartsBox.Visible = false;
@@ -3312,13 +3325,9 @@ namespace Final_Project_Rams_Solitaire
             lineBox6.Visible = false;
             lineBox7.Visible = false;
 
+            //set up graphics, then make screen white and display final message 
             Graphics g = this.CreateGraphics();
-            Pen winPen = new Pen(Color.Blue);
-            SolidBrush winBrush = new SolidBrush(Color.White);
-            g.FillRectangle(winBrush, 0, 0, 300, 300);
-            minLabel.Location = new Point(300, 200);
-            minLabel.ForeColor = Color.Blue;
-                   
+            g.Clear(Color.White);                 
             MessageBox.Show("Congratulations, you win!");
         }
     }
